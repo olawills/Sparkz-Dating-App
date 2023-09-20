@@ -8,7 +8,12 @@ class UsersDisplayCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [Text(user.firstName)],
+      children: [
+        Text(
+          user.firstName,
+          style: const TextStyle(fontSize: 24),
+        ),
+      ],
     );
   }
 }

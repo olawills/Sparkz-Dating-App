@@ -26,7 +26,7 @@ class HomeScreenController extends State<HomeScreen> {
         firstName = pref.getString('firstName') ?? '';
         lastName = pref.getString('lastName') ?? '';
         email = pref.getString('email') ?? '';
-        profilePic = pref.getString('profile') ?? '';
+        profilePic = pref.getString('ProfilePicture') ?? '';
       });
     });
     searchController = TextEditingController();
@@ -38,7 +38,7 @@ class HomeScreenController extends State<HomeScreen> {
     super.dispose();
   }
 
-  connectionSnackBar() {
+  void connectionSnackBar() {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Container(
@@ -53,7 +53,7 @@ class HomeScreenController extends State<HomeScreen> {
                   style: appMStyle(16, kDark, FontWeight.w400),
                 ),
                 20.sbH,
-                Align(
+                const Align(
                   alignment: Alignment.bottomRight,
                   child: Text('Dismiss'),
                 )

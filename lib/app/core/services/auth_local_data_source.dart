@@ -13,17 +13,17 @@ class LocalDataStorage {
     return _prefs!;
   }
 
-  String _firstName = 'firstName';
-  String _lastName = 'lastName';
-  String _email = 'email';
-  String _loggedIn = 'auth_token';
-  String _firstTime = 'FirstTime';
+  final String _firstName = 'firstName';
+  final String _lastName = 'lastName';
+  final String _email = 'email';
+  final String _loggedIn = 'auth_token';
+  final String _firstTime = 'FirstTime';
   final _userDetails = 'user_data';
-  String _gender = 'gender';
-  String _interest = 'interest';
-  String _profilePicture = 'ProfilePicture';
-  String _finishedOtp = '';
-  String _token = 'access_token';
+  final String _gender = 'gender';
+  final String _interest = 'interest';
+  final String _profilePicture = 'ProfilePicture';
+  final String _finishedOtp = '';
+  final String _token = 'access_token';
 
   Future<bool> setFirstTime() async {
     final pref = await instance.prefs;
@@ -50,7 +50,11 @@ class LocalDataStorage {
     await pref.setString(_gender, gender);
   }
 
-  Future<void> setInterest(List<String> interests) async {
+  Future<void> setInterest(String interests) async {
+    final pref = await instance.prefs;
+    await pref.setString(_gender, interests);
+  }
+   Future<void> setListInterest(List<String> interests) async {
     final pref = await instance.prefs;
     await pref.setStringList(_gender, interests);
   }

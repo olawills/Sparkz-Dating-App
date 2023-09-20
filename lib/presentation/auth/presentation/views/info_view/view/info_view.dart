@@ -16,7 +16,7 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                 backgroundColor: Colors.grey[200],
               ),
             controller.isLoading
-                ? LoadingPage()
+                ? const LoadingPage()
                 : Column(
                     // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -31,23 +31,24 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GenderCard(
-                            icon: Icons.male_rounded,
-                            gender: 'Male',
-                            initialColor: Color(kDarkRed.value),
-                            controller: controller,
-                            selectedGender: controller.selectedGender,
-                            onGenderSelected: (selectedGender) {
-                              controller.selectedGender = selectedGender;
-                            },
-                          ),
+                              icon: Icons.male_rounded,
+                              gender: 'Male',
+                              initialColor: controller.isSelectedMale
+                                  ? Color(kDarkRed.value)
+                                  : Color(kDark.value),
+                              onTap: () {
+                                controller.changeColorButton('Male');
+                                controller.saveGenderInfo('Male');
+                              }),
                           GenderCard(
                             icon: Icons.female_rounded,
                             gender: 'Female',
-                            initialColor: Color(kDarkRed.value),
-                            controller: controller,
-                            selectedGender: controller.selectedGender,
-                            onGenderSelected: (selectedGender) {
-                              controller.selectedGender = selectedGender;
+                            initialColor: controller.isSelectedFemale
+                                ? Color(kDarkRed.value)
+                                : Color(kDark.value),
+                            onTap: () {
+                              controller.changeColorButton('Female');
+                              controller.saveGenderInfo('Female');
                             },
                           ),
                         ],
@@ -58,11 +59,12 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                         child: GenderCard(
                           icon: Icons.transgender_sharp,
                           gender: 'Transgender',
-                          initialColor: Color(kDarkRed.value),
-                          controller: controller,
-                          selectedGender: controller.selectedGender,
-                          onGenderSelected: (selectedGender) {
-                            controller.selectedGender = selectedGender;
+                          initialColor: controller.isSelectedTransgender
+                              ? Color(kDarkRed.value)
+                              : Color(kDark.value),
+                          onTap: () {
+                            controller.changeColorButton('Transgender');
+                            controller.saveGenderInfo('Transgender');
                           },
                         ),
                       ),
@@ -73,11 +75,11 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                         color: Color(kDarkRed.value),
                         textColor: Color(kLight.value),
                         text: 'Continue',
-                        onTap: () => controller.navigateToNextScreen(),
+                        onTap: () => controller.saveInfo(),
                       )
                     ],
                   ).padding(
-                    EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
                   ),
           ],
         ),
@@ -86,61 +88,30 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
   }
 }
 
-class GenderCard extends StatefulWidget {
+class GenderCard extends StatelessWidget {
   final IconData icon;
   final String gender;
-  Color initialColor;
-  final InfoController controller;
-  final String selectedGender;
+  final Color initialColor;
+  final VoidCallback? onTap;
 
-  final Function(String) onGenderSelected;
-
-  GenderCard({
+  const GenderCard({
     super.key,
     required this.initialColor,
     required this.gender,
     required this.icon,
-    required this.controller,
-    required this.selectedGender,
-    required this.onGenderSelected,
+    this.onTap,
   });
 
   @override
-  State<GenderCard> createState() => _GenderCardState();
-}
-
-class _GenderCardState extends State<GenderCard> {
-  late Color cardColor;
-  late bool isSelected;
-
-  @override
-  void initState() {
-    super.initState();
-    cardColor = widget.initialColor;
-    // isSelected = widget.isSelected;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    bool isSelected = widget.gender == widget.selectedGender;
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          isSelected = !isSelected;
-          cardColor = isSelected ? widget.initialColor : Color(kDarkRed.value);
-        });
-        widget.onGenderSelected(isSelected ? widget.gender : '');
-        if (isSelected) {
-          widget.controller.saveGenderInfo(widget.gender);
-        }
-      },
+      onTap: onTap,
       child: Column(
         children: [
-          Icon(widget.icon, color: cardColor, size: 100),
+          Icon(icon, color: initialColor, size: 100),
           10.sbH,
           ReusableText(
-              text: widget.gender,
-              style: appMStyle(20, cardColor, FontWeight.w700))
+              text: gender, style: appMStyle(20, initialColor, FontWeight.w700))
         ],
       ),
     );

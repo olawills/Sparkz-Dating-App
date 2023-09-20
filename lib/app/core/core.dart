@@ -5,6 +5,7 @@ export 'package:flutter/material.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:fluttertoast/fluttertoast.dart';
 export 'package:go_router/go_router.dart';
+export 'package:dating_app/app/common/extensions/navigation_ext.dart';
 
 export '../../../../../app/core/services/auth_local_data_source.dart';
 export '../../../presentation/auth/presentation/views/complete_verification/verification_barrels.dart';

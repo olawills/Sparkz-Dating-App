@@ -36,8 +36,10 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                       keyboardType: TextInputType.emailAddress,
                       textEditingController: controller.emailController,
                       isValidationMessage: true,
-                      validator: (val) =>
-                          ValidationManager.emailValidator(value: val),
+                      validator: (val) => Validator()
+                          .isEmail()
+                          .lengthGreaterThan(8)
+                          .validate(val),
                     ),
                     CustomTxtField(
                       labelText: 'Password',
@@ -47,8 +49,10 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                       suffix: true,
                       textEditingController: controller.passwordController,
                       isValidationMessage: true,
-                      validator: (val) =>
-                          ValidationManager.passwordValidator(value: val),
+                      validator: (val) => Validator()
+                          .isPassword()
+                          .lengthGreaterThan(6)
+                          .validate(val),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -149,7 +153,7 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                       ),
                     ),
                   ],
-                ).padding(EdgeInsets.symmetric(vertical: 30, horizontal: 10)),
+                ).padding(const EdgeInsets.symmetric(vertical: 30, horizontal: 10)),
               ),
             ),
           ),

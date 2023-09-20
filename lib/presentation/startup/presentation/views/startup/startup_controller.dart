@@ -16,7 +16,7 @@ class StartupScreen extends StatefulWidget {
 class StartupController extends State<StartupScreen>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController =
-      AnimationController(vsync: this, duration: Duration(seconds: 3));
+      AnimationController(vsync: this, duration: const Duration(seconds: 3));
 
   _startDelay() {
     _animationController

@@ -6,7 +6,7 @@ part 'bottom_navigation_state.dart';
 
 class BottomNavigationCubit extends Cubit<BottomNavigationState> {
   BottomNavigationCubit()
-      : super(BottomNavigationState(bottomNavItems: HomeScreen.path, index: 0));
+      : super(const BottomNavigationState(bottomNavItems: HomeScreen.path, index: 0));
 
   void gotoNavBarItem(int index) {
     switch (index) {

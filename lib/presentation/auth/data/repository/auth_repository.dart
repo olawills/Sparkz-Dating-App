@@ -6,7 +6,7 @@ import 'package:dating_app/app/core/network_handler/failures.dart';
 import 'package:dating_app/presentation/auth/data/datasource/auth_remote_data_source.dart';
 import 'package:dating_app/presentation/auth/data/models/login_response.dart';
 import 'package:dating_app/presentation/auth/data/models/user.dart';
-import 'package:dating_app/presentation/auth/presentation/bloc/auth_bloc.dart';
+import 'package:dating_app/presentation/auth/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:dio/dio.dart';
 
 class AuthRepositories {
@@ -19,32 +19,31 @@ class AuthRepositories {
     try {
       final response = await _authRemoteDataSourceImpl.loginUser(event);
       return Right(LoginResponse.fromJson(response.data));
-    }
-    //  on DioException catch (e) {
-    //   final errorMessage = DioExceptions.fromDioError(e).toString();
-    //   return Left(ServerFailure(message: errorMessage));
-    // }
-    on DioException catch (failure) {
+    } on DioException catch (failure) {
       Log.error('login error', failure.type);
       final errorMessage = DioExceptions.fromDioError(failure).toString();
       return failure.type == DioExceptionType.badResponse
           ? Left(ServerFailure(message: failure.message.toString()))
           : Left(ServerFailure(message: errorMessage));
+    } catch (e) {
+      return Left(GeneralFailure(message: e.toString()));
     }
   }
 
   ResultFuture<User> signup(SignupEvent event) async {
     try {
       final response = await _authRemoteDataSourceImpl.createUser(event);
-      print(response.data['user']);
+      Log.debug(response.data['user']);
       return Right(User.fromJson(response.data['user']));
     } on DioException catch (failure) {
       Log.error('Signup error', failure.type);
-      print(failure.message);
+      Log.debug(failure.message);
       final errorMessage = DioExceptions.fromDioError(failure);
       return failure.type == DioExceptionType.badResponse
           ? Left(ServerFailure(message: failure.message.toString()))
           : Left(ApiFailure.fromException(errorMessage));
+    } catch (e) {
+      return Left(GeneralFailure(message: e.toString()));
     }
   }
 
@@ -64,7 +63,7 @@ class AuthRepositories {
     }
   }
 
-  ResultVoid resendOtp(ResendOtpEvent event) async {
+  ResultFuture<dynamic> resendOtp(ResendOtpEvent event) async {
     try {
       final response = await _authRemoteDataSourceImpl.resendOtp(event);
       return Right(response);

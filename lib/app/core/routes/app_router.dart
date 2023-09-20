@@ -1,5 +1,7 @@
 import 'package:dating_app/app/core/core.dart';
 
+import '../logger/app_logger.dart';
+
 class AppRouter {
   static final RouterConfig<Object> routerConfig = RouterConfig(
     routerDelegate: router.routerDelegate,
@@ -25,7 +27,7 @@ final GoRouter _router = GoRouter(
       GoRoute(
         path: StartupScreen.path,
         name: StartupScreen.name,
-        builder: (context, state) => StartupScreen(),
+        builder: (context, state) => const StartupScreen(),
       ),
       GoRoute(
         path: OnBoardingScreen.path,
@@ -60,19 +62,18 @@ final GoRouter _router = GoRouter(
         name: OtpScreen.name,
         builder: (context, state) {
           // final String email = state.extra as String;
-          return OtpScreen();
+          return const OtpScreen();
         },
       ),
       GoRoute(
         path: CompleteVerificationOTPScreen.path,
         name: CompleteVerificationOTPScreen.name,
-        pageBuilder: (context, state) =>
-            NoTransitionPage(child: CompleteVerificationOTPScreen()),
+        builder: (context, state) => const CompleteVerificationOTPScreen(),
       ),
       GoRoute(
         path: ForgotPasswordScreen.path,
         name: ForgotPasswordScreen.name,
-        builder: (context, state) => ForgotPasswordScreen(),
+        builder: (context, state) => const ForgotPasswordScreen(),
       ),
       GoRoute(
           path: ResetPasswordScreen.path,
@@ -88,10 +89,10 @@ final GoRouter _router = GoRouter(
           return CustomTransitionPage(
             key: state.pageKey,
             child: const InfoScreen(),
-            transitionDuration: Duration(milliseconds: 500),
+            transitionDuration: const Duration(milliseconds: 500),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
-              var begin = Offset(1.0, 0.0);
+              var begin = const Offset(1.0, 0.0);
               var end = Offset.zero;
               var tween = Tween(begin: begin, end: end)
                   .chain(CurveTween(curve: Curves.easeInOut));
@@ -110,10 +111,10 @@ final GoRouter _router = GoRouter(
           return CustomTransitionPage(
             key: state.pageKey,
             child: const InterestScreen(),
-            transitionDuration: Duration(milliseconds: 500),
+            transitionDuration: const Duration(milliseconds: 500),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
-              var begin = Offset(1.0, 0.0);
+              var begin = const Offset(1.0, 0.0);
               var end = Offset.zero;
               var tween = Tween(begin: begin, end: end)
                   .chain(CurveTween(curve: Curves.easeInOut));
@@ -156,46 +157,41 @@ final GoRouter _router = GoRouter(
               path: HomeScreen.path,
               name: HomeScreen.name,
               pageBuilder: (context, state) {
-                return NoTransitionPage(child: HomeScreen());
+                return const NoTransitionPage(child: HomeScreen());
               }),
           GoRoute(
             path: ChatsScreen.route,
             name: ChatsScreen.name,
             pageBuilder: (context, state) =>
-                NoTransitionPage(child: ChatsScreen()),
+                const NoTransitionPage(child: ChatsScreen()),
           ),
           GoRoute(
             path: NotificationScreen.route,
             name: NotificationScreen.name,
             pageBuilder: (context, state) =>
-                NoTransitionPage(child: NotificationScreen()),
+                const NoTransitionPage(child: NotificationScreen()),
           ),
           GoRoute(
             path: ProfileScreen.route,
             name: ProfileScreen.name,
             pageBuilder: (context, state) =>
-                NoTransitionPage(child: ProfileScreen()),
+                const NoTransitionPage(child: ProfileScreen()),
           ),
         ],
       ),
     ],
     redirect: (BuildContext context, GoRouterState state) async {
-      print(state.matchedLocation);
-      print(await LocalDataStorage.instance.getFirstTime());
+      Log.debug(state.matchedLocation);
+      Log.debug(await LocalDataStorage.instance.getFirstTime());
       if (state.matchedLocation == LoginScreen.path) {
         if (await LocalDataStorage.instance.getFirstTime()) {
-          return '${OnBoardingScreen.path}';
+          return OnBoardingScreen.path;
         } else {
-          // if (await LocalDataStorage.instance.getLoggedIn()) {
-          //   if (await LocalDataStorage.instance.getUserDetails()) {
-          //     return '${HomeScreen.path}';
-          // } else {
-          return '${InfoScreen.path}';
-          // }
-          // return '${HomeScreen.path}';
-          // } else {
-          //   return '${LoginScreen.path}';
-          // }
+          if (await LocalDataStorage.instance.getLoggedIn()) {
+            return HomeScreen.path;
+          } else {
+            return LoginScreen.path;
+          }
         }
       }
       return null;

@@ -4,6 +4,7 @@ class _HomeView extends StatelessView<HomeScreen, HomeScreenController> {
   const _HomeView(HomeScreenController state, {Key? key})
       : super(state, key: key);
 
+  @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
       return Scaffold(
@@ -30,7 +31,7 @@ Widget _buildHomeWidget({required HomeScreenController controller}) {
                 text: '${controller.firstName} ${controller.lastName}',
                 style: appMStyle(18, Color(kDark.value), FontWeight.bold)),
             UserDisplayPicture(
-              imageUrl: controller.profilePic,
+              imageUrl: Assets.noAccountImage,
               onTap: () {},
             )
           ],
@@ -89,17 +90,13 @@ Widget _buildHomeWidget({required HomeScreenController controller}) {
                     context.read<FetchUserBloc>()..add(FetchAllUserEvent()));
           }
           if (state is InternetConnected) {
-            // if (InternetConnectionCubit.get(context).showDialog) {
-            //   InternetConnectionCubit.get(context).showDialog = false;
-            //   return _buildUsersCard();
-            // }
             return _buildUsersCard();
           } else {
             return Container();
           }
         })
       ],
-    ).padding(EdgeInsets.symmetric(horizontal: 12, vertical: 20)),
+    ).padding(const EdgeInsets.symmetric(horizontal: 12, vertical: 20)),
   );
 }
 
@@ -107,7 +104,7 @@ Widget _buildUsersCard() {
   return BlocBuilder<FetchUserBloc, FetchUserState>(
     builder: (context, state) {
       if (state is FetchAllUserLoading) {
-        return Center(child: CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
       }
       if (state is FetchAllUserSuccess) {
         // return CarouselSlider.builder(

@@ -13,7 +13,7 @@ Future<void> main() async {
   runApp(
     MultiBlocProvider(
       providers: AppBlocProviders.allBlocProviders,
-      child: SparkzConfig(),
+      child: const SparkzConfig(),
     ),
   );
 }

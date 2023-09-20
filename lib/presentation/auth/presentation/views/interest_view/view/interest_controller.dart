@@ -10,27 +10,81 @@ class InterestScreen extends StatefulWidget {
 }
 
 class InterestController extends State<InterestScreen> {
-  bool _selectedIcon = false;
-  List<String> interest = [];
+  String gender = '';
+  String about = '';
+  String email = '';
+
+  bool clickedMulti = false;
+  List<String> selectTedList = [];
+
+  selectedItems(String selecteditem) {
+    if (selectTedList.contains(selecteditem)) {
+      selectTedList.remove(selecteditem);
+    } else {
+      selectTedList.add(selecteditem);
+    }
+    if (selectTedList.isEmpty) {
+      clickedMulti = false;
+    }
+    setState(() {});
+  }
+
+  selectedInterest() async {
+    await LocalDataStorage.instance.setListInterest(selectTedList);
+    Log.debug(selectTedList);
+  }
+
+  saveInfo() {
+    if (selectTedList != []) {
+      context.read<InterestBloc>().add(CreateUserProfile(
+            email: email,
+            gender: gender,
+            about: about,
+            interests: selectTedList,
+          ));
+      Log.debug(selectTedList);
+    }
+    Log.debug(selectTedList);
+  }
+
+  saveInfoSuccess() async {
+    context.goNamed(HomeScreen.name);
+  }
+
+  saveInfoError(Failure error) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Container(
+        height: 60.h,
+        width: double.maxFinite,
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: kLight,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: ReusableText(
+          text: error.message,
+          style: appMStyle(16, kDark, FontWeight.w400),
+        ),
+      ),
+    ));
+  }
+
   backPage() {
     context.pop();
   }
 
-  navigateToNextScreen() {
-    context.goNamed(HomeScreen.name);
-  }
-
-  bool get selectedIcon => _selectedIcon;
-
-  set selectInterest(bool selectedIcon) {
-    setState(() {
-      _selectedIcon = selectedIcon;
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((pref) {
+      setState(() {
+        gender = pref.getString('gender') ?? '';
+        about = pref.getString('about') ?? '';
+        email = pref.getString('email') ?? '';
+      });
+      Log.debug(email);
+      Log.debug(gender);
     });
-  }
-
-  selectedInterest() async {
-    await LocalDataStorage.instance.setInterest(interest);
-    Log.debug(interest);
   }
 
   @override

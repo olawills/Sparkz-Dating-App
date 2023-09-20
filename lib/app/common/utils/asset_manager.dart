@@ -10,7 +10,7 @@ class Assets {
 
 class AppIcons {
   // Social Media Icons
-  static final gbIcon = Coolicons.google;
-  static final fbIcon = Coolicons.facebook;
-  static final linkedln = Coolicons.LinkedIn;
+  static const gbIcon = Coolicons.google;
+  static const fbIcon = Coolicons.facebook;
+  static const linkedln = Coolicons.LinkedIn;
 }

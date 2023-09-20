@@ -1,10 +1,9 @@
+import 'package:dating_app/app/core/core.dart';
 import 'package:dating_app/app/core/network_handler/failures.dart';
 import 'package:dating_app/presentation/auth/data/models/login_response.dart';
 import 'package:dating_app/presentation/auth/data/models/user.dart';
+import 'package:dating_app/presentation/auth/data/repository/auth_repository.dart';
 import 'package:equatable/equatable.dart';
-
-import '../../../../app/core/core.dart';
-import '../../data/repository/auth_repository.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

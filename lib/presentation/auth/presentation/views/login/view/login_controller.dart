@@ -51,6 +51,7 @@ class LoginController extends State<LoginScreen> {
 
   loginSuccess(String token) async {
     await LocalDataStorage.instance.setToken(token);
+    // ignore: use_build_context_synchronously
     context.goNamed(HomeScreen.name);
   }
 

@@ -38,7 +38,7 @@ class _CompleteOTPVerificationView extends StatelessView<
             onTap: () => controller.infoView(),
           )
         ],
-      ).padding(EdgeInsets.symmetric(horizontal: 10, vertical: 24))),
+      ).padding(const EdgeInsets.symmetric(horizontal: 10, vertical: 24))),
     );
   }
 }

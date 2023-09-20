@@ -11,51 +11,44 @@ class InfoScreen extends StatefulWidget {
 
 class InfoController extends State<InfoScreen> {
   bool isLoading = true;
-  bool _initialColor = false;
+  bool isSelectedMale = false;
+  bool isSelectedFemale = false;
+  bool isSelectedTransgender = false;
   String selectedGender = '';
 
-  backPage() {
-    context.pop();
-  }
+  changeColorButton(String gender) {
+    setState(() {
+      isSelectedMale = false;
+      isSelectedFemale = false;
+      isSelectedTransgender = false;
 
-  navigateToNextScreen() {
-    context.pushNamed(InterestScreen.name);
-  }
-
-  bool get initialColor => _initialColor;
-
-  set setGender(bool initialColor) {
-    _initialColor = initialColor;
-    setState(() {});
+      if (gender == 'Male') {
+        isSelectedMale = true;
+        Log.debug(isSelectedMale);
+      } else if (gender == 'Female') {
+        isSelectedFemale = true;
+        Log.debug(isSelectedFemale);
+      } else if (gender == 'Transgender') {
+        isSelectedTransgender = true;
+        Log.debug(isSelectedTransgender);
+      }
+    });
   }
 
   saveGenderInfo(String selectedGender) async {
-    setState(() {
-      selectedGender = selectedGender; // Update the selected gender
-    });
-
     await LocalDataStorage.instance.setGender(selectedGender);
     Log.debug(selectedGender);
-    print('1');
   }
 
-  // setGender() async {
-
-  //     setState(() {
-  //       initialColor = true;
-  //       Log.debug('True');
-
-  //       // selectedGender = selectedGender;
-  //     });
-
-  //   await LocalDataStorage.instance.setGender(selectedGender);
-  //   Log.debug(selectedGender);
-  // }
+  saveInfo() {
+    context.pushNamed(InterestScreen.name);
+  }
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
+
+    Future.delayed(const Duration(seconds: 3), () {
       setState(() {
         isLoading = false;
       });

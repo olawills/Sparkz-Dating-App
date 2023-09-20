@@ -5,7 +5,14 @@ class _NotificationView
   const _NotificationView(NotificationController state, {Key? key})
       : super(state, key: key);
 
+  @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [],
+        ),
+      ),
+    );
   }
 }

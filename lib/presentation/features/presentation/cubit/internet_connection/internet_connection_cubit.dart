@@ -16,8 +16,6 @@ class InternetConnectionCubit extends Cubit<InternetConnectionState> {
     _checkConnection(await _connectivity.checkConnectivity());
   }
 
-  // void _connectionChange(ConnectivityResult result) =>
-  //     _connectionChange(result);
   void _connectionChange(ConnectivityResult result) {
     _checkConnection(result);
   }
@@ -39,8 +37,8 @@ class InternetConnectionCubit extends Cubit<InternetConnectionState> {
 
   bool showDialog = false;
 
-  void _connectionChangeController(bool _hasConnection) {
-    if (_hasConnection) {
+  void _connectionChangeController(bool hasConnection) {
+    if (hasConnection) {
       emit(InternetConnected());
     } else {
       emit(InternetDisconnected());

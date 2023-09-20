@@ -22,7 +22,7 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomAppB(),
+                    const CustomAppB(),
                     20.sbH,
                     Center(
                       child: Column(
@@ -39,7 +39,7 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                                   23, Color(kDark.value), FontWeight.w600)),
                           20.sbH,
                           ReusableText(
-                              text: otpText('${controller.email}'),
+                              text: otpText(controller.email),
                               style: appMStyle(
                                   20, Color(kGrey.value), FontWeight.w600)),
                           15.sbH,
@@ -63,7 +63,7 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                           buildPinPut(
                             pinController: controller.otpController,
                             pinputFocusNode: controller.pinputFocusNode,
-                          ).padding(EdgeInsets.all(20))
+                          ).padding(const EdgeInsets.all(20))
                         ],
                       ),
                     ),
@@ -90,7 +90,7 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                       },
                     ),
                   ],
-                ).padding(EdgeInsets.symmetric(horizontal: 18, vertical: 20)),
+                ).padding(const EdgeInsets.symmetric(horizontal: 18, vertical: 20)),
                 AppKeyBoard(controller: controller.otpController)
               ],
             ),
@@ -151,7 +151,7 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        GestureDetector(onTap: onTap, child: Text('Resend Code in')),
+        GestureDetector(onTap: onTap, child: const Text('Resend Code in')),
         5.sbW,
         TweenAnimationBuilder(
           tween: Tween(begin: 60.0, end: 0.0),
@@ -166,6 +166,6 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
           },
         ),
       ],
-    ).padding(EdgeInsets.symmetric(horizontal: 20));
+    ).padding(const EdgeInsets.symmetric(horizontal: 20));
   }
 }

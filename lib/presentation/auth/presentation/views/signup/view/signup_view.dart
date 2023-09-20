@@ -23,7 +23,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomAppB(),
+                  const CustomAppB(),
                   30.sbH,
                   ReusableText(
                       text: signupText,
@@ -40,19 +40,19 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                           keyboardType: TextInputType.name,
                           textEditingController: controller.firstNameController,
                           validator: (val) =>
-                              ValidationManager.firstNameValidator(value: val),
+                              Validators.firstNameValidator(value: val),
                         ),
                       ),
                       10.sbW,
                       Expanded(
                         child: CustomTxtField(
-                          labelText: 'Last name',
-                          hintText: 'Enter last name',
-                          keyboardType: TextInputType.text,
-                          textEditingController: controller.lastNameController,
-                          validator: (val) =>
-                              ValidationManager.lastNameValidator(value: val),
-                        ),
+                            labelText: 'Last name',
+                            hintText: 'Enter last name',
+                            keyboardType: TextInputType.text,
+                            textEditingController:
+                                controller.lastNameController,
+                            validator: (val) =>
+                                Validators.lastNameValidator(value: val)),
                       ),
                     ],
                   ),
@@ -61,8 +61,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                     hintText: 'Enter email',
                     keyboardType: TextInputType.emailAddress,
                     textEditingController: controller.emailController,
-                    validator: (val) =>
-                        ValidationManager.emailValidator(value: val),
+                    validator: (val) => Validators.emailValidator(value: val),
                   ),
                   10.sbW,
                   CustomTxtField(
@@ -72,7 +71,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                     suffix: true,
                     textEditingController: controller.passwordController,
                     validator: (val) =>
-                        ValidationManager.passwordValidator(value: val),
+                        Validators.passwordValidator(value: val),
                   ),
                   30.sbH,
                   RichText(
@@ -138,7 +137,8 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                     ),
                   ),
                 ],
-              ).padding(EdgeInsets.symmetric(horizontal: 12, vertical: 20)),
+              ).padding(
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 20)),
             ),
           ),
         ),

@@ -4,6 +4,7 @@ class _FeaturesView extends StatelessView<FeaturesScreen, FeaturesController> {
   const _FeaturesView(FeaturesController state, {Key? key})
       : super(state, key: key);
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: widget.child,
@@ -45,7 +46,7 @@ final tabs = [
       label: 'Chats'),
   _NamedNavigationBarItemsWidget(
       initialLocation: NotificationScreen.route,
-      icon: Icon(Icons.notifications),
+      icon: const Icon(Icons.notifications),
       label: 'Notification'),
   _NamedNavigationBarItemsWidget(
       initialLocation: ProfileScreen.route,

@@ -55,6 +55,7 @@ class SignupController extends State<SignUpScreen> {
 
   signupSuccess(User data) async {
     await LocalDataStorage.instance.setuserInfo(data);
+    // ignore: use_build_context_synchronously
     context.goNamed(OtpScreen.name);
   }
 

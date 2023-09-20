@@ -1,5 +1,5 @@
 class ApiConfig {
-  static final String baseUrl = 'https://spark-dating-api.onrender.com/api/v1';
+  static const String baseUrl = 'https://spark-dating-api.onrender.com/api/v1';
 
   static const Duration receiveTimeout = Duration(milliseconds: 15000);
   static const Duration connectionTimeout = Duration(milliseconds: 15000);

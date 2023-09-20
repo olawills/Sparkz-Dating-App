@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dating_app/app/common/constants/color_style.dart';
 
 import '../../core/core.dart';
@@ -18,7 +16,7 @@ class UserDisplayPicture extends StatelessWidget {
         backgroundColor: Color(kDarkRed.value),
         child: CircleAvatar(
           radius: 18,
-          backgroundImage: FileImage(File(imageUrl)),
+          backgroundImage: AssetImage(imageUrl),
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dating_app/injection_container.dart';
-import 'package:dating_app/presentation/auth/presentation/bloc/auth_bloc.dart';
+import 'package:dating_app/presentation/auth/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../app/core/network_handler/dio_client.dart';
@@ -17,7 +17,7 @@ abstract class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  final DioClient dioClient = di<DioClient>();
+  final DioClient dioClient = serviceLocator<DioClient>();
 
   @override
   Future<Response> createUser(SignupEvent event) async {

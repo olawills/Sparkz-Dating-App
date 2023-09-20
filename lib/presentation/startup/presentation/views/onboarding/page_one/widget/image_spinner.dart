@@ -89,7 +89,7 @@ class _ImageSpinnerState extends State<ImageSpinner>
               ),
             ),
             Align(
-              alignment: Alignment(-0.6, -0.8),
+              alignment: const Alignment(-0.6, -0.8),
               child: CircleAvatar(
                 radius: 30,
                 backgroundColor: Colors.white30,
@@ -98,7 +98,7 @@ class _ImageSpinnerState extends State<ImageSpinner>
               ),
             ),
             Align(
-              alignment: Alignment(1, 0.2),
+              alignment: const Alignment(1, 0.2),
               child: CircleAvatar(
                 radius: 30,
                 backgroundColor: Colors.white30,
@@ -107,7 +107,7 @@ class _ImageSpinnerState extends State<ImageSpinner>
               ),
             ),
             Align(
-              alignment: Alignment(-0.6, 0.8),
+              alignment: const Alignment(-0.6, 0.8),
               child: CircleAvatar(
                 radius: 30,
                 backgroundColor: Colors.white30,
@@ -125,7 +125,7 @@ class _ImageSpinnerState extends State<ImageSpinner>
               ),
             ),
             Align(
-              alignment: Alignment(-0.6, 0),
+              alignment: const Alignment(-0.6, 0),
               child: CircleAvatar(
                 radius: 20,
                 backgroundColor: Colors.white30,
@@ -133,7 +133,7 @@ class _ImageSpinnerState extends State<ImageSpinner>
               ),
             ),
             Align(
-              alignment: Alignment(0.4, 0.45),
+              alignment: const Alignment(0.4, 0.45),
               child: CircleAvatar(
                 radius: 20,
                 backgroundColor: Colors.white30,
@@ -141,7 +141,7 @@ class _ImageSpinnerState extends State<ImageSpinner>
               ),
             ),
             Align(
-              alignment: Alignment(0.25, -0.55),
+              alignment: const Alignment(0.25, -0.55),
               child: CircleAvatar(
                 radius: 20,
                 backgroundColor: Colors.white30,
@@ -149,7 +149,7 @@ class _ImageSpinnerState extends State<ImageSpinner>
               ),
             ),
             Align(
-              alignment: Alignment(-0.4, -0.4),
+              alignment: const Alignment(-0.4, -0.4),
               child: CircleAvatar(
                 radius: 10,
                 backgroundColor: Colors.white30,
@@ -157,7 +157,7 @@ class _ImageSpinnerState extends State<ImageSpinner>
               ),
             ),
             Align(
-              alignment: Alignment(-0.2, 0.55),
+              alignment: const Alignment(-0.2, 0.55),
               child: CircleAvatar(
                 radius: 10,
                 backgroundColor: Colors.white30,
@@ -165,7 +165,7 @@ class _ImageSpinnerState extends State<ImageSpinner>
               ),
             ),
             Align(
-              alignment: Alignment(0.58, 0),
+              alignment: const Alignment(0.58, 0),
               child: CircleAvatar(
                 radius: 10,
                 backgroundColor: Colors.white30,

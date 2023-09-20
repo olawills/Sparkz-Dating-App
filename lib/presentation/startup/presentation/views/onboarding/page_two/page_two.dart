@@ -33,7 +33,7 @@ class PageTwo extends StatelessWidget {
               Color(kDark.value),
               FontWeight.w500,
             ),
-          ).padding(EdgeInsets.symmetric(horizontal: 20)),
+          ).padding(const EdgeInsets.symmetric(horizontal: 20)),
         ],
       ),
     );

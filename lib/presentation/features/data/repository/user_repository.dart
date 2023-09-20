@@ -5,7 +5,6 @@ import 'package:dating_app/app/core/network_handler/failures.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../app/core/network_handler/dio_exception.dart';
-import '../../../auth/data/models/user.dart';
 import '../datasources/user_remote_data_source.dart';
 
 class UserRepository {
@@ -14,16 +13,16 @@ class UserRepository {
       : _userRemoteDataSource =
             userRemoteDataSource ?? UserRemoteDataSourceImpl();
 
-  ResultFuture<List<User>> getAllUsers() async {
+  ResultFuture<UserList> getAllUsers() async {
     try {
       final response = await _userRemoteDataSource.getAllUsers();
-      final result = response
-          .map((e) => User.fromJson(e as Map<String, dynamic>))
-          .toList();
-      return Right(result);
+      // final result = response
+      //     .map((e) => User.fromJson(e as Map<String, dynamic>))
+      //     .toList();
+      return Right(response);
     } on DioException catch (failure) {
       Log.error('HomeScreen error', failure.type);
-      print(failure.message);
+      Log.debug(failure.message);
       final errorMessage = DioExceptions.fromDioError(failure);
       return failure.type == DioExceptionType.badResponse
           ? Left(ServerFailure(message: failure.message.toString()))

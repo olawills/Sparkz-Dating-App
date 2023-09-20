@@ -14,7 +14,7 @@ class ServerFailure extends Failure {
 }
 
 class ApiFailure extends Failure {
-  ApiFailure({required super.message});
+  const ApiFailure({required super.message});
 
   ApiFailure.fromException(DioExceptions exception)
       : this(message: exception.message);
@@ -22,4 +22,8 @@ class ApiFailure extends Failure {
 
 class CacheFailure extends Failure {
   const CacheFailure({required super.message});
+}
+
+class GeneralFailure extends Failure{
+  const GeneralFailure({required super.message});
 }

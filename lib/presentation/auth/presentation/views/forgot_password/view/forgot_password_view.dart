@@ -23,7 +23,7 @@ class _ForgotPasswordView
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomAppB(),
+                const CustomAppB(),
                 30.sbH,
                 Center(
                   child: ReusableText(
@@ -39,11 +39,11 @@ class _ForgotPasswordView
                 CustomTxtField(
                   labelText: 'Email',
                   hintText: 'kelvinhart@gmail.com',
-                  prefix: Icon(Icons.person),
+                  prefix: const Icon(Icons.person),
                   keyboardType: TextInputType.emailAddress,
                   textEditingController: controller.emailController,
                   validator: (val) =>
-                      ValidationManager.emailValidator(value: val),
+                      Validator().isEmail().lengthGreaterThan(8).validate(val),
                 ),
                 20.sbH,
                 BlocBuilder<AuthBloc, AuthenticationState>(
@@ -59,7 +59,7 @@ class _ForgotPasswordView
                   );
                 }),
               ],
-            ).padding(EdgeInsets.symmetric(horizontal: 12, vertical: 24)),
+            ).padding(const EdgeInsets.symmetric(horizontal: 12, vertical: 24)),
           ),
         ),
       ),
