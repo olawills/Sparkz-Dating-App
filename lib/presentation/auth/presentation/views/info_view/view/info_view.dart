@@ -69,7 +69,7 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                         ),
                       ),
                       70.sbH,
-                      CustomBtn(
+                      CustomButton(
                         width: width,
                         height: height / 15,
                         color: Color(kDarkRed.value),

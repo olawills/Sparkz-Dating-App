@@ -45,7 +45,7 @@ class OnBoarding extends StatelessView<OnBoardingScreen, OnBoardingController> {
                                       dotColor: Color(kDarkRed.value),
                                       activeDotColor: Color(kDarkGrey.value)),
                                 ),
-                                CustomBtn(
+                                CustomButton(
                                   width: width * 0.14,
                                   height: height * 0.06,
                                   color: Color(kDarkRed.value),
@@ -62,7 +62,7 @@ class OnBoarding extends StatelessView<OnBoardingScreen, OnBoardingController> {
                           : Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                CustomBtn(
+                                CustomButton(
                                   width: width * 0.14,
                                   height: height * 0.06,
                                   color: Color(kDarkRed.value),
@@ -91,7 +91,7 @@ class OnBoarding extends StatelessView<OnBoardingScreen, OnBoardingController> {
                       left: 20.w,
                       right: 20.w,
                       bottom: height * 0.06,
-                      child: CustomBtn(
+                      child: CustomButton(
                         width: width,
                         height: height * 0.07,
                         color: Color(kDarkRed.value),

@@ -1,7 +1,7 @@
-part of 'features_controller.dart';
+part of 'skeleton_controller.dart';
 
-class _FeaturesView extends StatelessView<FeaturesScreen, FeaturesController> {
-  const _FeaturesView(FeaturesController state, {Key? key})
+class _SkeletonView extends StatelessView<SkeletonScreen, SkeletonController> {
+  const _SkeletonView(SkeletonController state, {Key? key})
       : super(state, key: key);
 
   @override
@@ -41,7 +41,7 @@ final tabs = [
       icon: SvgPicture.asset(Assets.svgHelper('Favorite')),
       label: 'Home'),
   _NamedNavigationBarItemsWidget(
-      initialLocation: ChatsScreen.route,
+      initialLocation: ChatTabBarSkeleton.path,
       icon: SvgPicture.asset(Assets.svgHelper('message')),
       label: 'Chats'),
   _NamedNavigationBarItemsWidget(

@@ -42,13 +42,12 @@ class _ForgotPasswordView
                   prefix: const Icon(Icons.person),
                   keyboardType: TextInputType.emailAddress,
                   textEditingController: controller.emailController,
-                  validator: (val) =>
-                      Validator().isEmail().lengthGreaterThan(8).validate(val),
+                  validator: (val) => Validators.emailValidator(value: val),
                 ),
                 20.sbH,
                 BlocBuilder<AuthBloc, AuthenticationState>(
                     builder: (context, state) {
-                  return CustomBtn(
+                  return CustomButton(
                     width: width,
                     height: height / 15,
                     color: Color(kDarkRed.value),

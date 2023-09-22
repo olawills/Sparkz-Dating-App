@@ -29,7 +29,7 @@ class _CompleteOTPVerificationView extends StatelessView<
             child: Icon(Icons.done, color: Color(kLight.value), size: 50.w),
           ),
           20.sbH,
-          CustomBtn(
+          CustomButton(
             width: width,
             height: height / 15,
             color: Color(kDarkRed.value),

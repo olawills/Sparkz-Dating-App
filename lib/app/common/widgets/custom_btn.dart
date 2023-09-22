@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/core.dart';
 
-class CustomBtn extends StatelessWidget {
-  const CustomBtn({
+class CustomButton extends StatelessWidget {
+  const CustomButton({
     super.key,
     this.width,
     this.height,

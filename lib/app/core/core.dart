@@ -17,7 +17,7 @@ export '../../../presentation/auth/presentation/views/otp_verification/otp_barre
 export '../../../presentation/auth/presentation/views/signup/barrels.dart';
 export '../../../presentation/features/presentation/cubit/internet_connection/internet_connection_cubit.dart';
 export '../../../presentation/features/presentation/views/chats/chats_barrel.dart';
-export '../../../presentation/features/presentation/views/features_controller.dart';
+export '../../presentation/features/presentation/views/skeleton_controller.dart';
 export '../../../presentation/features/presentation/views/home/home_barrel.dart';
 export '../../../presentation/features/presentation/views/notification/notification_barrel.dart';
 export '../../../presentation/features/presentation/views/profile/profile_barrel.dart';

@@ -128,30 +128,8 @@ final GoRouter _router = GoRouter(
       ),
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
-        builder: (context, state, child) {
-          // return BlocListener<InternetConnectionCubit, InternetConnectionState>(
-          //   listener: (context, state) {
-          //     if (state is InternetDisconnected) {
-          //       InternetConnectionCubit.get(context).showDialog = true;
-          //       Log.debug('No Internet');
-          //       Future.delayed(const Duration(milliseconds: 500), () {
-          //         Fluttertoast.showToast(
-          //             msg: 'No Internet Connection',
-          //             fontSize: 16,
-          //             backgroundColor: Color(kDarkRed.value),
-          //             gravity: ToastGravity.TOP);
-          //       });
-          //     }
-          //     if (state is InternetConnected) {
-          //       if (InternetConnectionCubit.get(context).showDialog) {
-          //         Log.debug(' Internet');
-          //         InternetConnectionCubit.get(context).showDialog = false;
-          //       }
-          //     }
-          //   },
-          return FeaturesScreen(child: child);
-          // );
-        },
+        pageBuilder: (context, state, child) =>
+            NoTransitionPage(child: SkeletonScreen(child: child)),
         routes: [
           GoRoute(
               path: HomeScreen.path,
@@ -160,10 +138,10 @@ final GoRouter _router = GoRouter(
                 return const NoTransitionPage(child: HomeScreen());
               }),
           GoRoute(
-            path: ChatsScreen.route,
-            name: ChatsScreen.name,
+            path: ChatTabBarSkeleton.path,
+            name: ChatTabBarSkeleton.name,
             pageBuilder: (context, state) =>
-                const NoTransitionPage(child: ChatsScreen()),
+                const NoTransitionPage(child: ChatTabBarSkeleton()),
           ),
           GoRoute(
             path: NotificationScreen.route,

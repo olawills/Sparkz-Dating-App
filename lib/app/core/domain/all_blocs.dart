@@ -33,6 +33,6 @@ class AppBlocProviders {
         // Internet Connection Cubit
         BlocProvider<InternetConnectionCubit>(
             create: (context) =>
-                serviceLocator<InternetConnectionCubit>()..init())
+                serviceLocator<InternetConnectionCubit>())
       ];
 }

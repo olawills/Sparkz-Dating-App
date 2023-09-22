@@ -5,19 +5,19 @@ import 'package:flutter_svg/svg.dart';
 import '../bloc/users_bloc.dart';
 import '../cubit/bottom_navbar/bottom_navigation_cubit.dart';
 
-part 'features_view.dart';
+part 'skeleton_view.dart';
 
-class FeaturesScreen extends StatefulWidget {
+class SkeletonScreen extends StatefulWidget {
   static const String route = '/features';
   static const String name = 'features';
-  const FeaturesScreen({Key? key, required this.child}) : super(key: key);
+  const SkeletonScreen({Key? key, required this.child}) : super(key: key);
   final Widget child;
 
   @override
-  State<FeaturesScreen> createState() => FeaturesController();
+  State<SkeletonScreen> createState() => SkeletonController();
 }
 
-class FeaturesController extends State<FeaturesScreen> {
+class SkeletonController extends State<SkeletonScreen> {
   @override
   void initState() {
     super.initState();
@@ -28,6 +28,6 @@ class FeaturesController extends State<FeaturesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return _FeaturesView(this);
+    return _SkeletonView(this);
   }
 }

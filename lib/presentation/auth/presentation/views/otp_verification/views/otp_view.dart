@@ -76,7 +76,7 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                     BlocBuilder<AuthBloc, AuthenticationState>(
                       builder: (context, state) {
                         return Center(
-                          child: CustomBtn(
+                          child: CustomButton(
                             width: width * 0.4,
                             height: height / 15,
                             color: Color(kDarkRed.value),
@@ -90,7 +90,8 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                       },
                     ),
                   ],
-                ).padding(const EdgeInsets.symmetric(horizontal: 18, vertical: 20)),
+                ).padding(
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 20)),
                 AppKeyBoard(controller: controller.otpController)
               ],
             ),

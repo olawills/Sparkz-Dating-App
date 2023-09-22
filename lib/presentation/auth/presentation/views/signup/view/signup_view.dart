@@ -102,7 +102,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                   50.sbH,
                   BlocBuilder<AuthBloc, AuthenticationState>(
                     builder: (context, state) {
-                      return CustomBtn(
+                      return CustomButton(
                         width: width,
                         height: height / 15,
                         color: Color(kDarkRed.value),

@@ -1,47 +1,36 @@
+import 'dart:async';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'internet_connection_state.dart';
 
 class InternetConnectionCubit extends Cubit<InternetConnectionState> {
-  InternetConnectionCubit() : super(CheckConnectionLoading());
+  final Connectivity connectivity;
+  late StreamSubscription connectivityStreamSubscription;
 
-  static InternetConnectionCubit get(context) => BlocProvider.of(context);
-
-  final _connectivity = Connectivity();
-  bool? hasConnection;
-
-  Future<void> init() async {
-    _connectivity.onConnectivityChanged.listen(_connectionChange);
-    _checkConnection(await _connectivity.checkConnectivity());
-  }
-
-  void _connectionChange(ConnectivityResult result) {
-    _checkConnection(result);
-  }
-
-  Future<bool?> _checkConnection(ConnectivityResult result) async {
-    bool? previousConnection;
-
-    if (hasConnection != null) previousConnection = hasConnection;
-
-    if (result == ConnectivityResult.none) {
-      hasConnection = false;
-      if (previousConnection != hasConnection) {
-        _connectionChangeController(hasConnection!);
+  InternetConnectionCubit({required this.connectivity})
+      : super(InternetLoading()) {
+    connectivityStreamSubscription =
+        connectivity.onConnectivityChanged.listen((connectivityResult) {
+      if (connectivityResult == ConnectivityResult.wifi) {
+        emitInternetConnected(ConnectionType.wifi);
+      } else if (connectivityResult == ConnectivityResult.mobile) {
+        emitInternetConnected(ConnectionType.mobile);
+      } else if (connectivityResult == ConnectivityResult.none) {
+        emitInternetDisconnected();
       }
-      return hasConnection;
-    }
-    return hasConnection;
+    });
   }
 
-  bool showDialog = false;
+  void emitInternetConnected(ConnectionType connectionType) =>
+      emit(InternetConnected(connectionType: connectionType));
 
-  void _connectionChangeController(bool hasConnection) {
-    if (hasConnection) {
-      emit(InternetConnected());
-    } else {
-      emit(InternetDisconnected());
-    }
+  void emitInternetDisconnected() => emit(InternetDisconnected());
+
+  @override
+  Future<void> close() {
+    connectivityStreamSubscription.cancel();
+    return super.close();
   }
 }

@@ -1,21 +1,30 @@
 import 'package:dating_app/app/common/constants/color_style.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/core.dart';
 
 class UserDisplayPicture extends StatelessWidget {
   final Function()? onTap;
   final String imageUrl;
-  const UserDisplayPicture({super.key, this.onTap, required this.imageUrl});
+  final double? largeDP;
+  final bool isLargeDp;
+  const UserDisplayPicture({
+    super.key,
+    this.onTap,
+    required this.imageUrl,
+    this.largeDP,
+    this.isLargeDp = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: CircleAvatar(
-        radius: 20,
+        radius: isLargeDp ? 80.r : 20.r,
         backgroundColor: Color(kDarkRed.value),
         child: CircleAvatar(
-          radius: 18,
+          radius: isLargeDp ? 76.r : 18.r,
           backgroundImage: AssetImage(imageUrl),
         ),
       ),

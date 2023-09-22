@@ -75,25 +75,19 @@ Widget _buildHomeWidget({required HomeScreenController controller}) {
           ],
         ),
         20.sbH,
-        BlocConsumer<InternetConnectionCubit, InternetConnectionState>(
-            listener: (context, state) {
-          if (state is UnknownInternetError) {
-            InternetConnectionCubit.get(context).showDialog = true;
-            Future.delayed(const Duration(milliseconds: 1500), () {
-              return controller.connectionSnackBar();
-            });
-          }
-        }, builder: (context, state) {
-          if (state is InternetDisconnected) {
+        BlocBuilder<InternetConnectionCubit, InternetConnectionState>(
+            builder: (context, state) {
+          if (state is InternetConnected &&
+                  state.connectionType == ConnectionType.wifi ||
+              state is InternetConnected &&
+                  state.connectionType == ConnectionType.mobile) {
+            return _buildUsersCard();
+          } else if (state is InternetDisconnected) {
             return NoInternetConnectionWidget(
                 onPressed: () =>
                     context.read<FetchUserBloc>()..add(FetchAllUserEvent()));
           }
-          if (state is InternetConnected) {
-            return _buildUsersCard();
-          } else {
-            return Container();
-          }
+          return _buildUsersCard();
         })
       ],
     ).padding(const EdgeInsets.symmetric(horizontal: 12, vertical: 20)),

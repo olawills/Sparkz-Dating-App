@@ -6,6 +6,7 @@ class Assets {
   static String svgHelper(String image) => 'assets/icons/$image.svg';
   static String noInternetImage = 'assets/images/no-wifi.png';
   static String noAccountImage = 'assets/images/no-account.png';
+  static String heartMached = 'assets/icons/broken_heart.svg';
 }
 
 class AppIcons {

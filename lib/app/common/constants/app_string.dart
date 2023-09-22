@@ -22,4 +22,9 @@ class AppString {
   static const socketException =
       'Check your internet connection, then refresh the page';
   static const connectionMessage = 'No Internet Connection';
+
+  // Skeletons Strings
+  static String notificationMsg = 'We think $matchMsg';
+  static String matchMsg = 'Vicky Johnson';
+  static String lastMsg = 'is a perfect match for you';
 }

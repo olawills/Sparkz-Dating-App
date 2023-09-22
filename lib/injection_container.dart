@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dating_app/app/core/core.dart';
 import 'package:dating_app/presentation/auth/data/datasource/auth_info_remote_datasource.dart';
 import 'package:dating_app/presentation/auth/data/datasource/auth_remote_data_source.dart';
@@ -14,6 +15,7 @@ import 'package:get_it/get_it.dart';
 import 'app/core/network_handler/dio_client.dart';
 import 'presentation/auth/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'presentation/auth/presentation/bloc/user_info_bloc/interest_bloc.dart';
+import 'presentation/features/data/repository/user_repository.dart';
 
 GetIt serviceLocator = GetIt.instance;
 
@@ -31,7 +33,7 @@ class ServiceLocator {
     serviceLocator
         .registerFactory<BottomNavigationCubit>(() => BottomNavigationCubit());
     serviceLocator.registerFactory<InternetConnectionCubit>(
-        () => InternetConnectionCubit()..init());
+        () => InternetConnectionCubit(connectivity: serviceLocator()));
 
     // Data Source
     serviceLocator.registerFactory<AuthRemoteDataSource>(
@@ -45,10 +47,12 @@ class ServiceLocator {
     serviceLocator.registerFactory<AuthRepositories>(() => AuthRepositories());
     serviceLocator
         .registerFactory<AuthInfoRepository>(() => AuthInfoRepository());
+    serviceLocator.registerFactory<UserRepository>(() => UserRepository());
 
     // Dio
     serviceLocator.registerLazySingleton<DioClient>(
         () => DioClient(serviceLocator<Dio>()));
     serviceLocator.registerLazySingleton<Dio>(() => Dio());
+    serviceLocator.registerLazySingleton<Connectivity>(() => Connectivity());
   }
 }

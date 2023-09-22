@@ -165,7 +165,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                 }
               },
               builder: (context, state) {
-                return CustomBtn(
+                return CustomButton(
                   width: width,
                   height: height / 15,
                   color: Color(kDarkRed.value),

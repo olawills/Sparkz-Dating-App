@@ -36,10 +36,7 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                       keyboardType: TextInputType.emailAddress,
                       textEditingController: controller.emailController,
                       isValidationMessage: true,
-                      validator: (val) => Validator()
-                          .isEmail()
-                          .lengthGreaterThan(8)
-                          .validate(val),
+                      validator: (val) => Validators.emailValidator(value: val),
                     ),
                     CustomTxtField(
                       labelText: 'Password',
@@ -49,10 +46,8 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                       suffix: true,
                       textEditingController: controller.passwordController,
                       isValidationMessage: true,
-                      validator: (val) => Validator()
-                          .isPassword()
-                          .lengthGreaterThan(6)
-                          .validate(val),
+                      validator: (val) =>
+                          Validators.passwordValidator(value: val),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,7 +81,7 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                     30.sbH,
                     BlocBuilder<AuthBloc, AuthenticationState>(
                       builder: (context, state) {
-                        return CustomBtn(
+                        return CustomButton(
                           width: width,
                           height: height / 15,
                           color: Color(kDarkRed.value),
@@ -153,7 +148,8 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                       ),
                     ),
                   ],
-                ).padding(const EdgeInsets.symmetric(vertical: 30, horizontal: 10)),
+                ).padding(
+                    const EdgeInsets.symmetric(vertical: 30, horizontal: 10)),
               ),
             ),
           ),
