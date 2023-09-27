@@ -2,6 +2,8 @@ import 'package:dating_app/app/common/common.dart';
 import 'package:dating_app/presentation/auth/data/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'app_tokens.dart';
+
 class LocalDataStorage {
   static final LocalDataStorage instance = LocalDataStorage._init();
   static SharedPreferences? _prefs;
@@ -13,18 +15,18 @@ class LocalDataStorage {
     return _prefs!;
   }
 
-  final String _firstName = 'firstName';
-  final String _lastName = 'lastName';
-  final String _email = 'email';
-  final String _loggedIn = 'auth_token';
-  final String _firstTime = 'FirstTime';
-  final _userDetails = 'user_data';
-  final String _gender = 'gender';
-  final String _interest = 'interest';
-  final String _profilePicture = 'ProfilePicture';
+  final String _firstName = AppTokens.firstName;
+  final String _lastName = AppTokens.lastName;
+  final String _email = AppTokens.email;
+  final String _loggedIn = AppTokens.loggedIn;
+  final String _firstTime = AppTokens.firstTime;
+  final _userDetails = AppTokens.userDetails;
+  final String _gender = AppTokens.gender;
+  final String _interest = AppTokens.gender;
+  final String _profilePicture = AppTokens.profilePicture;
   final String _finishedOtp = '';
-  final String _token = 'access_token';
-  final String _pushNotificationToken = "FCM";
+  final String _token = AppTokens.token;
+  final String _pushNotificationToken = AppTokens.pushNotificationToken;
 
   Future<bool> setFirstTime() async {
     final pref = await instance.prefs;

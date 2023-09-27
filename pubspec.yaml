@@ -7,6 +7,7 @@ environment:
   sdk: ">=3.0.5 <4.0.0"
 
 dependencies:
+  awesome_notifications: ^0.7.4+1
   bloc: ^8.1.1
   cached_network_image: ^3.2.3
   carousel_slider: ^4.2.1

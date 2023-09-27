@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dating_app/app/common/common.dart';
+import 'package:dating_app/app/core/core.dart';
 import 'package:dating_app/app/core/logger/app_logger.dart';
 import 'package:dating_app/app/core/network_handler/dio_exception.dart';
 import 'package:dating_app/app/core/network_handler/failures.dart';
@@ -21,10 +22,9 @@ class AuthRepositories {
       return Right(LoginResponse.fromJson(response.data));
     } on DioException catch (failure) {
       Log.error('login error', failure.type);
-      final errorMessage = DioExceptions.fromDioError(failure).toString();
       return failure.type == DioExceptionType.badResponse
           ? Left(ServerFailure(message: failure.message.toString()))
-          : Left(ServerFailure(message: errorMessage));
+          : Left(ServerFailure(message: failure.response!.data['message']));
     } catch (e) {
       return Left(GeneralFailure(message: e.toString()));
     }
@@ -38,19 +38,16 @@ class AuthRepositories {
     } on DioException catch (failure) {
       Log.error('Signup error', failure.type);
       Log.debug(failure.message);
-      final errorMessage = DioExceptions.fromDioError(failure);
       return failure.type == DioExceptionType.badResponse
           ? Left(ServerFailure(message: failure.message.toString()))
-          : Left(ApiFailure.fromException(errorMessage));
-    } catch (e) {
-      return Left(GeneralFailure(message: e.toString()));
+          : Left(GeneralFailure(message: failure.response!.data['message']));
     }
   }
 
   ResultFuture<String> verifyOtp(VerifyOtpEvent event) async {
     try {
       final response = await _authRemoteDataSourceImpl.verifyOtp(event);
-      print(response.data);
+      debugPrint(response.data);
       return Right(response.data['message'].toString());
     } on DioException catch (failure) {
       Log.error('Signup error', failure.type);
