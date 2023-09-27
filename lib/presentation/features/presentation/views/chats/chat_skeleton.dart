@@ -10,6 +10,24 @@ class ChatTabBarSkeleton extends StatefulWidget {
 }
 
 class _ChatTabBarSkeletonState extends State<ChatTabBarSkeleton> {
+  String message = "";
+
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((pref) {
+      setState(() {
+        message = pref.getString("FCM") ?? "";
+      });
+    });
+  }
+
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   final arguments = ModalRoute.of(context)!.settings.arguments;
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +55,9 @@ class _ChatTabBarSkeletonState extends State<ChatTabBarSkeleton> {
               ],
             ).padding(EdgeInsets.only(top: 70.h)),
             20.sbH,
+            ReusableText(
+                text: message,
+                style: appMStyle(18, Colors.white, FontWeight.bold)),
             Row(
               children: [
                 AnimatedContainer(

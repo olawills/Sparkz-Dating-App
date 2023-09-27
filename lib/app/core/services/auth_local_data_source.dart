@@ -24,6 +24,7 @@ class LocalDataStorage {
   final String _profilePicture = 'ProfilePicture';
   final String _finishedOtp = '';
   final String _token = 'access_token';
+  final String _pushNotificationToken = "FCM";
 
   Future<bool> setFirstTime() async {
     final pref = await instance.prefs;
@@ -54,7 +55,8 @@ class LocalDataStorage {
     final pref = await instance.prefs;
     await pref.setString(_gender, interests);
   }
-   Future<void> setListInterest(List<String> interests) async {
+
+  Future<void> setListInterest(List<String> interests) async {
     final pref = await instance.prefs;
     await pref.setStringList(_gender, interests);
   }
@@ -62,6 +64,11 @@ class LocalDataStorage {
   Future<void> isVerified(User data) async {
     final pref = await instance.prefs;
     await pref.setBool(_finishedOtp, data.verified) == true ? true : false;
+  }
+
+  Future<void> saveNotificationMessage(String message) async {
+    final pref = await instance.prefs;
+    await pref.setString(_pushNotificationToken, message);
   }
 
   Future<bool> getLoggedIn() async {
