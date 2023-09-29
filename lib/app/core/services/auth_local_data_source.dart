@@ -1,7 +1,8 @@
 import 'package:dating_app/app/common/common.dart';
-import 'package:dating_app/presentation/auth/data/models/user.dart';
+import 'package:dating_app/src/auth/data/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../src/auth/data/models/login_response.dart';
 import 'app_tokens.dart';
 
 class LocalDataStorage {
@@ -38,6 +39,16 @@ class LocalDataStorage {
     await pref.setString(_firstName, data.firstName);
     await pref.setString(_lastName, data.lastName);
     await pref.setString(_email, data.email);
+    await pref.setString(_token, data.token);
+    await pref.setString(_profilePicture, Assets.noAccountImage);
+    await pref.setBool(_loggedIn, true);
+  }
+
+  Future<void> setLoginResponse(LoginResponse data) async {
+    final pref = await instance.prefs;
+    await pref.setString(_firstName, data.user.firstName);
+    await pref.setString(_lastName, data.user.lastName);
+    await pref.setString(_email, data.user.email);
     await pref.setString(_token, data.token);
     await pref.setString(_profilePicture, Assets.noAccountImage);
     await pref.setBool(_loggedIn, true);

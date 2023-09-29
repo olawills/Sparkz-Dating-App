@@ -1,5 +1,10 @@
 import 'package:dating_app/app/core/core.dart';
 
+import '../../../src/features/chats/presentation/chats_barrel.dart';
+import '../../../src/features/home/presentation/home_barrel.dart';
+import '../../../src/features/notification/presentation/notification_barrel.dart';
+import '../../../src/features/profile/presentation/profile_barrel.dart';
+import '../../../src/features/skeleton_controller.dart';
 import '../logger/app_logger.dart';
 
 class AppRouter {

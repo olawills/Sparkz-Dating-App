@@ -5,7 +5,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class FirebasePushNotificationServce {
-  FirebasePushNotificationServce._();
+  static final FirebasePushNotificationServce _firebasePushNotificationServce =
+      FirebasePushNotificationServce._internal();
+
+  factory FirebasePushNotificationServce() => _firebasePushNotificationServce;
+  FirebasePushNotificationServce._internal();
   static FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
 
   static void getDeviceToken() {
@@ -32,7 +36,7 @@ class FirebasePushNotificationServce {
 
   static Future<void> onMessageListen() async {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-      Log.info("....................................onMessage..........");
+      Log.info("..........................onMessage.....................");
       Log.info(
           "onMessage: ${message.notification?.title}/${message.notification?.body}");
 

@@ -1,21 +1,20 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:dating_app/app/core/core.dart';
-import 'package:dating_app/presentation/auth/data/datasource/auth_info_remote_datasource.dart';
-import 'package:dating_app/presentation/auth/data/datasource/auth_remote_data_source.dart';
-import 'package:dating_app/presentation/auth/data/repository/auth_info_repository.dart';
-import 'package:dating_app/presentation/auth/data/repository/auth_repository.dart';
-import 'package:dating_app/presentation/features/data/datasources/user_remote_data_source.dart';
-import 'package:dating_app/presentation/features/presentation/bloc/users_bloc.dart';
-import 'package:dating_app/presentation/features/presentation/cubit/bottom_navbar/bottom_navigation_cubit.dart';
-import 'package:dating_app/presentation/features/presentation/cubit/internet_connection/internet_connection_cubit.dart';
-import 'package:dating_app/presentation/startup/presentation/bloc/onboarding_bloc.dart';
+import 'package:dating_app/src/auth/data/datasource/auth_info_remote_datasource.dart';
+import 'package:dating_app/src/auth/data/datasource/auth_remote_data_source.dart';
+import 'package:dating_app/src/auth/data/repository/auth_info_repository.dart';
+import 'package:dating_app/src/auth/data/repository/auth_repository.dart';
+import 'package:dating_app/src/startup/presentation/bloc/onboarding_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import 'app/core/network_handler/dio_client.dart';
-import 'presentation/auth/presentation/bloc/auth_bloc/auth_bloc.dart';
-import 'presentation/auth/presentation/bloc/user_info_bloc/interest_bloc.dart';
-import 'presentation/features/data/repository/user_repository.dart';
+import 'app/core/network/dio_client.dart';
+import 'src/auth/presentation/bloc/auth_bloc/auth_bloc.dart';
+import 'src/auth/presentation/bloc/user_info_bloc/interest_bloc.dart';
+import 'src/features/cubit/bottom_navbar/bottom_navigation_cubit.dart';
+import 'src/features/cubit/internet_connection/internet_connection_cubit.dart';
+import 'src/features/home/data/datasources/user_remote_data_source.dart';
+import 'src/features/home/data/repository/user_repository.dart';
+import 'src/features/home/presentation/bloc/users_bloc.dart';
 
 GetIt serviceLocator = GetIt.instance;
 
