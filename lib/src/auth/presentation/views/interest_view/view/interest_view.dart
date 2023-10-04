@@ -20,7 +20,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const CustomAppB(),
-            20.sbH,
+            20.sbh,
             Align(
               alignment: Alignment.center,
               child: ReusableText(
@@ -28,12 +28,12 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                 style: appMStyle(20, Color(kDark.value), FontWeight.w700),
               ),
             ),
-            10.sbH,
+            10.sbh,
             ReusableText(
               text: interestText,
               style: appMStyle(19, Color(kDarkWithOp.value), FontWeight.w500),
             ),
-            70.sbH,
+            70.sbh,
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -154,14 +154,14 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                 ),
               ],
             ),
-            70.sbH,
+            70.sbh,
             BlocConsumer<InterestBloc, UserProfileState>(
               listener: (context, state) {
                 if (state is CreateUserProfileSuccess) {
                   controller.saveInfoSuccess();
                 }
                 if (state is CreateUserProfileError) {
-                  controller.saveInfoError(state.error);
+                  controller.saveInfoError(state.error.message);
                 }
               },
               builder: (context, state) {
@@ -204,7 +204,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
               isSelected
                   ? Icon(icon, color: Color(kDark.value))
                   : const SizedBox.shrink(),
-              10.sbH,
+              10.sbh,
               ReusableText(
                 text: text,
                 style: appMStyle(16, Color(kDarkWithOp.value), FontWeight.w500),

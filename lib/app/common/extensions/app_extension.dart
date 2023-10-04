@@ -9,11 +9,11 @@ extension OnTextExtension on Widget {
 }
 
 extension OnWidthSpacer on num {
-  Widget get sbW => SizedBox(width: w);
+  Widget get sbw => SizedBox(width: w);
 }
 
 extension OnHeightSpacer on num {
-  Widget get sbH => SizedBox(height: h);
+  Widget get sbh => SizedBox(height: h);
 }
 
 extension OnCenter on Widget {

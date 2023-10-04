@@ -54,7 +54,7 @@ class _ChatTabBarSkeletonState extends State<ChatTabBarSkeleton> {
                 )
               ],
             ).padding(EdgeInsets.only(top: 70.h)),
-            20.sbH,
+            20.sbh,
             ReusableText(
                 text: message,
                 style: appMStyle(18, Colors.white, FontWeight.bold)),

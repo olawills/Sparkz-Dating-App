@@ -14,7 +14,7 @@ class _NotificationView
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              10.sbH,
+              10.sbh,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -28,10 +28,10 @@ class _NotificationView
                   ),
                 ],
               ),
-              30.sbH,
+              30.sbh,
               Align(
                   alignment: Alignment.center, child: buildNotificationCard()),
-              10.sbH,
+              10.sbh,
               Text.rich(
                 TextSpan(
                   children: [
@@ -51,7 +51,7 @@ class _NotificationView
                   ],
                 ),
               ),
-              20.sbH,
+              20.sbh,
               CustomButton(
                 width: double.maxFinite,
                 height: 60.h,
@@ -59,7 +59,7 @@ class _NotificationView
                 text: 'Start chatting now',
                 onTap: () {},
               ),
-              10.sbH,
+              10.sbh,
               CustomButton(
                 width: double.maxFinite,
                 height: 60.h,

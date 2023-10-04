@@ -10,7 +10,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
       body: BlocListener<AuthBloc, AuthenticationState>(
         listener: (context, state) {
           if (state is SignupError) {
-            controller.signupError(state.error);
+            controller.signupError(state.error.message);
           }
           if (state is SignupSuccess) {
             controller.signupSuccess(state.data);
@@ -24,12 +24,12 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CustomAppB(),
-                  30.sbH,
+                  30.sbh,
                   ReusableText(
                       text: signupText,
                       style:
                           appMStyle(23, Color(kDark.value), FontWeight.w700)),
-                  30.sbH,
+                  30.sbh,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -43,7 +43,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                               Validators.firstNameValidator(value: val),
                         ),
                       ),
-                      10.sbW,
+                      10.sbw,
                       Expanded(
                         child: CustomTxtField(
                             labelText: 'Last name',
@@ -63,7 +63,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                     textEditingController: controller.emailController,
                     validator: (val) => Validators.emailValidator(value: val),
                   ),
-                  10.sbW,
+                  10.sbw,
                   CustomTxtField(
                     labelText: 'Password',
                     hintText: 'Enter pasword',
@@ -73,7 +73,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                     validator: (val) =>
                         Validators.passwordValidator(value: val),
                   ),
-                  30.sbH,
+                  30.sbh,
                   RichText(
                     text: TextSpan(
                       children: [
@@ -99,7 +99,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                       ],
                     ),
                   ),
-                  50.sbH,
+                  50.sbh,
                   BlocBuilder<AuthBloc, AuthenticationState>(
                     builder: (context, state) {
                       return CustomButton(
@@ -116,7 +116,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                       );
                     },
                   ),
-                  50.sbH,
+                  50.sbh,
                   Center(
                     child: RichText(
                       text: TextSpan(

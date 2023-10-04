@@ -20,7 +20,7 @@ class AppBlocObserver extends BlocObserver {
     Transition<dynamic, dynamic> transition,
   ) {
     super.onTransition(bloc, transition);
-    // debugPrint('${bloc.runtimeType} $transition');
+    debugPrint('${bloc.runtimeType} $transition');
   }
 
   @override

@@ -11,7 +11,7 @@ class _ForgotPasswordView
       body: BlocListener<AuthBloc, AuthenticationState>(
         listener: (context, state) {
           if (state is ForgotPasswordError) {
-            controller.resetError(state.error);
+            controller.resetError(state.error.message);
           }
           if (state is ForgotPasswordSuccess) {
             controller.forgotPasswordSuccess();
@@ -24,18 +24,18 @@ class _ForgotPasswordView
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const CustomAppB(),
-                30.sbH,
+                30.sbh,
                 Center(
                   child: ReusableText(
                       text: 'Forgot Password',
                       style:
                           appMStyle(23, Color(kDark.value), FontWeight.w700)),
                 ),
-                30.sbH,
+                30.sbh,
                 ReusableText(
                     text: forgotPasswordText,
                     style: appMStyle(16, Color(kDark.value), FontWeight.w500)),
-                30.sbH,
+                30.sbh,
                 CustomTxtField(
                   labelText: 'Email',
                   hintText: 'kelvinhart@gmail.com',
@@ -44,7 +44,7 @@ class _ForgotPasswordView
                   textEditingController: controller.emailController,
                   validator: (val) => Validators.emailValidator(value: val),
                 ),
-                20.sbH,
+                20.sbh,
                 BlocBuilder<AuthBloc, AuthenticationState>(
                     builder: (context, state) {
                   return CustomButton(

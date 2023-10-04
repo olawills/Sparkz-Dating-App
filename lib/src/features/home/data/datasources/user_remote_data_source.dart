@@ -1,19 +1,17 @@
-import 'package:dating_app/injection_container.dart';
 import 'package:dio/dio.dart';
 
-import '../../../../../app/core/network/dio_client.dart';
+import '../../../../../app/core/network/dio_interceptors.dart';
+import '../../../../../app/core/services/api_url.dart';
 
+class UserRemoteDataSource {
+  UserRemoteDataSource({Dio? dio})
+      : _dio = dio ?? Dio()
+          ..interceptors.add(DioInterceptor())
+          ..options.baseUrl = ApiConfig.baseUrl
+          ..options.connectTimeout = const Duration(milliseconds: 20000)
+          ..options.receiveTimeout = const Duration(milliseconds: 20000)
+          ..options.sendTimeout = const Duration(milliseconds: 20000);
+  final Dio _dio;
 
-abstract class UserRemoteDataSource {
-  Future<Response> getAllUsers();
-}
-
-class UserRemoteDataSourceImpl implements UserRemoteDataSource {
-  final DioClient dioClient = serviceLocator<DioClient>();
-
-  @override
-  Future<Response> getAllUsers() async {
-    final response = dioClient.dio.get('/user/getAllUsers');
-    return response;
-  }
+  Future<Response> getAllUsers() async => _dio.get('/user/getAllUsers');
 }

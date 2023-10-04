@@ -20,13 +20,13 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                 : Column(
                     // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      30.sbH,
+                      30.sbh,
                       ReusableText(
                         text: 'What is your Gender',
                         style:
                             appMStyle(24, Color(kDark.value), FontWeight.w500),
                       ),
-                      50.sbH,
+                      50.sbh,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -53,7 +53,7 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                           ),
                         ],
                       ),
-                      50.sbH,
+                      50.sbh,
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: GenderCard(
@@ -68,7 +68,7 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                           },
                         ),
                       ),
-                      70.sbH,
+                      70.sbh,
                       CustomButton(
                         width: width,
                         height: height / 15,
@@ -109,7 +109,7 @@ class GenderCard extends StatelessWidget {
       child: Column(
         children: [
           Icon(icon, color: initialColor, size: 100),
-          10.sbH,
+          10.sbh,
           ReusableText(
               text: gender, style: appMStyle(20, initialColor, FontWeight.w700))
         ],

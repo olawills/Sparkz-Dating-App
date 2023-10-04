@@ -10,17 +10,16 @@ import 'package:dating_app/src/auth/presentation/bloc/auth_bloc/auth_bloc.dart';
 import '../../../../app/core/network/failures.dart';
 
 class AuthRepositories {
-  AuthRepositories({AuthRemoteDataSourceImpl? authRemoteDataSourceImpl})
+  AuthRepositories({AuthRemoteDataSource? authRemoteDataSource})
       : _authRemoteDataSourceImpl =
-            authRemoteDataSourceImpl ?? AuthRemoteDataSourceImpl();
-  final AuthRemoteDataSourceImpl _authRemoteDataSourceImpl;
+            authRemoteDataSource ?? AuthRemoteDataSource();
+  final AuthRemoteDataSource _authRemoteDataSourceImpl;
 
   ResultFuture<LoginResponse> login(LoginEvent event) async {
     try {
       final response = await _authRemoteDataSourceImpl.loginUser(event);
       return Right(LoginResponse.fromJson(response.data));
     } on ServerFailure catch (e) {
-      Log.error('login error', e.message);
       return Left(e);
     }
   }
@@ -28,10 +27,8 @@ class AuthRepositories {
   ResultFuture<User> signup(SignupEvent event) async {
     try {
       final response = await _authRemoteDataSourceImpl.createUser(event);
-      Log.debug(response.data['user']);
       return Right(User.fromJson(response.data['user']));
     } on ServerFailure catch (e) {
-      Log.error('Signup error', e.message);
       return Left(e);
     }
   }
@@ -42,7 +39,6 @@ class AuthRepositories {
       debugPrint(response.data);
       return Right(response.data['message']);
     } on ServerFailure catch (e) {
-      Log.error('Verify Otp error', e.message);
       return Left(e);
     }
   }

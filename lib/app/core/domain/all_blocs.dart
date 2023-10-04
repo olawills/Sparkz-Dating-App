@@ -1,5 +1,5 @@
 import 'package:dating_app/app/core/core.dart';
-import 'package:dating_app/injection_container.dart';
+import 'package:dating_app/app/core/config/injection_container.dart';
 import 'package:dating_app/src/auth/presentation/bloc/auth_bloc/auth_bloc.dart';
 
 import '../../../src/auth/presentation/bloc/user_info_bloc/interest_bloc.dart';

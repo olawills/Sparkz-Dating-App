@@ -2,6 +2,7 @@ import 'package:dating_app/app/core/network/failures.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../../app/core/core.dart';
+import '../../../../../app/core/logger/app_logger.dart';
 import '../../../../auth/data/models/user.dart';
 import '../../data/repository/user_repository.dart';
 
@@ -16,10 +17,17 @@ class FetchUserBloc extends Bloc<FetchUsersEvent, FetchUserState> {
 
   _getAllUsers(FetchAllUserEvent event, emit) async {
     emit(FetchAllUserLoading());
+    Log.debug("Loading");
     final response = await _userRemoteDataSource.getAllUsers();
     response.fold(
-      (l) => FetchAllUserError(error: l),
-      (r) => FetchAllUserSuccess(user: r),
+      (l) {
+        FetchAllUserError(error: l);
+        emit(FetchAllUserError(error: l));
+      },
+      (r) {
+        FetchAllUserSuccess(users: r);
+        emit(FetchAllUserSuccess(users: r));
+      },
     );
   }
 }

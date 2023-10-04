@@ -55,9 +55,9 @@ class LoginController extends State<LoginScreen> {
     context.goNamed(HomeScreen.name);
   }
 
-  loginError(Failure error) {
+  loginError(String error) {
     Fluttertoast.showToast(
-        msg: error.message,
+        msg: error,
         fontSize: 16,
         backgroundColor: Color(kDarkRed.value),
         toastLength: Toast.LENGTH_LONG,

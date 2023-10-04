@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dating_app/app/core/network/dio_client.dart';
-import 'package:dating_app/injection_container.dart';
+import 'package:dating_app/app/core/config/injection_container.dart';
 import 'package:dating_app/src/auth/presentation/bloc/user_info_bloc/interest_bloc.dart';
 import 'package:dio/dio.dart';
 

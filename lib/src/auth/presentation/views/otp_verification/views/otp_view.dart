@@ -9,7 +9,7 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
       body: BlocListener<AuthBloc, AuthenticationState>(
         listener: (context, state) {
           if (state is VerifyOtpError) {
-            controller.verifyOtpError(state.error);
+            controller.verifyOtpError(state.error.message);
           }
           if (state is VerifyOtpSuccess) {
             controller.verifySuccess();
@@ -23,7 +23,7 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const CustomAppB(),
-                    20.sbH,
+                    20.sbh,
                     Center(
                       child: Column(
                         children: [
@@ -31,18 +31,18 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                               text: 'Email Verification',
                               style: appMStyle(
                                   23, Color(kDark.value), FontWeight.w700)),
-                          20.sbH,
+                          20.sbh,
                           SvgPicture.asset(Assets.svgHelper('lock_color')),
                           ReusableText(
                               text: 'Enter OTP',
                               style: appMStyle(
                                   23, Color(kDark.value), FontWeight.w600)),
-                          20.sbH,
+                          20.sbh,
                           ReusableText(
                               text: otpText(controller.email),
                               style: appMStyle(
                                   20, Color(kGrey.value), FontWeight.w600)),
-                          15.sbH,
+                          15.sbh,
                           RichText(
                             text: TextSpan(
                               children: [
@@ -67,12 +67,12 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                         ],
                       ),
                     ),
-                    10.sbH,
+                    10.sbh,
                     BlocBuilder<AuthBloc, AuthenticationState>(
                         builder: (context, state) {
                       return buildTimer(onTap: () => controller.resendOtp());
                     }),
-                    40.sbH,
+                    40.sbh,
                     BlocBuilder<AuthBloc, AuthenticationState>(
                       builder: (context, state) {
                         return Center(
@@ -153,7 +153,7 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GestureDetector(onTap: onTap, child: const Text('Resend Code in')),
-        5.sbW,
+        5.sbw,
         TweenAnimationBuilder(
           tween: Tween(begin: 60.0, end: 0.0),
           duration: const Duration(seconds: 60),

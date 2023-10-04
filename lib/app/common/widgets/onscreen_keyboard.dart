@@ -33,7 +33,7 @@ class _AppKeyBoardState extends State<AppKeyBoard> {
         children: [
           Row(
             children: [
-              _buildKeypadButton('1', child: 15.sbH),
+              _buildKeypadButton('1', child: 15.sbh),
               _buildKeypadButton('2', alphabets: 'ABC'),
               _buildKeypadButton('3', alphabets: 'DEF'),
             ],
@@ -56,9 +56,9 @@ class _AppKeyBoardState extends State<AppKeyBoard> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Expanded(child: Container()),
-              _buildKeypadButton('0', child: 15.sbH),
+              _buildKeypadButton('0', child: 15.sbh),
               _buildKeypadButton('⌫',
-                  child: 15.sbH,
+                  child: 15.sbh,
                   color: Color(kDarkGrey.value).withOpacity(0.1),
                   onPressed: _backspace),
             ],

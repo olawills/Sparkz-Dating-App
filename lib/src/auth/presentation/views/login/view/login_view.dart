@@ -9,7 +9,7 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
       body: BlocListener<AuthBloc, AuthenticationState>(
         listener: (context, state) {
           if (state is LoginError) {
-            controller.loginError(state.error);
+            controller.loginError(state.error.message);
           }
           if (state is LoginSuccess) {
             controller.loginSuccess(state.response);
@@ -23,12 +23,12 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    20.sbH,
+                    20.sbh,
                     ReusableText(
                         text: loginText,
                         style:
                             appMStyle(23, Color(kDark.value), FontWeight.w700)),
-                    20.sbH,
+                    20.sbh,
                     CustomTxtField(
                       labelText: 'Email',
                       hintText: 'Email',
@@ -78,7 +78,7 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                         ),
                       ],
                     ),
-                    30.sbH,
+                    30.sbh,
                     BlocBuilder<AuthBloc, AuthenticationState>(
                       builder: (context, state) {
                         return CustomButton(
@@ -94,7 +94,7 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                         );
                       },
                     ),
-                    30.sbH,
+                    30.sbh,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -114,21 +114,21 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                         ),
                       ],
                     ),
-                    30.sbH,
+                    30.sbh,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         buildLoginOptions(
                             onTap: () {}, imagePath: Assets.helper('fb')),
-                        20.sbW,
+                        20.sbw,
                         buildLoginOptions(
                             onTap: () {}, imagePath: Assets.helper('gb')),
-                        20.sbW,
+                        20.sbw,
                         buildLoginOptions(
                             onTap: () {}, imagePath: Assets.helper('in')),
                       ],
                     ),
-                    50.sbH,
+                    50.sbh,
                     Center(
                       child: RichText(
                         text: TextSpan(

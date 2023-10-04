@@ -16,7 +16,7 @@ class PageTwo extends StatelessWidget {
             height: height * 0.4,
             width: width,
           ),
-          30.sbH,
+          30.sbh,
           ReusableText(
             text: pageTwoText,
             style: appMStyle(
@@ -25,7 +25,7 @@ class PageTwo extends StatelessWidget {
               FontWeight.w600,
             ),
           ),
-          10.sbH,
+          10.sbh,
           ReusableText(
             text: pageTwo,
             style: appMStyle(

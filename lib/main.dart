@@ -1,7 +1,7 @@
 import 'package:dating_app/app/core/core.dart';
 import 'package:dating_app/bloc_observers.dart';
 import 'package:dating_app/firebase_options.dart';
-import 'package:dating_app/injection_container.dart';
+import 'package:dating_app/app/core/config/injection_container.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 

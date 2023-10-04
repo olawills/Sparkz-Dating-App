@@ -25,7 +25,7 @@ class PageOne extends StatelessWidget {
                   FontWeight.w500,
                 ),
               ),
-              10.sbH,
+              10.sbh,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -37,7 +37,7 @@ class PageOne extends StatelessWidget {
                       FontWeight.w600,
                     ),
                   ),
-                  10.sbW,
+                  10.sbw,
                   ReusableText(
                     text: 'perfect',
                     style: appBStyle(
@@ -56,14 +56,14 @@ class PageOne extends StatelessWidget {
                   FontWeight.w600,
                 ),
               ),
-              30.sbH,
+              30.sbh,
               Image.asset(
                 Assets.helper('logo'),
                 height: 40.h,
               ),
-              10.sbH,
+              10.sbh,
               const ImageSpinner(),
-              30.sbH,
+              30.sbh,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: ReusableText(
@@ -75,7 +75,7 @@ class PageOne extends StatelessWidget {
                   ),
                 ),
               ),
-              50.sbH,
+              50.sbh,
             ],
           ),
         ),

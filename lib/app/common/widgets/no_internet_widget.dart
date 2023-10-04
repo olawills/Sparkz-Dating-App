@@ -18,17 +18,17 @@ class NoInternetConnectionWidget extends StatelessWidget {
             Assets.noInternetImage,
             height: 200.h,
           ),
-          10.sbH,
+          10.sbh,
           ReusableText(
             text: AppString.connectionMessage,
             style: appMStyle(24, kDarkWithOp, FontWeight.bold),
           ),
-          15.sbH,
+          15.sbh,
           ReusableText(
             text: AppString.socketException,
             style: appMStyle(16, kDarkWithOp, FontWeight.w400),
           ),
-          20.sbH,
+          20.sbh,
           CustomElevatedButton(
             onPressed: onPressed,
             text: 'Refresh',

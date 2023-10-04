@@ -38,29 +38,10 @@ class HomeScreenController extends State<HomeScreen> {
     super.dispose();
   }
 
-  void connectionSnackBar() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Container(
-            height: 60.h,
-            width: double.maxFinite,
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                ReusableText(
-                  text: 'Sorry, something went wrong',
-                  style: appMStyle(16, kDark, FontWeight.w400),
-                ),
-                20.sbH,
-                const Align(
-                  alignment: Alignment.bottomRight,
-                  child: Text('Dismiss'),
-                )
-              ],
-            )),
-      ),
-    );
+  Future<void> onRefresh() async {
+    return Future.delayed(const Duration(seconds: 2), () {
+      context.read<FetchUserBloc>().add(FetchAllUserEvent());
+    });
   }
 
   @override

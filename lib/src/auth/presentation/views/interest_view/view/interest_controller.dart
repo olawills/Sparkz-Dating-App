@@ -51,7 +51,7 @@ class InterestController extends State<InterestScreen> {
     context.goNamed(HomeScreen.name);
   }
 
-  saveInfoError(Failure error) {
+  saveInfoError(String error) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Container(
         height: 60.h,
@@ -62,7 +62,7 @@ class InterestController extends State<InterestScreen> {
           borderRadius: BorderRadius.circular(10),
         ),
         child: ReusableText(
-          text: error.message,
+          text: error,
           style: appMStyle(16, kDark, FontWeight.w400),
         ),
       ),
