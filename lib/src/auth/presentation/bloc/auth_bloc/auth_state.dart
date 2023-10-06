@@ -20,14 +20,14 @@ class LoginSuccess extends AuthenticationState {
 }
 
 class LoginError extends AuthenticationState {
-  final Failure error;
+  final NetworkExceptions error;
   const LoginError({required this.error});
 }
 
 class SignupLoading extends AuthenticationState {}
 
 class SignupError extends AuthenticationState {
-  final Failure error;
+  final NetworkExceptions error;
 
   const SignupError({required this.error});
 }
@@ -41,14 +41,14 @@ class SignupSuccess extends AuthenticationState {
 class ForgotPasswordLoading extends AuthenticationState {}
 
 class ForgotPasswordError extends AuthenticationState {
-  final Failure error;
+  final NetworkExceptions error;
   const ForgotPasswordError({required this.error});
 }
 
 class ForgotPasswordSuccess extends AuthenticationState {}
 
 class VerifyOtpError extends AuthenticationState {
-  final Failure error;
+  final NetworkExceptions error;
 
   const VerifyOtpError({required this.error});
 }
@@ -63,14 +63,14 @@ class VerifyOtpSuccess extends AuthenticationState {
 class ResetPasswordLoading extends AuthenticationState {}
 
 class ResetPasswordError extends AuthenticationState {
-  final Failure error;
+  final NetworkExceptions error;
   const ResetPasswordError({required this.error});
 }
 
 class ResetPasswordSuccess extends AuthenticationState {}
 
 class ResendOtpError extends AuthenticationState {
-  final Failure error;
+  final NetworkExceptions error;
   const ResendOtpError({required this.error});
 }
 
@@ -87,6 +87,6 @@ class LogoutSucess extends AuthenticationState {
 }
 
 class LogoutError extends AuthenticationState {
-  final Failure error;
+  final NetworkExceptions error;
   const LogoutError({required this.error});
 }

@@ -1,7 +1,7 @@
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/core.dart';
-import '../utils/asset_manager.dart';
+import '../../core/config/asset_manager.dart';
 
 class CustomAppB extends StatelessWidget {
   const CustomAppB({super.key});

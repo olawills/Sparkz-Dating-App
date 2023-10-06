@@ -161,7 +161,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                   controller.saveInfoSuccess();
                 }
                 if (state is CreateUserProfileError) {
-                  controller.saveInfoError(state.error.message);
+                  controller.saveInfoError(state.error);
                 }
               },
               builder: (context, state) {

@@ -7,14 +7,15 @@ import 'package:dating_app/src/startup/presentation/bloc/onboarding_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import '../network/dio_client.dart';
 import '../../../src/auth/presentation/bloc/auth_bloc/auth_bloc.dart';
 import '../../../src/auth/presentation/bloc/user_info_bloc/interest_bloc.dart';
 import '../../../src/features/cubit/bottom_navbar/bottom_navigation_cubit.dart';
 import '../../../src/features/cubit/internet_connection/internet_connection_cubit.dart';
 import '../../../src/features/home/data/datasources/user_remote_data_source.dart';
 import '../../../src/features/home/data/repository/user_repository.dart';
-import '../../../src/features/home/presentation/bloc/users_bloc.dart';
+import '../../../src/features/home/presentation/bloc/gps/gps_bloc.dart';
+import '../../../src/features/home/presentation/bloc/users_closeby/users_bloc.dart';
+import '../network/dio_client.dart';
 
 GetIt serviceLocator = GetIt.instance;
 
@@ -27,6 +28,7 @@ class ServiceLocator {
     serviceLocator.registerFactory<OnboardingBloc>(() => OnboardingBloc());
     serviceLocator.registerFactory<FetchUserBloc>(() => FetchUserBloc());
     serviceLocator.registerFactory<InterestBloc>(() => InterestBloc());
+    serviceLocator.registerFactory<GpsBloc>(() => GpsBloc());
 
     // Cubit
     serviceLocator
@@ -43,7 +45,7 @@ class ServiceLocator {
         () => AuthInfoRemoteDataSourceImpl());
 
     // Repositories
-    serviceLocator.registerFactory<AuthRepositories>(() => AuthRepositories());
+    serviceLocator.registerFactory<AuthRepository>(() => AuthRepository());
     serviceLocator
         .registerFactory<AuthInfoRepository>(() => AuthInfoRepository());
     serviceLocator.registerFactory<UserRepository>(() => UserRepository());

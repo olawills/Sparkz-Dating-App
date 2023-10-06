@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../app/common/common.dart';
-import '../../../../../app/core/network/failures.dart';
+import '../../../../../app/core/network/dio_exception.dart';
 import '../../../data/models/login_response.dart';
 
 part './view/login_controller.dart';

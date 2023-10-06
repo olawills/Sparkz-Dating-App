@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:dating_app/app/common/utils/typedef.dart';
-import 'package:dating_app/app/core/logger/app_logger.dart';
-import 'package:dating_app/app/core/network/failures.dart';
 import 'package:dating_app/src/auth/data/datasource/auth_info_remote_datasource.dart';
 import 'package:dating_app/src/auth/presentation/bloc/user_info_bloc/interest_bloc.dart';
+
+import '../../../../app/core/error/exception.dart';
+import '../../../../app/core/network/dio_exception.dart';
 
 class AuthInfoRepository {
   AuthInfoRepository(
@@ -17,9 +18,8 @@ class AuthInfoRepository {
       final response =
           await _authInfoRemoteDataSourceImpl.createUserProfile(event);
       return Right(response.toString());
-    } on ServerFailure catch (e) {
-      Log.error('Sending User Profile Error', e.message);
-      return Left(e);
+    } on ServerException catch (error) {
+      return Left(NetworkExceptions.getDioException(error));
     }
   }
 }

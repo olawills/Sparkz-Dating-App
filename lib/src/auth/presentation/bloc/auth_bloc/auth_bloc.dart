@@ -1,15 +1,17 @@
 import 'package:dating_app/app/core/core.dart';
-import 'package:dating_app/app/core/network/failures.dart';
 import 'package:dating_app/src/auth/data/models/login_response.dart';
 import 'package:dating_app/src/auth/data/models/user.dart';
 import 'package:dating_app/src/auth/data/repository/auth_repository.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../../../app/core/config/injection_container.dart';
+import '../../../../../app/core/network/dio_exception.dart';
+
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthenticationState> {
-  final AuthRepositories _authRepoImpl = AuthRepositories();
+  final _authRepoImpl = serviceLocator<AuthRepository>();
   AuthBloc() : super(AuthInitial()) {
     on<LoginEvent>((event, emit) => _login(event, emit));
     on<SignupEvent>((event, emit) => _signup(event, emit));

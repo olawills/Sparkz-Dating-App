@@ -35,9 +35,9 @@ class ForgotPasswordController extends State<ForgotPasswordScreen> {
     context.pushNamed(ResetPasswordScreen.name, extra: emailController.text);
   }
 
-  resetError(String error) {
+  resetError(NetworkExceptions error) {
     Fluttertoast.showToast(
-      msg: error,
+      msg: NetworkExceptions.getErrorMessage(error),
       backgroundColor: Color(kDarkRed.value),
     );
   }

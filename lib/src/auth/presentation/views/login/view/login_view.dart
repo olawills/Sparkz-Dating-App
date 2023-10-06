@@ -9,7 +9,7 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
       body: BlocListener<AuthBloc, AuthenticationState>(
         listener: (context, state) {
           if (state is LoginError) {
-            controller.loginError(state.error.message);
+            controller.loginError(state.error);
           }
           if (state is LoginSuccess) {
             controller.loginSuccess(state.response);

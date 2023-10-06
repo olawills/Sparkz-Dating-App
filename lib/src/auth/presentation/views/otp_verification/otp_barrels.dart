@@ -6,7 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pinput/pinput.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../../app/core/network/failures.dart';
+import '../../../../../app/core/network/dio_exception.dart';
+
 
 part 'views/otp_controller.dart';
 part 'views/otp_view.dart';

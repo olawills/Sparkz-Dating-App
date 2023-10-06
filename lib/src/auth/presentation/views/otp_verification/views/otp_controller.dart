@@ -46,9 +46,9 @@ class OtpController extends State<OtpScreen> {
     context.goNamed(CompleteVerificationOTPScreen.name);
   }
 
-  verifyOtpError(String error) {
+  verifyOtpError(NetworkExceptions error) {
     Fluttertoast.showToast(
-      msg: error,
+      msg: NetworkExceptions.getErrorMessage(error),
       backgroundColor: Color(kDarkRed.value),
     );
   }

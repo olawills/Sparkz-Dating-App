@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:dating_app/app/core/network/failures.dart';
 import 'package:dating_app/src/auth/data/repository/auth_info_repository.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../../app/core/network/dio_exception.dart';
 
 part 'interest_event.dart';
 part 'interest_state.dart';

@@ -40,7 +40,7 @@ class HomeScreenController extends State<HomeScreen> {
 
   Future<void> onRefresh() async {
     return Future.delayed(const Duration(seconds: 2), () {
-      context.read<FetchUserBloc>().add(FetchAllUserEvent());
+      // context.read<FetchUserBloc>().add(FetchAllUserEvent());
     });
   }
 

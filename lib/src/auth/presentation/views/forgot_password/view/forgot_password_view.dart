@@ -11,7 +11,7 @@ class _ForgotPasswordView
       body: BlocListener<AuthBloc, AuthenticationState>(
         listener: (context, state) {
           if (state is ForgotPasswordError) {
-            controller.resetError(state.error.message);
+            controller.resetError(state.error);
           }
           if (state is ForgotPasswordSuccess) {
             controller.forgotPasswordSuccess();

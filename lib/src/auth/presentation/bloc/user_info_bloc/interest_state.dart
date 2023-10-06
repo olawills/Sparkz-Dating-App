@@ -17,6 +17,6 @@ class CreateUserProfileSuccess extends UserProfileState {
 }
 
 class CreateUserProfileError extends UserProfileState {
-  final Failure error;
+  final NetworkExceptions error;
   const CreateUserProfileError({required this.error});
 }

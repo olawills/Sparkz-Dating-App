@@ -89,8 +89,9 @@ Widget _buildHomeWidget({required HomeScreenController controller}) {
               return _buildUsersCard(controller);
             } else if (state is InternetDisconnected) {
               return NoInternetConnectionWidget(
-                  onPressed: () =>
-                      context.read<FetchUserBloc>()..add(FetchAllUserEvent()));
+                onPressed: () => context.read<FetchUserBloc>()
+                  ..add(const FetchUserEvent.fetchAllUsers()),
+              );
             }
             return _buildUsersCard(controller);
           })
@@ -104,32 +105,21 @@ Widget _buildUsersCard(HomeScreenController controller) {
   return BlocBuilder<FetchUserBloc, FetchUserState>(
     builder: (context, state) {
       if (state is FetchAllUserLoading) {
-        final user = List.generate(
-          2,
-          (index) => FakeUserModel(
-              firstName: "Amechi", lastName: "Williams", profilePicture: ""),
+        return CarouselSlider.builder(
+          itemCount: 6,
+          options: CarouselOptions(
+            autoPlay: false,
+            enlargeCenterPage: true,
+            viewportFraction: 0.9,
+            aspectRatio: 2.0,
+            initialPage: 0,
+            scrollDirection: Axis.horizontal,
+          ),
+          itemBuilder: (context, int index, int pageViewIndex) {
+            return const LoadingUserCard();
+          },
         );
-        Skeletonizer(
-            enabled: true,
-            ignoreContainers: true,
-            child: CarouselSlider.builder(
-              itemCount: user.length,
-              options: CarouselOptions(
-                autoPlay: false,
-                enlargeCenterPage: true,
-                viewportFraction: 0.9,
-                aspectRatio: 2.0,
-                initialPage: 0,
-                scrollDirection: Axis.horizontal,
-              ),
-              itemBuilder: (context, int index, int pageViewIndex) {
-                final users = user[index];
-                return LoadingUserCard(users: users);
-              },
-            ));
       }
-
-      // return const Center(child: CircularProgressIndicator());
 
       if (state is FetchAllUserSuccess) {
         return CarouselSlider.builder(

@@ -59,9 +59,9 @@ class SignupController extends State<SignUpScreen> {
     context.goNamed(OtpScreen.name);
   }
 
-  signupError(String error) {
+  signupError(NetworkExceptions error) {
     Fluttertoast.showToast(
-      msg: error,
+      msg: NetworkExceptions.getErrorMessage(error),
       backgroundColor: Color(kDarkRed.value),
     );
   }

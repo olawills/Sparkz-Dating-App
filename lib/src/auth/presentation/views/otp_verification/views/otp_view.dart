@@ -9,7 +9,7 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
       body: BlocListener<AuthBloc, AuthenticationState>(
         listener: (context, state) {
           if (state is VerifyOtpError) {
-            controller.verifyOtpError(state.error.message);
+            controller.verifyOtpError(state.error);
           }
           if (state is VerifyOtpSuccess) {
             controller.verifySuccess();

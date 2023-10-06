@@ -10,7 +10,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
       body: BlocListener<AuthBloc, AuthenticationState>(
         listener: (context, state) {
           if (state is SignupError) {
-            controller.signupError(state.error.message);
+            controller.signupError(state.error);
           }
           if (state is SignupSuccess) {
             controller.signupSuccess(state.data);

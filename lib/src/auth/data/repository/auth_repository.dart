@@ -7,10 +7,10 @@ import 'package:dating_app/src/auth/data/models/login_response.dart';
 import 'package:dating_app/src/auth/data/models/user.dart';
 import 'package:dating_app/src/auth/presentation/bloc/auth_bloc/auth_bloc.dart';
 
-import '../../../../app/core/network/failures.dart';
+import '../../../../app/core/network/dio_exception.dart';
 
-class AuthRepositories {
-  AuthRepositories({AuthRemoteDataSource? authRemoteDataSource})
+class AuthRepository {
+  AuthRepository({AuthRemoteDataSource? authRemoteDataSource})
       : _authRemoteDataSourceImpl =
             authRemoteDataSource ?? AuthRemoteDataSource();
   final AuthRemoteDataSource _authRemoteDataSourceImpl;
@@ -19,8 +19,8 @@ class AuthRepositories {
     try {
       final response = await _authRemoteDataSourceImpl.loginUser(event);
       return Right(LoginResponse.fromJson(response.data));
-    } on ServerFailure catch (e) {
-      return Left(e);
+    } catch (error) {
+      return Left(NetworkExceptions.getDioException(error));
     }
   }
 
@@ -28,8 +28,8 @@ class AuthRepositories {
     try {
       final response = await _authRemoteDataSourceImpl.createUser(event);
       return Right(User.fromJson(response.data['user']));
-    } on ServerFailure catch (e) {
-      return Left(e);
+    } catch (error) {
+      return Left(NetworkExceptions.getDioException(error));
     }
   }
 
@@ -38,8 +38,8 @@ class AuthRepositories {
       final response = await _authRemoteDataSourceImpl.verifyOtp(event);
       debugPrint(response.data);
       return Right(response.data['message']);
-    } on ServerFailure catch (e) {
-      return Left(e);
+    } catch (error) {
+      return Left(NetworkExceptions.getDioException(error));
     }
   }
 
@@ -47,9 +47,9 @@ class AuthRepositories {
     try {
       final response = await _authRemoteDataSourceImpl.resendOtp(event);
       return Right(response.data['message']);
-    } on ServerFailure catch (e) {
-      Log.error('Resend Otp error', e.message);
-      return Left(e);
+    } catch (error) {
+      Log.error('Resend Otp error', error);
+      return Left(NetworkExceptions.getDioException(error));
     }
   }
 
@@ -57,9 +57,9 @@ class AuthRepositories {
     try {
       final response = await _authRemoteDataSourceImpl.forgotPassword(event);
       return Right(response.data);
-    } on ServerFailure catch (e) {
-      Log.error('Forgot Password Error', e.message);
-      return Left(e);
+    } catch (error) {
+      Log.error('Forgot Password Error', error);
+      return Left(NetworkExceptions.getDioException(error));
     }
   }
 
@@ -67,9 +67,9 @@ class AuthRepositories {
     try {
       final response = await _authRemoteDataSourceImpl.resetPassword(event);
       return Right(response.data);
-    } on ServerFailure catch (e) {
-      Log.error('Reset Password Error', e.message);
-      return Left(e);
+    } catch (error) {
+      Log.error('Reset Password Error', error);
+      return Left(NetworkExceptions.getDioException(error));
     }
   }
 
@@ -77,8 +77,8 @@ class AuthRepositories {
     try {
       final response = await _authRemoteDataSourceImpl.logoutUsers();
       return Right(response.data);
-    } on ServerFailure catch (e) {
-      return Left(e);
+    } catch (error) {
+      return Left(NetworkExceptions.getDioException(error));
     }
   }
 }

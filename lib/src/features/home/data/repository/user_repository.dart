@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dating_app/app/common/common.dart';
-import 'package:dating_app/app/core/logger/app_logger.dart';
 import 'package:dating_app/src/auth/data/models/user.dart';
 
-import '../../../../../app/core/network/failures.dart';
+import '../../../../../app/core/error/exception.dart';
+import '../../../../../app/core/network/dio_exception.dart';
 import '../datasources/user_remote_data_source.dart';
 
 class UserRepository {
@@ -24,9 +24,8 @@ class UserRepository {
         return Right(users);
       }
       return Right(response.data);
-    } on ServerFailure catch (e) {
-      Log.error('HomeScreen error', e.message);
-      return Left(e);
+    } on ServerException catch (error) {
+      return Left(NetworkExceptions.getDioException(error));
     }
   }
 }
