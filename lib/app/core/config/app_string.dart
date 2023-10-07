@@ -27,4 +27,6 @@ class AppString {
   static String notificationMsg = 'We think $matchMsg';
   static String matchMsg = 'Vicky Johnson';
   static String lastMsg = 'is a perfect match for you';
+  static String verifySuccess = 'Verified Successfully';
+  static String passwordReset = 'Otp has been sent to your email ';
 }

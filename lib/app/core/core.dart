@@ -2,13 +2,15 @@
 
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:dating_app/app/common/extensions/navigation_ext.dart';
-export 'package:flutter/material.dart';
+export 'package:easy_localization/easy_localization.dart';
+export 'package:flutter/material.dart' hide TextDirection;
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:fluttertoast/fluttertoast.dart';
 export 'package:go_router/go_router.dart';
 
 export '../../../../../app/core/services/auth_local_data_source.dart';
-export '../../../../src/features/home/presentation/bloc/users_closeby/users_bloc.dart';
+export '../../../../../generated/locale_keys.g.dart';
+export '../../../../src/features/home/presentation/bloc/users/users_bloc.dart';
 export '../../../src/auth/presentation/views/complete_verification/verification_barrels.dart';
 export '../../../src/auth/presentation/views/forgot_password/forgot_password_barrels.dart';
 export '../../../src/auth/presentation/views/info_view/barrels.dart';

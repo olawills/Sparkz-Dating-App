@@ -43,14 +43,16 @@ class OtpController extends State<OtpScreen> {
   }
 
   verifySuccess() {
-    context.goNamed(CompleteVerificationOTPScreen.name);
+    Future.delayed(
+        const Duration(milliseconds: 1500),
+        () => ToastMessages()
+            .showToastSuccessMessage(AppString.verifySuccess)).whenComplete(
+      () => context.goNamed(CompleteVerificationOTPScreen.name),
+    );
   }
 
   verifyOtpError(NetworkExceptions error) {
-    Fluttertoast.showToast(
-      msg: NetworkExceptions.getErrorMessage(error),
-      backgroundColor: Color(kDarkRed.value),
-    );
+    ToastMessages().showToastServerError(error);
   }
 
   backPage() {

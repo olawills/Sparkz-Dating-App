@@ -1,6 +1,8 @@
 import 'package:dating_app/app/common/common.dart';
 import 'package:dating_app/app/core/core.dart';
 
+import '../../../../../app/core/config/injection_container.dart';
+import '../../../../features/home/presentation/bloc/gps/gps_bloc.dart';
 
 part 'startup_screen.dart';
 
@@ -19,9 +21,11 @@ class StartupController extends State<StartupScreen>
       AnimationController(vsync: this, duration: const Duration(seconds: 3));
 
   _startDelay() {
-    _animationController
-        .forward()
-        .whenComplete(() => context.goNamed(LoginScreen.name));
+    _animationController.forward().then((_) {
+      final gpsBloc = serviceLocator<GpsBloc>();
+      gpsBloc.askLocationPermission();
+      context.goNamed(LoginScreen.name);
+    });
   }
 
   @override

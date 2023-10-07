@@ -5,5 +5,5 @@ class GpsEvent with _$GpsEvent {
   const factory GpsEvent.initial({
     required bool isEnabled,
     required bool checkGpsStatus,
-  }) = _GetGpsEvent;
+  }) = GetGpsEvent;
 }

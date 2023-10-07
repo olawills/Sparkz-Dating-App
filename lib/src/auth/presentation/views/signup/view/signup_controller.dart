@@ -36,16 +36,21 @@ class SignupController extends State<SignUpScreen> {
   }
 
   register() {
-    if (formKey.currentState!.validate()) {
-      FocusScope.of(context).unfocus();
-      context.read<AuthBloc>().add(
-            SignupEvent(
-              firstName: firstNameController.text,
-              lastName: lastNameController.text,
-              email: emailController.text,
-              password: passwordController.text,
-            ),
-          );
+    final gpsBloc = serviceLocator<GpsBloc>();
+    if (gpsBloc.state.isGpsEnabled) {
+      if (formKey.currentState!.validate()) {
+        FocusScope.of(context).unfocus();
+        context.read<AuthBloc>().add(
+              SignupEvent(
+                firstName: firstNameController.text,
+                lastName: lastNameController.text,
+                email: emailController.text,
+                password: passwordController.text,
+              ),
+            );
+      }
+    } else {
+      gpsBloc.askLocationPermission();
     }
   }
 
@@ -55,15 +60,15 @@ class SignupController extends State<SignUpScreen> {
 
   signupSuccess(User data) async {
     await LocalDataStorage.instance.setuserInfo(data);
-    // ignore: use_build_context_synchronously
-    context.goNamed(OtpScreen.name);
+
+    Future.delayed(const Duration(milliseconds: 1500),
+        () => ToastMessages().showToastSuccessMessage(data.email)).whenComplete(
+      () => context.goNamed(OtpScreen.name),
+    );
   }
 
   signupError(NetworkExceptions error) {
-    Fluttertoast.showToast(
-      msg: NetworkExceptions.getErrorMessage(error),
-      backgroundColor: Color(kDarkRed.value),
-    );
+    ToastMessages().showToastServerError(error);
   }
 
   backPage() {}

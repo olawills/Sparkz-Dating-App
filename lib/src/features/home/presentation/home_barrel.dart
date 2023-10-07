@@ -5,7 +5,7 @@ import 'package:dating_app/app/core/core.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'bloc/users_closeby/users_bloc.dart';
+import 'bloc/users/users_bloc.dart';
 import 'views/widgets/users_card.dart';
 
 part './views/home_controller.dart';

@@ -57,16 +57,16 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                     ],
                   ),
                   CustomTxtField(
-                    labelText: 'Email',
-                    hintText: 'Enter email',
+                    labelText: LocaleKeys.email.tr(),
+                    hintText: LocaleKeys.emailtext.tr(),
                     keyboardType: TextInputType.emailAddress,
                     textEditingController: controller.emailController,
                     validator: (val) => Validators.emailValidator(value: val),
                   ),
                   10.sbw,
                   CustomTxtField(
-                    labelText: 'Password',
-                    hintText: 'Enter pasword',
+                    labelText: LocaleKeys.password.tr(),
+                    hintText: LocaleKeys.enterPassword.tr(),
                     keyboardType: TextInputType.text,
                     suffix: true,
                     textEditingController: controller.passwordController,
@@ -78,11 +78,11 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                            text: 'By signing up you agreed to our ',
+                            text: LocaleKeys.terms.tr(),
                             style: appMStyle(
                                 15, Color(kDark.value), FontWeight.w400)),
                         TextSpan(
-                            text: 'Terms & condition ',
+                            text: LocaleKeys.condition.tr(),
                             style: appMStyle(
                                 15, Color(kDarkRed.value), FontWeight.w400),
                             recognizer: TapGestureRecognizer()..onTap = () {}),
@@ -92,7 +92,7 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                               15, Color(kDark.value), FontWeight.w400),
                         ),
                         TextSpan(
-                            text: 'privacy policy',
+                            text: LocaleKeys.privacy.tr(),
                             style: appMStyle(
                                 15, Color(kDarkRed.value), FontWeight.w400),
                             recognizer: TapGestureRecognizer()..onTap = () {}),
@@ -110,8 +110,8 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                         isLoading: state is SignupLoading,
                         loadingColor: Color(kLowRed.value),
                         text: state is SignupLoading
-                            ? 'Registering please wait...'
-                            : 'Continue',
+                            ? LocaleKeys.register.tr()
+                            : LocaleKeys.submit.tr(),
                         onTap: () => controller.register(),
                       );
                     },
@@ -122,11 +122,11 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                              text: 'Already have an account? ',
+                              text: LocaleKeys.account.tr(),
                               style: appMStyle(
                                   15, Color(kDarkGrey.value), FontWeight.w400)),
                           TextSpan(
-                            text: 'Log in',
+                            text: LocaleKeys.login.tr(),
                             style: appMStyle(
                                 15, Color(kDarkRed.value), FontWeight.w400),
                             recognizer: TapGestureRecognizer()

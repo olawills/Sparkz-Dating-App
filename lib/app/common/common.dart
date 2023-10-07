@@ -14,7 +14,7 @@ export '../common/widgets/custom_btn.dart';
 export '../common/widgets/custom_txt_field.dart';
 export '../common/widgets/display_pic_widget.dart';
 export '../common/widgets/loading_page.dart';
-export '../common/widgets/loading_widget.dart';
+export 'widgets/toast_messages.dart';
 export '../common/widgets/onscreen_keyboard.dart';
 export '../common/widgets/reusable_text.dart';
 export '../common/widgets/spacer.dart';

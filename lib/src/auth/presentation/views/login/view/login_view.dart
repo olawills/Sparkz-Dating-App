@@ -30,8 +30,8 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                             appMStyle(23, Color(kDark.value), FontWeight.w700)),
                     20.sbh,
                     CustomTxtField(
-                      labelText: 'Email',
-                      hintText: 'Email',
+                      labelText: LocaleKeys.email.tr(),
+                      hintText: LocaleKeys.emailtext.tr(),
                       autofillHints: const [AutofillHints.email],
                       keyboardType: TextInputType.emailAddress,
                       textEditingController: controller.emailController,
@@ -39,8 +39,8 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                       validator: (val) => Validators.emailValidator(value: val),
                     ),
                     CustomTxtField(
-                      labelText: 'Password',
-                      hintText: 'Enter pasword',
+                      labelText: LocaleKeys.password.tr(),
+                      hintText: LocaleKeys.enterPassword.tr(),
                       autofillHints: const [AutofillHints.password],
                       keyboardType: TextInputType.text,
                       suffix: true,
@@ -70,7 +70,7 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                         RichText(
                           textAlign: TextAlign.right,
                           text: TextSpan(
-                              text: 'Forgot Password',
+                              text: LocaleKeys.forgotPassword.tr(),
                               style: appMStyle(
                                   13, Color(kDark.value), FontWeight.w500),
                               recognizer: TapGestureRecognizer()
@@ -88,8 +88,8 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                           textColor: Color(kLight.value),
                           isLoading: state is LoginLoading,
                           text: state is LoginLoading
-                              ? 'Logging in please wait...'
-                              : 'Login',
+                              ? LocaleKeys.logging.tr()
+                              : LocaleKeys.login.tr(),
                           onTap: () => controller.login(),
                         );
                       },
@@ -134,11 +134,11 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                                text: 'Don\'t have an account? ',
+                                text: LocaleKeys.account.tr(),
                                 style: appMStyle(15, Color(kDarkGrey.value),
                                     FontWeight.w400)),
                             TextSpan(
-                                text: 'Sign up',
+                                text: LocaleKeys.signup.tr(),
                                 style: appMStyle(
                                     15, Color(kDarkRed.value), FontWeight.w400),
                                 recognizer: TapGestureRecognizer()

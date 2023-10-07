@@ -43,25 +43,28 @@ class LoginController extends State<LoginScreen> {
     if (isCheck) {
       TextInput.finishAutofillContext();
     }
-    if (formKey.currentState!.validate()) {
-      context.read<AuthBloc>().add(LoginEvent(
-          email: emailController.text, password: passwordController.text));
+    final gpsBloc = serviceLocator<GpsBloc>();
+    if (gpsBloc.state.isGpsEnabled) {
+      if (formKey.currentState!.validate()) {
+        context.read<AuthBloc>().add(LoginEvent(
+            email: emailController.text, password: passwordController.text));
+      } else {
+        gpsBloc.askLocationPermission();
+      }
     }
   }
 
   loginSuccess(LoginResponse data) async {
     await LocalDataStorage.instance.setLoginResponse(data);
-    // ignore: use_build_context_synchronously
-    context.goNamed(HomeScreen.name);
+    Future.delayed(const Duration(milliseconds: 1500),
+            () => ToastMessages().showToastSuccessMessage(data.message))
+        .whenComplete(
+      () => context.goNamed(HomeScreen.name),
+    );
   }
 
-  loginError(NetworkExceptions error ) {
-    Fluttertoast.showToast(
-        msg: NetworkExceptions.getErrorMessage(error),
-        fontSize: 16,
-        backgroundColor: Color(kDarkRed.value),
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM);
+  loginError(NetworkExceptions error) {
+    ToastMessages().showToastServerError(error);
   }
 
   forgotPassword() {

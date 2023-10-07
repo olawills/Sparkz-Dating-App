@@ -36,17 +36,17 @@ mixin _$GpsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetGpsEvent value) initial,
+    required TResult Function(GetGpsEvent value) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetGpsEvent value)? initial,
+    TResult? Function(GetGpsEvent value)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetGpsEvent value)? initial,
+    TResult Function(GetGpsEvent value)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,7 +133,7 @@ class __$$GetGpsEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetGpsEventImpl with DiagnosticableTreeMixin implements _GetGpsEvent {
+class _$GetGpsEventImpl implements GetGpsEvent {
   const _$GetGpsEventImpl(
       {required this.isEnabled, required this.checkGpsStatus});
 
@@ -143,17 +143,8 @@ class _$GetGpsEventImpl with DiagnosticableTreeMixin implements _GetGpsEvent {
   final bool checkGpsStatus;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'GpsEvent.initial(isEnabled: $isEnabled, checkGpsStatus: $checkGpsStatus)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'GpsEvent.initial'))
-      ..add(DiagnosticsProperty('isEnabled', isEnabled))
-      ..add(DiagnosticsProperty('checkGpsStatus', checkGpsStatus));
   }
 
   @override
@@ -207,7 +198,7 @@ class _$GetGpsEventImpl with DiagnosticableTreeMixin implements _GetGpsEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetGpsEvent value) initial,
+    required TResult Function(GetGpsEvent value) initial,
   }) {
     return initial(this);
   }
@@ -215,7 +206,7 @@ class _$GetGpsEventImpl with DiagnosticableTreeMixin implements _GetGpsEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetGpsEvent value)? initial,
+    TResult? Function(GetGpsEvent value)? initial,
   }) {
     return initial?.call(this);
   }
@@ -223,7 +214,7 @@ class _$GetGpsEventImpl with DiagnosticableTreeMixin implements _GetGpsEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetGpsEvent value)? initial,
+    TResult Function(GetGpsEvent value)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -233,8 +224,8 @@ class _$GetGpsEventImpl with DiagnosticableTreeMixin implements _GetGpsEvent {
   }
 }
 
-abstract class _GetGpsEvent implements GpsEvent {
-  const factory _GetGpsEvent(
+abstract class GetGpsEvent implements GpsEvent {
+  const factory GetGpsEvent(
       {required final bool isEnabled,
       required final bool checkGpsStatus}) = _$GetGpsEventImpl;
 
@@ -335,9 +326,7 @@ class __$$GpsInitialStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GpsInitialStateImpl
-    with DiagnosticableTreeMixin
-    implements GpsInitialState {
+class _$GpsInitialStateImpl implements GpsInitialState {
   const _$GpsInitialStateImpl(
       {required this.isGpsEnabled, required this.isGpsPermissionGranted});
 
@@ -347,18 +336,8 @@ class _$GpsInitialStateImpl
   final bool isGpsPermissionGranted;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'GpsState(isGpsEnabled: $isGpsEnabled, isGpsPermissionGranted: $isGpsPermissionGranted)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'GpsState'))
-      ..add(DiagnosticsProperty('isGpsEnabled', isGpsEnabled))
-      ..add(DiagnosticsProperty(
-          'isGpsPermissionGranted', isGpsPermissionGranted));
   }
 
   @override

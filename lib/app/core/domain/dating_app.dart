@@ -1,26 +1,11 @@
 import 'package:dating_app/app/common/common.dart';
 import 'package:dating_app/app/core/core.dart';
 import 'package:dating_app/app/core/routes/app_router.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SparkzConfig extends StatefulWidget {
+class SparkzConfig extends StatelessWidget {
   const SparkzConfig({super.key});
-
-  @override
-  State<SparkzConfig> createState() => _SparkzConfigState();
-}
-
-class _SparkzConfigState extends State<SparkzConfig> {
-  @override
-  void initState() {
-    super.initState();
-
-    // ** Initialize Push Notifications
-    // FirebasePushNotificationServce.getDeviceToken();
-    // FirebasePushNotificationServce.requestPermission();
-    // FirebasePushNotificationServce.initializeNotification();
-    // AwesomeNotifications().requestPermissionToSendNotifications();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +28,9 @@ class _SparkzConfigState extends State<SparkzConfig> {
             debugShowCheckedModeBanner: false,
             title: kAppName,
             routerConfig: AppRouter.routerConfig,
+            locale: context.locale,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
             // home: const OnboardingScreen(),
           );
         },

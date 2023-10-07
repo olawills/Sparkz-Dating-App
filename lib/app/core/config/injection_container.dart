@@ -14,7 +14,7 @@ import '../../../src/features/cubit/internet_connection/internet_connection_cubi
 import '../../../src/features/home/data/datasources/user_remote_data_source.dart';
 import '../../../src/features/home/data/repository/user_repository.dart';
 import '../../../src/features/home/presentation/bloc/gps/gps_bloc.dart';
-import '../../../src/features/home/presentation/bloc/users_closeby/users_bloc.dart';
+import '../../../src/features/home/presentation/bloc/users/users_bloc.dart';
 import '../network/dio_client.dart';
 
 GetIt serviceLocator = GetIt.instance;

@@ -24,8 +24,6 @@ class AppBlocProviders {
 
         BlocProvider<GpsBloc>(create: (context) => serviceLocator<GpsBloc>()),
 
-        // RepositoryProvider(create: (context) => UserRepositories()),
-
         // BottomNavBar Cubit
         BlocProvider<BottomNavigationCubit>(
             create: (context) => serviceLocator<BottomNavigationCubit>()),
