@@ -42,13 +42,13 @@ class OnBoarding extends StatelessView<OnBoardingScreen, OnBoardingController> {
                                       dotHeight: 8.h,
                                       dotWidth: 40.w,
                                       spacing: 10,
-                                      dotColor: Color(kDarkRed.value),
-                                      activeDotColor: Color(kDarkGrey.value)),
+                                      dotColor: AppColors.darkRed,
+                                      activeDotColor: AppColors.darkGreyColor),
                                 ),
                                 CustomButton(
                                   width: width * 0.14,
                                   height: height * 0.06,
-                                  color: Color(kDarkRed.value),
+                                  color: AppColors.darkRed,
                                   resize: true,
                                   icon: Icons.arrow_forward,
                                   onTap: () => controller.pageController
@@ -65,7 +65,7 @@ class OnBoarding extends StatelessView<OnBoardingScreen, OnBoardingController> {
                                 CustomButton(
                                   width: width * 0.14,
                                   height: height * 0.06,
-                                  color: Color(kDarkRed.value),
+                                  color: AppColors.darkRed,
                                   resize: true,
                                   icon: Icons.arrow_back,
                                   onTap: () => controller.pageController
@@ -82,8 +82,8 @@ class OnBoarding extends StatelessView<OnBoardingScreen, OnBoardingController> {
                                       dotHeight: 8.h,
                                       dotWidth: 40.w,
                                       spacing: 8,
-                                      dotColor: Color(kDarkRed.value),
-                                      activeDotColor: Color(kDarkGrey.value)),
+                                      dotColor: AppColors.darkRed,
+                                      activeDotColor: AppColors.darkGreyColor),
                                 ),
                               ],
                             ))
@@ -94,9 +94,9 @@ class OnBoarding extends StatelessView<OnBoardingScreen, OnBoardingController> {
                       child: CustomButton(
                         width: width,
                         height: height * 0.07,
-                        color: Color(kDarkRed.value),
+                        color: AppColors.darkRed,
                         text: 'Continue',
-                        textColor: Color(kLight.value),
+                        textColor: AppColors.whiteColor,
                         onTap: () => controller.loginPage(),
                       ),
                     )

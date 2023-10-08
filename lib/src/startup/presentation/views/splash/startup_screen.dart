@@ -17,7 +17,7 @@ class _StartupScreen extends StatelessView<StartupScreen, StartupController> {
             text: 'Sparkz..',
             style: appMStyle(
               30,
-              Color(kDarkRed.value),
+              AppColors.darkRed,
               FontWeight.bold,
             ),
           ),

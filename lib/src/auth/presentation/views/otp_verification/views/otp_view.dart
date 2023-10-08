@@ -30,18 +30,18 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                           ReusableText(
                               text: 'Email Verification',
                               style: appMStyle(
-                                  23, Color(kDark.value), FontWeight.w700)),
+                                  23, AppColors.blackColor, FontWeight.w700)),
                           20.sbh,
                           SvgPicture.asset(Assets.svgHelper('lock_color')),
                           ReusableText(
                               text: 'Enter OTP',
                               style: appMStyle(
-                                  23, Color(kDark.value), FontWeight.w600)),
+                                  23, AppColors.blackColor, FontWeight.w600)),
                           20.sbh,
                           ReusableText(
                               text: otpText(controller.email),
                               style: appMStyle(
-                                  20, Color(kGrey.value), FontWeight.w600)),
+                                  20, AppColors.colorGrey, FontWeight.w600)),
                           15.sbh,
                           RichText(
                             text: TextSpan(
@@ -49,12 +49,12 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                                 TextSpan(
                                   text: 'Wrong email? ',
                                   style: appMStyle(
-                                      13, Color(kGrey.value), FontWeight.w400),
+                                      13, AppColors.colorGrey, FontWeight.w400),
                                 ),
                                 TextSpan(
                                     text: 'Change',
-                                    style: appMStyle(13, Color(kDarkRed.value),
-                                        FontWeight.w400),
+                                    style: appMStyle(
+                                        13, AppColors.darkRed, FontWeight.w400),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {}),
                               ],
@@ -79,10 +79,10 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
                           child: CustomButton(
                             width: width * 0.4,
                             height: height / 15,
-                            color: Color(kDarkRed.value),
-                            textColor: Color(kLight.value),
+                            color: AppColors.darkRed,
+                            textColor: AppColors.whiteColor,
                             isLoading: state is VerifyOtpLoading,
-                            loadingColor: Color(kLowRed.value),
+                            loadingColor: AppColors.redWithLowOpacity,
                             text: 'Submit OTP',
                             onTap: () => controller.verify(),
                           ),
@@ -108,24 +108,26 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
     final defaultPinTheme = PinTheme(
       width: 50,
       height: 50,
-      textStyle: TextStyle(
-          fontSize: 16, color: Color(kDark.value), fontWeight: FontWeight.w600),
+      textStyle: const TextStyle(
+          fontSize: 16,
+          color: AppColors.blackColor,
+          fontWeight: FontWeight.w600),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(kLowRed.value)),
-        color: Color(kLowRed.value),
+        border: Border.all(color: AppColors.redWithLowOpacity),
+        color: AppColors.redWithLowOpacity,
         borderRadius: BorderRadius.circular(10),
       ),
     );
 
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Color(kDarkRed.value)),
+      border: Border.all(color: AppColors.darkRed),
       borderRadius: BorderRadius.circular(10),
     );
 
     final submittedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration?.copyWith(
-        color: Color(kLight.value),
-        border: Border.all(color: Color(kDarkRed.value)),
+        color: AppColors.whiteColor,
+        border: Border.all(color: AppColors.darkRed),
       ),
     );
 
@@ -161,7 +163,7 @@ class _OtpView extends StatelessView<OtpScreen, OtpController> {
             return Text(
               "${value.toInt()}s",
               style: TextStyle(
-                color: Color(kDark.value),
+                color: AppColors.blackColor,
               ),
             );
           },

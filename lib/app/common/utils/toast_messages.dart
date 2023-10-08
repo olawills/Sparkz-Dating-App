@@ -14,7 +14,7 @@ class ToastMessages {
     Fluttertoast.showToast(
         msg: NetworkExceptions.getErrorMessage(error),
         fontSize: 16,
-        backgroundColor: Color(kDarkRed.value),
+        backgroundColor: Color(AppColors.darkRed.value),
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.BOTTOM);
   }
@@ -23,7 +23,7 @@ class ToastMessages {
     return Fluttertoast.showToast(
       msg: message,
       gravity: ToastGravity.BOTTOM,
-      backgroundColor: Color(kDarkRed.value),
+      backgroundColor: Color(AppColors.darkRed.value),
     );
   }
 
@@ -31,7 +31,7 @@ class ToastMessages {
     return Fluttertoast.showToast(
       msg: message,
       gravity: ToastGravity.BOTTOM,
-      backgroundColor: Color(kDarkRed.value),
+      backgroundColor: Color(AppColors.darkRed.value),
     );
   }
 }

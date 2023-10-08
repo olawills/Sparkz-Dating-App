@@ -28,7 +28,7 @@ class _AppKeyBoardState extends State<AppKeyBoard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(keyboardColor.value).withOpacity(0.4),
+      color: AppColors.keyboardColor.withOpacity(0.4),
       child: Column(
         children: [
           Row(
@@ -59,7 +59,7 @@ class _AppKeyBoardState extends State<AppKeyBoard> {
               _buildKeypadButton('0', child: 15.sbh),
               _buildKeypadButton('⌫',
                   child: 15.sbh,
-                  color: Color(kDarkGrey.value).withOpacity(0.1),
+                  color: AppColors.darkGreyColor.withOpacity(0.1),
                   onPressed: _backspace),
             ],
           ),
@@ -80,19 +80,19 @@ class _AppKeyBoardState extends State<AppKeyBoard> {
           // padding: const EdgeInsets.all(4),
           margin: const EdgeInsets.all(4),
           decoration: BoxDecoration(
-              color: color ?? Color(kLight.value),
+              color: color ?? AppColors.whiteColor,
               borderRadius: BorderRadius.circular(6)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ReusableText(
                   text: text,
-                  style: appMStyle(22, Color(kDark.value), FontWeight.w400)),
+                  style: appMStyle(22, AppColors.blackColor, FontWeight.w400)),
               child ??
                   ReusableText(
                       text: alphabets ?? '',
                       style:
-                          appMStyle(12, Color(kDark.value), FontWeight.w500)),
+                          appMStyle(12, AppColors.blackColor, FontWeight.w500)),
             ],
           ),
         ),

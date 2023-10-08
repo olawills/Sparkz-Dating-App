@@ -18,19 +18,19 @@ class PageTwo extends StatelessWidget {
           ),
           30.sbh,
           ReusableText(
-            text: pageTwoText,
+            text: LocaleKeys.pageTwoText.tr(),
             style: appMStyle(
               19,
-              Color(kDark.value),
+             AppColors.blackColor,
               FontWeight.w600,
             ),
           ),
           10.sbh,
           ReusableText(
-            text: pageTwo,
+            text: LocaleKeys.pageTwo.tr(),
             style: appMStyle(
               19,
-              Color(kDark.value),
+             AppColors.blackColor,
               FontWeight.w500,
             ),
           ).padding(const EdgeInsets.symmetric(horizontal: 20)),

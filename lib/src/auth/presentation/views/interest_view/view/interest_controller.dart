@@ -52,21 +52,7 @@ class InterestController extends State<InterestScreen> {
   }
 
   saveInfoError(NetworkExceptions error) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Container(
-        height: 60.h,
-        width: double.maxFinite,
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: kLight,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: ReusableText(
-          text: NetworkExceptions.getErrorMessage(error),
-          style: appMStyle(16, kDark, FontWeight.w400),
-        ),
-      ),
-    ));
+    ToastMessages().showToastServerError(error);
   }
 
   backPage() {

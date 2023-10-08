@@ -40,9 +40,7 @@ class ResetPasswordController extends State<ResetPasswordScreen> {
   }
 
   resetError(NetworkExceptions error) {
-    Fluttertoast.showToast(
-        msg: NetworkExceptions.getErrorMessage(error),
-        backgroundColor: Color(kDarkRed.value));
+    ToastMessages().showToastServerError(error);
   }
 
   @override

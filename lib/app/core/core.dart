@@ -27,4 +27,4 @@ export '../../../src/features/profile/presentation/profile_barrel.dart';
 export '../../../src/features/skeleton_controller.dart';
 export '../../../src/not_found/not_found_controller.dart';
 export '../../../src/startup/presentation/views/onboarding/barrels.dart';
-export '../../../src/startup/presentation/views/startup/startup_controller.dart';
+export '../../../src/startup/presentation/views/splash/startup_controller.dart';

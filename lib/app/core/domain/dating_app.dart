@@ -1,7 +1,6 @@
 import 'package:dating_app/app/common/common.dart';
 import 'package:dating_app/app/core/core.dart';
 import 'package:dating_app/app/core/routes/app_router.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SparkzConfig extends StatelessWidget {

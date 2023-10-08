@@ -2,8 +2,8 @@ import 'package:dating_app/app/core/config/injection_container.dart';
 import 'package:dating_app/app/core/core.dart';
 import 'package:dating_app/bloc_observers.dart';
 import 'package:dating_app/firebase_options.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:logger/logger.dart';
 
 import 'app/core/domain/all_blocs.dart';
 import 'app/core/domain/dating_app.dart';
@@ -20,6 +20,7 @@ Future<void> main() async {
   // FirebaseMessaging.onBackgroundMessage(_fiebaseMessagingBackgroundHandler);
   await EasyLocalization.ensureInitialized();
 
+  Logger.level = Level.error;
   Bloc.observer = AppBlocObserver();
   ServiceLocator.init();
   runApp(

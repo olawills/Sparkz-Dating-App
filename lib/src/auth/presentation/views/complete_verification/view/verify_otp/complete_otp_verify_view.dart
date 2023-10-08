@@ -15,25 +15,25 @@ class _CompleteOTPVerificationView extends StatelessView<
         children: [
           ReusableText(
             text: 'Verifcation successful',
-            style: appMStyle(26, Color(kDark.value), FontWeight.w600),
+            style: appMStyle(26, AppColors.blackColor, FontWeight.w600),
           ),
           20.sbh,
           Container(
             alignment: Alignment.center,
             width: width * 0.2,
             height: height * 0.2,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              color: Color(kDarkRed.value),
+              color: AppColors.darkRed,
             ),
-            child: Icon(Icons.done, color: Color(kLight.value), size: 50.w),
+            child: Icon(Icons.done, color: AppColors.whiteColor, size: 50.w),
           ),
           20.sbh,
           CustomButton(
             width: width,
             height: height / 15,
-            color: Color(kDarkRed.value),
-            textColor: Color(kLight.value),
+            color: AppColors.darkRed,
+            textColor: AppColors.whiteColor,
             text: 'Continue',
             onTap: () => controller.infoView(),
           )

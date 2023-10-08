@@ -1,5 +1,6 @@
 import 'package:dating_app/app/core/core.dart';
 import 'package:dating_app/src/auth/data/models/user.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../../../app/common/common.dart';
@@ -13,8 +14,8 @@ class UsersDisplayCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: height * 0.08,
-          width: double.maxFinite,
+          height: SizeOf.carouselHeight,
+          width: SizeOf.carouselWidth,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
@@ -25,36 +26,43 @@ class UsersDisplayCard extends StatelessWidget {
                 image: CachedNetworkImageProvider(user.profilePicture)),
           ),
         ),
-        Card(
-          color: kLight,
-          elevation: 2,
-          margin: const EdgeInsets.all(8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  ReusableText(
-                    text: "${user.firstName}${user.lastName}",
-                    style: appMStyle(16, kDark, FontWeight.bold),
-                  ),
-                  10.sbh,
-                  ReusableText(
-                    text: '23',
-                    style: appMStyle(16, kDark, FontWeight.bold),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  const Icon(Icons.location_on),
-                  ReusableText(
-                    text: 'woji GRA Phase 2 (0.4m)',
-                    style: appMStyle(16, kDark, FontWeight.bold),
-                  ),
-                ],
-              ),
-            ],
+        SizedBox(
+          height: SizeOf.carouselBodyHeight,
+          width: SizeOf.carouselBodyWidth,
+          child: Card(
+            color: AppColors.whiteColor,
+            elevation: 2,
+            margin: const EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    ReusableText(
+                      text: "${user.firstName}${user.lastName}",
+                      style: context.textTheme.bodyMedium!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    10.sbh,
+                    ReusableText(
+                      text: '23',
+                      style: context.textTheme.bodyMedium!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    const Icon(Icons.location_on),
+                    ReusableText(
+                      text: 'woji GRA Phase 2 (0.4m)',
+                      style:
+                          appMStyle(16, AppColors.blackColor, FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ],
@@ -73,9 +81,10 @@ class LoadingUserCard extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: height * 1.2,
-            width: double.maxFinite,
+            height: SizeOf.carouselBodyHeight,
+            width: SizeOf.carouselBodyWidth,
             decoration: const BoxDecoration(
+              color: Colors.yellow,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(12),
                   topRight: Radius.circular(8),
@@ -83,7 +92,7 @@ class LoadingUserCard extends StatelessWidget {
             ),
           ),
           Card(
-            color: kLight,
+            color: AppColors.whiteColor,
             elevation: 4,
             margin: const EdgeInsets.all(12),
             child: Column(
@@ -93,32 +102,40 @@ class LoadingUserCard extends StatelessWidget {
                   children: [
                     ReusableText(
                       text: "",
-                      style: appMStyle(18, kDark, FontWeight.w700),
+                      // style: appMStyle(18, AppColors.blackColor, FontWeight.w700),
+                      style: context.textTheme.bodyLarge!.copyWith(
+                          color: AppColors.blackColor,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w700),
                     ),
                     20.sbw,
                     ReusableText(
                       text: '',
-                      style: appMStyle(16, kDark, FontWeight.bold),
+                      style: context.textTheme.bodyMedium!
+                          .copyWith(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 Row(
                   children: [
-                    const Icon(Icons.location_on, color: kDarkRed),
+                    const Icon(Icons.location_on, color: AppColors.darkRed),
                     ReusableText(
                       text: '',
-                      style: appMStyle(16, kDark, FontWeight.w400),
+                      style: context.textTheme.bodyMedium!
+                          .copyWith(fontWeight: FontWeight.w400),
                     ),
                     10.sbw,
                     ReusableText(
                       text: '',
-                      style: appMStyle(16, kDark, FontWeight.w400),
+                      style: context.textTheme.bodyMedium!
+                          .copyWith(fontWeight: FontWeight.w400),
                     ),
                   ],
                 ),
               ],
             ),
           ),
+        
         ],
       ),
     );

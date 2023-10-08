@@ -25,13 +25,13 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
               alignment: Alignment.center,
               child: ReusableText(
                 text: 'What are your interests?',
-                style: appMStyle(20, Color(kDark.value), FontWeight.w700),
+                style: appMStyle(20, AppColors.blackColor, FontWeight.w700),
               ),
             ),
             10.sbh,
             ReusableText(
               text: interestText,
-              style: appMStyle(19, Color(kDarkWithOp.value), FontWeight.w500),
+              style: appMStyle(19, AppColors.blackWithOpacity, FontWeight.w500),
             ),
             70.sbh,
             Column(
@@ -44,7 +44,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                         isSelected: controller.selectTedList.contains('Game'),
                         icon: Icons.check,
                         text: 'Game',
-                        color: Color(kLowRed.value).withOpacity(0.2),
+                        color: AppColors.redWithLowOpacity.withOpacity(0.2),
                         onTap: () {
                           controller.selectedItems('Game');
                           Log.debug(controller.selectTedList);
@@ -55,7 +55,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                         isSelected: controller.selectTedList.contains('Anime'),
                         icon: Icons.check,
                         text: 'Anime',
-                        color: Color(kDarkGrey.value).withOpacity(0.2),
+                        color: AppColors.darkGreyColor.withOpacity(0.2),
                         onTap: () {
                           controller.selectedItems('Anime');
                           Log.debug(controller.selectTedList);
@@ -69,7 +69,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                     isSelected: controller.selectTedList.contains('Music'),
                     icon: Icons.check,
                     text: 'Music',
-                    color: Color(kLowRed.value).withOpacity(0.2),
+                    color: AppColors.redWithLowOpacity.withOpacity(0.2),
                     onTap: () {
                       controller.selectedItems('Music');
                       controller.selectedInterest();
@@ -83,7 +83,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                       isSelected: controller.selectTedList.contains('Tech'),
                       icon: Icons.check,
                       text: 'Tech',
-                      color: Color(kLowRed.value).withOpacity(0.2),
+                      color: AppColors.redWithLowOpacity.withOpacity(0.2),
                       onTap: () {
                         controller.selectedItems('Tech');
                         controller.selectedInterest();
@@ -93,7 +93,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                       isSelected: controller.selectTedList.contains('DC Comic'),
                       icon: Icons.check,
                       text: 'Dc Comic',
-                      color: Color(kDarkGrey.value).withOpacity(0.2),
+                      color: AppColors.darkGreyColor.withOpacity(0.2),
                       onTap: () {
                         controller.selectedItems('DC Comic');
                         controller.selectedInterest();
@@ -107,7 +107,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                     isSelected: controller.selectTedList.contains('Fashion'),
                     icon: Icons.check,
                     text: 'Fashion',
-                    color: Color(kLowRed.value).withOpacity(0.2),
+                    color: AppColors.redWithLowOpacity.withOpacity(0.2),
                     onTap: () {
                       controller.selectedItems('Fashion');
                       controller.selectedInterest();
@@ -121,7 +121,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                       isSelected: controller.selectTedList.contains('Football'),
                       icon: Icons.check,
                       text: 'Football',
-                      color: Color(kDarkGrey.value).withOpacity(0.2),
+                      color: AppColors.darkGreyColor.withOpacity(0.2),
                       onTap: () {
                         controller.selectedItems('Football');
                         controller.selectedInterest();
@@ -131,7 +131,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                       isSelected: controller.selectTedList.contains('Movies'),
                       icon: Icons.check,
                       text: 'Movies',
-                      color: Color(kDarkGrey.value).withOpacity(0.2),
+                      color: AppColors.darkGreyColor.withOpacity(0.2),
                       onTap: () {
                         controller.selectedItems('Movies');
                         controller.selectedInterest();
@@ -145,7 +145,7 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                     isSelected: controller.selectTedList.contains('Travel'),
                     icon: Icons.check,
                     text: 'Travel',
-                    color: Color(kDarkGrey.value).withOpacity(0.2),
+                    color: AppColors.darkGreyColor.withOpacity(0.2),
                     onTap: () {
                       controller.selectedItems('Travel');
                       controller.selectedInterest();
@@ -168,8 +168,8 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
                 return CustomButton(
                   width: width,
                   height: height / 15,
-                  color: Color(kDarkRed.value),
-                  textColor: Color(kLight.value),
+                  color: AppColors.darkRed,
+                  textColor: AppColors.whiteColor,
                   text: 'Continue',
                   onTap: () => controller.saveInfo(),
                 );
@@ -202,12 +202,13 @@ class _InterestView extends StatelessView<InterestScreen, InterestController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               isSelected
-                  ? Icon(icon, color: Color(kDark.value))
+                  ? Icon(icon, color: AppColors.blackColor)
                   : const SizedBox.shrink(),
               10.sbh,
               ReusableText(
                 text: text,
-                style: appMStyle(16, Color(kDarkWithOp.value), FontWeight.w500),
+                style:
+                    appMStyle(16, AppColors.blackWithOpacity, FontWeight.w500),
               ),
             ],
           ),

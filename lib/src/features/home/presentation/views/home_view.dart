@@ -10,7 +10,7 @@ class _HomeView extends StatelessView<HomeScreen, HomeScreenController> {
       builder: (context, state) {
         return Scaffold(
           body: SafeArea(
-            child: _buildHomeWidget(controller: controller),
+            child: _buildHomeWidget(controller, context),
           ),
         );
       },
@@ -18,7 +18,7 @@ class _HomeView extends StatelessView<HomeScreen, HomeScreenController> {
   }
 }
 
-Widget _buildHomeWidget({required HomeScreenController controller}) {
+Widget _buildHomeWidget(HomeScreenController controller, BuildContext context) {
   return SingleChildScrollView(
     child: RefreshIndicator(
       onRefresh: () => controller.onRefresh(),
@@ -26,14 +26,22 @@ Widget _buildHomeWidget({required HomeScreenController controller}) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ReusableText(
-              text: 'Welcome',
-              style: appMStyle(16, Color(kGrey.value), FontWeight.w500)),
+            text: 'Welcome',
+            // style: appMStyle(16, Color(kGrey.value), FontWeight.w500),
+            style: context.textTheme.bodySmall!.copyWith(
+                color: AppColors.darkGreyColor,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ReusableText(
-                  text: '${controller.firstName} ${controller.lastName}',
-                  style: appMStyle(18, Color(kDark.value), FontWeight.bold)),
+                text: '${controller.firstName} ${controller.lastName}',
+                // style: appMStyle(18, Color(kDark.value), FontWeight.bold),
+                style: context.textTheme.bodyLarge!
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
               UserDisplayPicture(
                 imageUrl: Assets.noAccountImage,
                 onTap: () {},
@@ -46,16 +54,17 @@ Widget _buildHomeWidget({required HomeScreenController controller}) {
                 child: CustomTxtField(
                   textEditingController: controller.searchController,
                   hintText: 'search user',
-                  hintStyle: appMStyle(16, Color(kGrey.value), FontWeight.w400),
+                  hintStyle:
+                      appMStyle(16, AppColors.colorGrey, FontWeight.w400),
                   filled: true,
-                  fillColor: Color(kLowRed.value),
-                  prefix:
-                      Icon(Icons.search, size: 30, color: Color(kGrey.value)),
+                  fillColor: AppColors.redWithLowOpacity,
+                  prefix: const Icon(Icons.search,
+                      size: 30, color: AppColors.colorGrey),
                   focusBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(kDarkRed.value)),
+                      borderSide: const BorderSide(color: AppColors.darkRed),
                       borderRadius: kmediumBorderRadius),
                   inputBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(kLight.value)),
+                      borderSide: const BorderSide(color: AppColors.whiteColor),
                       borderRadius: kmediumBorderRadius),
                 ),
               ),
@@ -69,13 +78,17 @@ Widget _buildHomeWidget({required HomeScreenController controller}) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ReusableText(
-                  text: 'Near you',
-                  style: appMStyle(16, Color(kDarkRed.value), FontWeight.w600)),
+                text: 'Near you',
+                style: context.textTheme.bodySmall!.copyWith(
+                    color: AppColors.darkRed, fontWeight: FontWeight.w600),
+              ),
               TextButton(
                 onPressed: () {},
                 child: ReusableText(
                     text: 'See more',
-                    style: appMStyle(16, Color(kDark.value), FontWeight.w400)),
+                    style: context.textTheme.bodySmall!.copyWith(
+                        color: AppColors.blackColor,
+                        fontWeight: FontWeight.w400)),
               )
             ],
           ),
@@ -126,7 +139,7 @@ Widget _buildUsersCard(HomeScreenController controller) {
           itemCount: state.users.length,
           options: CarouselOptions(
             autoPlay: false,
-            enlargeCenterPage: true,
+            enlargeCenterPage: false,
             viewportFraction: 0.9,
             aspectRatio: 2.0,
             initialPage: 0,

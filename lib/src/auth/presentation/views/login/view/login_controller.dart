@@ -39,24 +39,19 @@ class LoginController extends State<LoginScreen> {
     });
   }
 
-  login() {
+  login() async {
     if (isCheck) {
       TextInput.finishAutofillContext();
     }
-    final gpsBloc = serviceLocator<GpsBloc>();
-    if (gpsBloc.state.isGpsEnabled) {
-      if (formKey.currentState!.validate()) {
-        context.read<AuthBloc>().add(LoginEvent(
-            email: emailController.text, password: passwordController.text));
-      } else {
-        gpsBloc.askLocationPermission();
-      }
+    if (formKey.currentState!.validate()) {
+      context.read<AuthBloc>().add(LoginEvent(
+          email: emailController.text, password: passwordController.text));
     }
   }
 
   loginSuccess(LoginResponse data) async {
     await LocalDataStorage.instance.setLoginResponse(data);
-    Future.delayed(const Duration(milliseconds: 1500),
+    Future.delayed(const Duration(milliseconds: 2000),
             () => ToastMessages().showToastSuccessMessage(data.message))
         .whenComplete(
       () => context.goNamed(HomeScreen.name),
@@ -64,7 +59,8 @@ class LoginController extends State<LoginScreen> {
   }
 
   loginError(NetworkExceptions error) {
-    ToastMessages().showToastServerError(error);
+    Future.delayed(const Duration(milliseconds: 2000),
+        () => ToastMessages().showToastServerError(error));
   }
 
   forgotPassword() {

@@ -29,12 +29,13 @@ class _ForgotPasswordView
                   child: ReusableText(
                       text: 'Forgot Password',
                       style:
-                          appMStyle(23, Color(kDark.value), FontWeight.w700)),
+                          appMStyle(23, AppColors.blackColor, FontWeight.w700)),
                 ),
                 30.sbh,
                 ReusableText(
                     text: forgotPasswordText,
-                    style: appMStyle(16, Color(kDark.value), FontWeight.w500)),
+                    style:
+                        appMStyle(16, AppColors.blackColor, FontWeight.w500)),
                 30.sbh,
                 CustomTxtField(
                   labelText: 'Email',
@@ -50,8 +51,8 @@ class _ForgotPasswordView
                   return CustomButton(
                     width: width,
                     height: height / 15,
-                    color: Color(kDarkRed.value),
-                    textColor: Color(kLight.value),
+                    color: AppColors.darkRed,
+                    textColor: AppColors.whiteColor,
                     isLoading: state is ForgotPasswordLoading,
                     text: 'Reset Password',
                     onTap: () => controller.resetPassword(),

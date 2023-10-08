@@ -1,7 +1,4 @@
-import 'package:dating_app/app/common/constants/app_style.dart';
-import 'package:dating_app/app/common/constants/border_radius.dart';
-import 'package:dating_app/app/common/constants/color_style.dart';
-import 'package:dating_app/app/common/widgets/reusable_text.dart';
+import 'package:dating_app/app/common/common.dart';
 
 import '../../core/core.dart';
 
@@ -58,22 +55,24 @@ class _CustomTxtFieldState extends State<CustomTxtField> {
   Widget build(BuildContext context) {
     final inputBorder = OutlineInputBorder(
       borderRadius: knormalBorderRadius,
-      borderSide: BorderSide(color: Color(kDarkGrey.value), width: 1.5),
+      borderSide: const BorderSide(color: AppColors.darkGreyColor, width: 1.5),
     );
     final errorBorder = OutlineInputBorder(
       borderRadius: kminiMediumBorderRadius,
-      borderSide: BorderSide(color: Color(kDarkRed.value), width: 1.5),
+      borderSide: const BorderSide(color: AppColors.darkRed, width: 1.5),
     );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ReusableText(
           text: widget.labelText ?? '',
-          style: appMStyle(
-            17,
-            Color(kDark.value),
-            FontWeight.w500,
-          ),
+          // style: appMStyle(
+          //   17,
+          //   Color(kDark.value),
+          //   FontWeight.w500,
+          // ),
+          style: context.textTheme.bodyLarge!
+              .copyWith(fontWeight: FontWeight.w600),
         ),
         TextFormField(
           controller: widget.textEditingController,
@@ -88,11 +87,7 @@ class _CustomTxtFieldState extends State<CustomTxtField> {
           onTapOutside: (event) {
             FocusScope.of(context).unfocus();
           },
-          style: appMStyle(
-            17,
-            Color(kDark.value),
-            FontWeight.w500,
-          ),
+          style: context.textTheme.bodyLarge!.copyWith(),
           validator: widget.validator,
           decoration: InputDecoration(
             filled: widget.filled,
@@ -109,14 +104,14 @@ class _CustomTxtFieldState extends State<CustomTxtField> {
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                       color: passwordvisibility
-                          ? Color(kDarkRed.value)
-                          : Color(kDarkGrey.value),
+                          ? AppColors.darkRed
+                          : AppColors.darkGreyColor,
                       size: 18,
                     ),
                   )
                 : null,
             hintStyle: widget.hintStyle ??
-                appMStyle(17, Color(kDark.value), FontWeight.w400),
+                appMStyle(17, AppColors.blackColor, FontWeight.w400),
             disabledBorder: inputBorder,
             enabledBorder: widget.inputBorder ?? inputBorder,
             focusedErrorBorder: errorBorder,
@@ -127,7 +122,7 @@ class _CustomTxtFieldState extends State<CustomTxtField> {
         ReusableText(
           text:
               widget.isValidationMessage ? widget.validationMessage ?? '' : '',
-          style: appMStyle(17, Color(kBrightRed.value), FontWeight.w500),
+          style: appMStyle(17, AppColors.brightRedColor, FontWeight.w500),
         )
       ],
     );

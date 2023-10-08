@@ -1,4 +1,4 @@
-import 'package:dating_app/app/common/constants/color_style.dart';
+import 'package:dating_app/app/common/constants/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/core.dart';
@@ -22,7 +22,7 @@ class UserDisplayPicture extends StatelessWidget {
       onTap: onTap,
       child: CircleAvatar(
         radius: isLargeDp ? 80.r : 20.r,
-        backgroundColor: Color(kDarkRed.value),
+        backgroundColor: AppColors.darkRed,
         child: CircleAvatar(
           radius: isLargeDp ? 76.r : 18.r,
           backgroundImage: AssetImage(imageUrl),

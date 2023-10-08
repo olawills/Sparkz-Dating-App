@@ -39,11 +39,11 @@ class CustomButton extends StatelessWidget {
         height: height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: isLoading ? loadingColor ?? Color(kDarkGrey.value) : color,
+          color: isLoading ? loadingColor ?? AppColors.colorGrey : color,
           borderRadius: resize ? klargeBorderRadius : kmediumBorderRadius,
         ),
         child: resize
-            ? Icon(icon, size: 23.sp, color: Color(kLight.value))
+            ? Icon(icon, size: 23.sp, color: AppColors.whiteColor)
             : const Center().reusableText(
                 text ?? '',
                 style: appMStyle(
@@ -83,16 +83,18 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 1.5, color: kGrey),
+            side: const BorderSide(width: 1.5, color: AppColors.colorGrey),
             borderRadius: BorderRadius.all(Radius.circular(radius ?? 10.r)),
           ),
           padding: EdgeInsets.zero,
-          backgroundColor: kDarkRed,
+          backgroundColor: AppColors.darkRed,
         ),
         child: Center(
           child: ReusableText(
             text: text,
-            style: appMStyle(16, kLight, FontWeight.w500),
+            // style: appMStyle(16, AppColors.whiteColor, FontWeight.w500),
+            style: context.textTheme.bodyMedium!
+                .copyWith(fontWeight: FontWeight.w500),
           ),
         ),
       ),

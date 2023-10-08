@@ -1,7 +1,7 @@
 import 'package:dating_app/app/common/common.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../../app/core/core.dart';
 import 'widget/image_spinner.dart';
 
 class PageOne extends StatelessWidget {
@@ -21,7 +21,7 @@ class PageOne extends StatelessWidget {
                 text: kAppName,
                 style: appBStyle(
                   16,
-                  Color(kDark.value),
+                  AppColors.blackColor,
                   FontWeight.w500,
                 ),
               ),
@@ -33,7 +33,7 @@ class PageOne extends StatelessWidget {
                     text: firstPage,
                     style: appBStyle(
                       27,
-                      Color(kDark.value),
+                      AppColors.blackColor,
                       FontWeight.w600,
                     ),
                   ),
@@ -42,7 +42,7 @@ class PageOne extends StatelessWidget {
                     text: 'perfect',
                     style: appBStyle(
                       27,
-                      Color(kDarkRed.value),
+                      AppColors.darkRed,
                       FontWeight.w600,
                     ),
                   ),
@@ -52,7 +52,7 @@ class PageOne extends StatelessWidget {
                 text: 'partner',
                 style: appBStyle(
                   27,
-                  Color(kDark.value),
+                  AppColors.blackColor,
                   FontWeight.w600,
                 ),
               ),
@@ -67,10 +67,10 @@ class PageOne extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: ReusableText(
-                  text: pageOne,
+                  text: LocaleKeys.pageOne.tr(),
                   style: appMStyle(
                     18,
-                    Color(kDark.value),
+                    AppColors.blackColor,
                     FontWeight.w500,
                   ),
                 ),

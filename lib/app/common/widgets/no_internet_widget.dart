@@ -21,12 +21,12 @@ class NoInternetConnectionWidget extends StatelessWidget {
           10.sbh,
           ReusableText(
             text: AppString.connectionMessage,
-            style: appMStyle(24, kDarkWithOp, FontWeight.bold),
+            style: appMStyle(24, AppColors.blackWithOpacity, FontWeight.bold),
           ),
           15.sbh,
           ReusableText(
             text: AppString.socketException,
-            style: appMStyle(16, kDarkWithOp, FontWeight.w400),
+            style: appMStyle(16, AppColors.blackWithOpacity, FontWeight.w400),
           ),
           20.sbh,
           CustomElevatedButton(

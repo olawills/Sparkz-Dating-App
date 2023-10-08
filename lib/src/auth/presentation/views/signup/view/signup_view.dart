@@ -26,9 +26,10 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                   const CustomAppB(),
                   30.sbh,
                   ReusableText(
-                      text: signupText,
-                      style:
-                          appMStyle(23, Color(kDark.value), FontWeight.w700)),
+                    text: signupText,
+                    // style: appMStyle(23, Color(kDark.value), FontWeight.w700),
+                    style: context.textTheme.titleLarge!,
+                  ),
                   30.sbh,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -78,23 +79,34 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                            text: LocaleKeys.terms.tr(),
-                            style: appMStyle(
-                                15, Color(kDark.value), FontWeight.w400)),
+                          text: LocaleKeys.terms.tr(),
+                          // style: appMStyle(
+                          //     15, Color(kDark.value), FontWeight.w400),
+                          style: context.textTheme.bodySmall!.copyWith(
+                              fontSize: 15.sp, fontWeight: FontWeight.w400),
+                        ),
                         TextSpan(
                             text: LocaleKeys.condition.tr(),
-                            style: appMStyle(
-                                15, Color(kDarkRed.value), FontWeight.w400),
+                            // style: appMStyle(
+                            //     15, Color(AppColors.darkRed.value), FontWeight.w400),
+                            style: context.textTheme.bodySmall!.copyWith(
+                                color: AppColors.darkRed,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w400),
                             recognizer: TapGestureRecognizer()..onTap = () {}),
                         TextSpan(
                           text: 'and ',
-                          style: appMStyle(
-                              15, Color(kDark.value), FontWeight.w400),
+                          // style: appMStyle(
+                          //     15, Color(kDark.value), FontWeight.w400),
+                          style: context.textTheme.bodySmall!.copyWith(
+                              fontSize: 15.sp, fontWeight: FontWeight.w400),
                         ),
                         TextSpan(
                             text: LocaleKeys.privacy.tr(),
-                            style: appMStyle(
-                                15, Color(kDarkRed.value), FontWeight.w400),
+                            // style: appMStyle(
+                            //     15, Color(AppColors.darkRed.value), FontWeight.w400),
+                            style: context.textTheme.bodySmall!.copyWith(
+                                fontSize: 15.sp, fontWeight: FontWeight.w400),
                             recognizer: TapGestureRecognizer()..onTap = () {}),
                       ],
                     ),
@@ -105,10 +117,10 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                       return CustomButton(
                         width: width,
                         height: height / 15,
-                        color: Color(kDarkRed.value),
-                        textColor: Color(kLight.value),
+                        color: Color(AppColors.darkRed.value),
+                        textColor: AppColors.whiteColor,
                         isLoading: state is SignupLoading,
-                        loadingColor: Color(kLowRed.value),
+                        loadingColor: AppColors.redWithLowOpacity,
                         text: state is SignupLoading
                             ? LocaleKeys.register.tr()
                             : LocaleKeys.submit.tr(),
@@ -122,13 +134,18 @@ class _SignUpView extends StatelessView<SignUpScreen, SignupController> {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                              text: LocaleKeys.account.tr(),
-                              style: appMStyle(
-                                  15, Color(kDarkGrey.value), FontWeight.w400)),
+                            text: LocaleKeys.account.tr(),
+                            style: context.textTheme.bodySmall!.copyWith(
+                                color: AppColors.darkGreyColor,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w400),
+                          ),
                           TextSpan(
                             text: LocaleKeys.login.tr(),
-                            style: appMStyle(
-                                15, Color(kDarkRed.value), FontWeight.w400),
+                            style: context.textTheme.bodySmall!.copyWith(
+                                color: AppColors.darkRed,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w400),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () => controller.loginPage(),
                           ),

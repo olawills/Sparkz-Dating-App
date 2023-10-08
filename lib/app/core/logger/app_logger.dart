@@ -1,7 +1,13 @@
 import 'package:logger/logger.dart';
 
 abstract class Log {
-  static final Logger _logger = Logger();
+  static final Logger _logger = Logger(
+    printer: PrettyPrinter(
+      colors: true,
+      printEmojis: true,
+      printTime: true,
+    ),
+  );
 
   static void warning(
     dynamic message, [

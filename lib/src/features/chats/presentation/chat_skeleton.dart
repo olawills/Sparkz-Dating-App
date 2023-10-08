@@ -36,7 +36,7 @@ class _ChatTabBarSkeletonState extends State<ChatTabBarSkeleton> {
         height: height * 0.25,
         padding: const EdgeInsets.symmetric(horizontal: 10),
         decoration: const BoxDecoration(
-          color: kDarkRed,
+          color: AppColors.darkRed,
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(35),
           ),
@@ -49,7 +49,7 @@ class _ChatTabBarSkeletonState extends State<ChatTabBarSkeleton> {
                 Image.asset(Assets.noAccountImage),
                 Icon(
                   Icons.more_vert,
-                  color: kLight,
+                  color: AppColors.whiteColor,
                   size: 30.w,
                 )
               ],

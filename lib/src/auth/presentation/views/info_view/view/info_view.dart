@@ -12,7 +12,7 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
             if (controller.isLoading)
               LinearProgressIndicator(
                 valueColor:
-                    AlwaysStoppedAnimation<Color>(Color(kDarkRed.value)),
+                    const AlwaysStoppedAnimation<Color>(AppColors.darkRed),
                 backgroundColor: Colors.grey[200],
               ),
             controller.isLoading
@@ -23,8 +23,8 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                       30.sbh,
                       ReusableText(
                         text: 'What is your Gender',
-                        style:
-                            appMStyle(24, Color(kDark.value), FontWeight.w500),
+                        style: appMStyle(
+                            24, AppColors.blackColor, FontWeight.w500),
                       ),
                       50.sbh,
                       Row(
@@ -34,8 +34,8 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                               icon: Icons.male_rounded,
                               gender: 'Male',
                               initialColor: controller.isSelectedMale
-                                  ? Color(kDarkRed.value)
-                                  : Color(kDark.value),
+                                  ? AppColors.darkRed
+                                  : AppColors.blackColor,
                               onTap: () {
                                 controller.changeColorButton('Male');
                                 controller.saveGenderInfo('Male');
@@ -44,8 +44,8 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                             icon: Icons.female_rounded,
                             gender: 'Female',
                             initialColor: controller.isSelectedFemale
-                                ? Color(kDarkRed.value)
-                                : Color(kDark.value),
+                                ? AppColors.darkRed
+                                : AppColors.blackColor,
                             onTap: () {
                               controller.changeColorButton('Female');
                               controller.saveGenderInfo('Female');
@@ -60,8 +60,8 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                           icon: Icons.transgender_sharp,
                           gender: 'Transgender',
                           initialColor: controller.isSelectedTransgender
-                              ? Color(kDarkRed.value)
-                              : Color(kDark.value),
+                              ? AppColors.darkRed
+                              : AppColors.blackColor,
                           onTap: () {
                             controller.changeColorButton('Transgender');
                             controller.saveGenderInfo('Transgender');
@@ -72,8 +72,8 @@ class _InforView extends StatelessView<InfoScreen, InfoController> {
                       CustomButton(
                         width: width,
                         height: height / 15,
-                        color: Color(kDarkRed.value),
-                        textColor: Color(kLight.value),
+                        color: AppColors.darkRed,
+                        textColor: AppColors.whiteColor,
                         text: 'Continue',
                         onTap: () => controller.saveInfo(),
                       )

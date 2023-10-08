@@ -53,6 +53,13 @@ extension FormValidators on String {
   }
 }
 
+extension BuildOnContext on BuildContext {
+  TextTheme get textTheme => Theme.of(this).textTheme;
+
+  double get sizeWidth => MediaQuery.of(this).size.width;
+  double get sizeHeight => MediaQuery.of(this).size.height;
+}
+
 // extension WidgetAnimation on Widget {
 //   Animate fadeInFromTop({
 //     Duration? delay,

@@ -20,11 +20,11 @@ class _NotificationView
                 children: [
                   ReusableText(
                     text: 'It\'s a',
-                    style: appMStyle(30, kDark, FontWeight.w700),
+                    style: appMStyle(30, AppColors.blackColor, FontWeight.w700),
                   ),
                   ReusableText(
                     text: ' Match!',
-                    style: appMStyle(30, kDarkRed, FontWeight.w700),
+                    style: appMStyle(30, AppColors.darkRed, FontWeight.w700),
                   ),
                 ],
               ),
@@ -37,16 +37,16 @@ class _NotificationView
                   children: [
                     TextSpan(
                       text: AppString.notificationMsg,
-                      style: appMStyle(16, kDarkGrey, FontWeight.w500),
+                      style: appMStyle(16, AppColors.darkGreyColor, FontWeight.w500),
                     ),
                     TextSpan(
                       text: AppString.matchMsg,
                       style:
-                          appMStyle(18, Color(kDarkRed.value), FontWeight.w400),
+                          appMStyle(18, Color(AppColors.darkRed.value), FontWeight.w400),
                     ),
                     TextSpan(
                       text: AppString.lastMsg,
-                      style: appMStyle(16, kDarkGrey, FontWeight.w500),
+                      style: appMStyle(16, AppColors.darkGreyColor, FontWeight.w500),
                     ),
                   ],
                 ),
@@ -55,7 +55,7 @@ class _NotificationView
               CustomButton(
                 width: double.maxFinite,
                 height: 60.h,
-                color: kDarkRed,
+                color: AppColors.darkRed,
                 text: 'Start chatting now',
                 onTap: () {},
               ),
@@ -63,7 +63,7 @@ class _NotificationView
               CustomButton(
                 width: double.maxFinite,
                 height: 60.h,
-                color: kLight,
+                color: AppColors.whiteColor,
                 text: 'No, Skip',
                 onTap: () {},
               ),

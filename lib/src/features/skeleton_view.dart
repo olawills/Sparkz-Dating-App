@@ -22,8 +22,8 @@ BlocBuilder<BottomNavigationCubit, BottomNavigationState>
               return BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
                 currentIndex: state.index,
-                selectedItemColor: Color(kDarkRed.value),
-                unselectedItemColor: Color(kGrey.value).withOpacity(0.6),
+                selectedItemColor: AppColors.darkRed,
+                unselectedItemColor: AppColors.colorGrey.withOpacity(0.6),
                 elevation: 3,
                 onTap: (index) {
                   if (state.index != index) {

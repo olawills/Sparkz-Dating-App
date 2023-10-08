@@ -21,7 +21,7 @@ class StartupController extends State<StartupScreen>
       AnimationController(vsync: this, duration: const Duration(seconds: 3));
 
   _startDelay() {
-    _animationController.forward().then((_) {
+    _animationController.forward().whenComplete(() {
       final gpsBloc = serviceLocator<GpsBloc>();
       gpsBloc.askLocationPermission();
       context.goNamed(LoginScreen.name);

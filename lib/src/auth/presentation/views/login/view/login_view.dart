@@ -25,9 +25,10 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                   children: [
                     20.sbh,
                     ReusableText(
-                        text: loginText,
-                        style:
-                            appMStyle(23, Color(kDark.value), FontWeight.w700)),
+                      text: loginText,
+                      // style: appMStyle(23, Color(kDark.value), FontWeight.w700),
+                      style: context.textTheme.titleLarge!,
+                    ),
                     20.sbh,
                     CustomTxtField(
                       labelText: LocaleKeys.email.tr(),
@@ -55,15 +56,16 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                         Row(
                           children: [
                             Checkbox(
-                              fillColor: MaterialStatePropertyAll(
-                                  Color(kDarkGrey.value)),
+                              fillColor: const MaterialStatePropertyAll(
+                                  AppColors.colorGrey),
                               value: controller.isCheck,
                               onChanged: (value) => controller.toggleCheck(),
                             ),
                             ReusableText(
-                                text: 'Remember me',
-                                style: appMStyle(
-                                    15, Color(kDark.value), FontWeight.w400)),
+                              text: 'Remember me',
+                              style: context.textTheme.bodySmall!.copyWith(
+                                  fontSize: 15.sp, fontWeight: FontWeight.w400),
+                            ),
                           ],
                         ),
                         // 30.sbH,
@@ -71,8 +73,10 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                           textAlign: TextAlign.right,
                           text: TextSpan(
                               text: LocaleKeys.forgotPassword.tr(),
-                              style: appMStyle(
-                                  13, Color(kDark.value), FontWeight.w500),
+                              style: context.textTheme.bodySmall!.copyWith(
+                                  fontSize: 13.sp, fontWeight: FontWeight.w500),
+                              // style: appMStyle(
+                              //     13, Color(kDark.value), FontWeight.w500),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () => controller.forgotPassword()),
                         ),
@@ -84,8 +88,8 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                         return CustomButton(
                           width: width,
                           height: height / 15,
-                          color: Color(kDarkRed.value),
-                          textColor: Color(kLight.value),
+                          color: AppColors.darkRed,
+                          textColor: AppColors.whiteColor,
                           isLoading: state is LoginLoading,
                           text: state is LoginLoading
                               ? LocaleKeys.logging.tr()
@@ -99,16 +103,22 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          color: Color(kDarkGrey.value),
+                          color: Color(AppColors.colorGrey.value),
                           width: width * 0.28,
                           height: 2.h,
                         ),
                         ReusableText(
                             text: ' or continue with ',
-                            style: appMStyle(
-                                13, Color(kDarkGrey.value), FontWeight.w400)),
+                            style: context.textTheme.bodySmall!.copyWith(
+                              color: AppColors.colorGrey,
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w400,
+                            )
+                            // style: appMStyle(
+                            //     13, Color(AppColors.colorGrey.value), FontWeight.w400),
+                            ),
                         Container(
-                          color: Color(kDarkGrey.value),
+                          color: Color(AppColors.colorGrey.value),
                           width: width * 0.28,
                           height: 2.h,
                         ),
@@ -135,12 +145,21 @@ class _LoginView extends StatelessView<LoginScreen, LoginController> {
                           children: [
                             TextSpan(
                                 text: LocaleKeys.account.tr(),
-                                style: appMStyle(15, Color(kDarkGrey.value),
-                                    FontWeight.w400)),
+                                style: context.textTheme.bodySmall!.copyWith(
+                                    color: AppColors.colorGrey,
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w400)
+                                // style: appMStyle(
+                                //     15, Color(AppColors.colorGrey.value), FontWeight.w400),
+                                ),
                             TextSpan(
                                 text: LocaleKeys.signup.tr(),
-                                style: appMStyle(
-                                    15, Color(kDarkRed.value), FontWeight.w400),
+                                // style: appMStyle(
+                                //     15, Color(AppColors.darkRed.value), FontWeight.w400),
+                                style: context.textTheme.bodySmall!.copyWith(
+                                    color: AppColors.darkRed,
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w400),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () => controller.register()),
                           ],
