@@ -12,7 +12,7 @@ import '../../../../app/core/network/dio_exception.dart';
 class AuthRepository {
   AuthRepository({AuthRemoteDataSource? authRemoteDataSource})
       : _authRemoteDataSourceImpl =
-            authRemoteDataSource ?? AuthRemoteDataSource();
+            authRemoteDataSource ?? AuthRemoteDataSourceImpl();
   final AuthRemoteDataSource _authRemoteDataSourceImpl;
 
   ResultFuture<LoginResponse> login(LoginEvent event) async {
@@ -20,6 +20,7 @@ class AuthRepository {
       final response = await _authRemoteDataSourceImpl.loginUser(event);
       return Right(LoginResponse.fromJson(response.data));
     } catch (error) {
+      Log.debug(error);
       return Left(NetworkExceptions.getDioException(error));
     }
   }
@@ -27,8 +28,10 @@ class AuthRepository {
   ResultFuture<User> signup(SignupEvent event) async {
     try {
       final response = await _authRemoteDataSourceImpl.createUser(event);
+      Log.debug(response.data['user']);
       return Right(User.fromJson(response.data['user']));
     } catch (error) {
+      Log.debug(error);
       return Left(NetworkExceptions.getDioException(error));
     }
   }

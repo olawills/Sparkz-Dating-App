@@ -1,4 +1,3 @@
-import 'package:dating_app/app/common/common.dart';
 import 'package:dating_app/src/auth/data/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,6 +15,7 @@ class LocalDataStorage {
     return _prefs!;
   }
 
+  final String _id = 'userId';
   final String _firstName = AppTokens.firstName;
   final String _lastName = AppTokens.lastName;
   final String _email = AppTokens.email;
@@ -36,21 +36,23 @@ class LocalDataStorage {
 
   Future<void> setuserInfo(User data) async {
     final pref = await instance.prefs;
+    await pref.setString(_id, data.id);
     await pref.setString(_firstName, data.firstName);
     await pref.setString(_lastName, data.lastName);
     await pref.setString(_email, data.email);
     await pref.setString(_token, data.token);
-    await pref.setString(_profilePicture, Assets.noAccountImage);
+    await pref.setString(_profilePicture, data.profilePicture);
     await pref.setBool(_loggedIn, true);
   }
 
   Future<void> setLoginResponse(LoginResponse data) async {
     final pref = await instance.prefs;
+    await pref.setString(_id, data.user.id);
     await pref.setString(_firstName, data.user.firstName);
     await pref.setString(_lastName, data.user.lastName);
     await pref.setString(_email, data.user.email);
     await pref.setString(_token, data.token);
-    await pref.setString(_profilePicture, Assets.noAccountImage);
+    await pref.setString(_profilePicture, data.user.profilePicture);
     await pref.setBool(_loggedIn, true);
   }
 

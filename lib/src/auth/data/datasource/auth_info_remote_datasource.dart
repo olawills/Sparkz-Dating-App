@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:dating_app/app/core/network/dio_client.dart';
-import 'package:dating_app/app/core/config/injection_container.dart';
+import 'package:dating_app/app/core/network/dio_helper.dart';
 import 'package:dating_app/src/auth/presentation/bloc/user_info_bloc/interest_bloc.dart';
 import 'package:dio/dio.dart';
 
@@ -10,8 +9,6 @@ abstract class AuthInfoRemoteDataSource {
 }
 
 class AuthInfoRemoteDataSourceImpl extends AuthInfoRemoteDataSource {
-  final DioClient dioClient = serviceLocator<DioClient>();
-
   @override
   Future<Response> createUserProfile(CreateUserProfile event) async {
     final userProfile = {
@@ -21,8 +18,8 @@ class AuthInfoRemoteDataSourceImpl extends AuthInfoRemoteDataSource {
       'about': event.about,
     };
     final data = jsonEncode(userProfile);
-    return await dioClient.dio.post(
-      '/user/userProfile',
+    return await DioHelper.postData(
+      path: '/user/userProfile',
       data: data,
     );
   }

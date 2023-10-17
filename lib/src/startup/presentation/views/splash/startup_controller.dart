@@ -22,8 +22,6 @@ class StartupController extends State<StartupScreen>
 
   _startDelay() {
     _animationController.forward().whenComplete(() {
-      final gpsBloc = serviceLocator<GpsBloc>();
-      gpsBloc.askLocationPermission();
       context.goNamed(LoginScreen.name);
     });
   }
@@ -31,6 +29,8 @@ class StartupController extends State<StartupScreen>
   @override
   void initState() {
     super.initState();
+    final gpsBloc = serviceLocator<GpsBloc>();
+    gpsBloc.askLocationPermission();
     _startDelay();
   }
 

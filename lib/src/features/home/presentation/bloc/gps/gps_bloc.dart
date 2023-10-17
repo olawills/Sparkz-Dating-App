@@ -12,8 +12,7 @@ part 'gps_state.dart';
 class GpsBloc extends Bloc<GpsEvent, GpsState> {
   late StreamSubscription gpsSubsciption;
   GpsBloc()
-      : super(const GpsState(
-            isGpsEnabled: false, isGpsPermissionGranted: false)) {
+      : super(GpsState(isGpsEnabled: false, isGpsPermissionGranted: false)) {
     on<GpsEvent>((event, emit) {
       emit(GpsState(
         isGpsEnabled: event.isEnabled,

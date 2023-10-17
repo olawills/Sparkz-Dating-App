@@ -13,17 +13,29 @@ part 'users_event.dart';
 part 'users_state.dart';
 
 class FetchUserBloc extends Bloc<FetchUserEvent, FetchUserState> {
-  FetchUserBloc() : super(const FetchUserState.loading()) {
+  FetchUserBloc() : super(const FetchUserState.fetchUsersloading()) {
     on<FetchUserEvent>((event, emit) => _getAllUsers(event, emit));
+    on<SendUserLocationEvent>((event, emit) => _sendLocation(event, emit));
   }
 
   _getAllUsers(FetchUserEvent event, emit) async {
-    emit(const FetchUserState.loading());
+    emit(const FetchUserState.fetchUsersloading());
     Log.debug("Loading");
     final response = await serviceLocator<UserRepository>().getAllUsers();
-    response.fold(
-      (failure) => emit(FetchUserState.error(error: failure)),
-      (success) => emit(FetchUserState.success(users: success)),
-    );
+    response
+        .fold((failure) => emit(FetchUserState.fetchUsersError(error: failure)),
+            (success) {
+      FetchUserState.fetchUsers(users: success);
+      emit(FetchUserState.fetchUsers(users: success));
+    });
+  }
+
+  _sendLocation(SendUserLocationEvent event, emit) async {
+    final response = await serviceLocator<UserRepository>().sendLocation(event);
+    response.fold((failure) => emit(const FetchUserState.sendLocationError()),
+        (success) {
+      const FetchUserState.sendLocation();
+      emit(const FetchUserState.sendLocation());
+    });
   }
 }

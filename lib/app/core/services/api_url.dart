@@ -8,6 +8,8 @@ class ApiConfig {
 
   ApiConfig._internal();
   static const String baseUrl = 'https://spark-dating-api.onrender.com/api/v1';
+  static const String apikey = 'AIzaSyC6FjHR9e9VmVWl28hQRBYauAIPSNGtLXw';
+  static String locationUrl(double latitude, double longitude) => 'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$apikey';
 
   static const Duration receiveTimeout = Duration(milliseconds: 20000);
   static const Duration connectionTimeout = Duration(milliseconds: 20000);

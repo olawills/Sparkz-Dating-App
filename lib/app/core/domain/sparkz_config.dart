@@ -3,6 +3,8 @@ import 'package:dating_app/app/core/core.dart';
 import 'package:dating_app/app/core/routes/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../common/themes/app_theme.dart';
+
 class SparkzConfig extends StatelessWidget {
   const SparkzConfig({super.key});
 
@@ -26,6 +28,7 @@ class SparkzConfig extends StatelessWidget {
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             title: kAppName,
+            theme: AppThemes().theme,
             routerConfig: AppRouter.routerConfig,
             locale: context.locale,
             localizationsDelegates: context.localizationDelegates,

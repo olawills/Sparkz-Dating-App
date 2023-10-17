@@ -4,6 +4,7 @@ import 'package:dating_app/src/auth/presentation/bloc/auth_bloc/auth_bloc.dart';
 
 import '../../../src/auth/presentation/bloc/user_info_bloc/interest_bloc.dart';
 import '../../../src/features/home/presentation/bloc/gps/gps_bloc.dart';
+import '../../../src/features/home/presentation/bloc/location/location_bloc.dart';
 import '../../../src/startup/presentation/bloc/onboarding_bloc.dart';
 
 class AppBlocProviders {
@@ -23,7 +24,9 @@ class AppBlocProviders {
             create: (context) => serviceLocator<InterestBloc>()),
 
         BlocProvider<GpsBloc>(create: (context) => serviceLocator<GpsBloc>()),
-
+        
+        BlocProvider<LocationBloc>(
+            create: (context) => serviceLocator<LocationBloc>()),
         // BottomNavBar Cubit
         BlocProvider<BottomNavigationCubit>(
             create: (context) => serviceLocator<BottomNavigationCubit>()),

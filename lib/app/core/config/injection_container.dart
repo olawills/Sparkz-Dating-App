@@ -14,8 +14,9 @@ import '../../../src/features/cubit/internet_connection/internet_connection_cubi
 import '../../../src/features/home/data/datasources/user_remote_data_source.dart';
 import '../../../src/features/home/data/repository/user_repository.dart';
 import '../../../src/features/home/presentation/bloc/gps/gps_bloc.dart';
+import '../../../src/features/home/presentation/bloc/location/location_bloc.dart';
 import '../../../src/features/home/presentation/bloc/users/users_bloc.dart';
-import '../network/dio_client.dart';
+import '../network/dio_helper.dart';
 
 GetIt serviceLocator = GetIt.instance;
 
@@ -29,6 +30,7 @@ class ServiceLocator {
     serviceLocator.registerFactory<FetchUserBloc>(() => FetchUserBloc());
     serviceLocator.registerFactory<InterestBloc>(() => InterestBloc());
     serviceLocator.registerFactory<GpsBloc>(() => GpsBloc());
+    serviceLocator.registerFactory<LocationBloc>(() => LocationBloc());
 
     // Cubit
     serviceLocator
@@ -37,10 +39,10 @@ class ServiceLocator {
         () => InternetConnectionCubit(connectivity: serviceLocator()));
 
     // Data Source
-    serviceLocator
-        .registerFactory<AuthRemoteDataSource>(() => AuthRemoteDataSource());
-    serviceLocator
-        .registerFactory<UserRemoteDataSource>(() => UserRemoteDataSource());
+    serviceLocator.registerFactory<AuthRemoteDataSource>(
+        () => AuthRemoteDataSourceImpl());
+    serviceLocator.registerFactory<UserRemoteDataSource>(
+        () => UserRemoteDataSourceImpl());
     serviceLocator.registerFactory<AuthInfoRemoteDataSource>(
         () => AuthInfoRemoteDataSourceImpl());
 
@@ -51,8 +53,7 @@ class ServiceLocator {
     serviceLocator.registerFactory<UserRepository>(() => UserRepository());
 
     // Dio
-    serviceLocator.registerLazySingleton<DioClient>(
-        () => DioClient(serviceLocator<Dio>()));
+    serviceLocator.registerLazySingleton<DioHelper>(() => DioHelper());
     serviceLocator.registerLazySingleton<Dio>(() => Dio());
     serviceLocator.registerLazySingleton<Connectivity>(() => Connectivity());
   }

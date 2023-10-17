@@ -18,33 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FetchUserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchAllUsers,
+    required TResult Function() fetchNearbyUsers,
+    required TResult Function(String id, String location) sendUserLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchAllUsers,
+    TResult? Function()? fetchNearbyUsers,
+    TResult? Function(String id, String location)? sendUserLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchAllUsers,
+    TResult Function()? fetchNearbyUsers,
+    TResult Function(String id, String location)? sendUserLocation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchAllUsersEvent value) fetchAllUsers,
+    required TResult Function(_FetchNearbyUserEvent value) fetchNearbyUsers,
+    required TResult Function(SendUserLocationEvent value) sendUserLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchAllUsersEvent value)? fetchAllUsers,
+    TResult? Function(_FetchNearbyUserEvent value)? fetchNearbyUsers,
+    TResult? Function(SendUserLocationEvent value)? sendUserLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchAllUsersEvent value)? fetchAllUsers,
+    TResult Function(_FetchNearbyUserEvent value)? fetchNearbyUsers,
+    TResult Function(SendUserLocationEvent value)? sendUserLocation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,43 +75,45 @@ class _$FetchUserEventCopyWithImpl<$Res, $Val extends FetchUserEvent>
 }
 
 /// @nodoc
-abstract class _$$FetchAllUsersEventImplCopyWith<$Res> {
-  factory _$$FetchAllUsersEventImplCopyWith(_$FetchAllUsersEventImpl value,
-          $Res Function(_$FetchAllUsersEventImpl) then) =
-      __$$FetchAllUsersEventImplCopyWithImpl<$Res>;
+abstract class _$$FetchNearbyUserEventImplCopyWith<$Res> {
+  factory _$$FetchNearbyUserEventImplCopyWith(_$FetchNearbyUserEventImpl value,
+          $Res Function(_$FetchNearbyUserEventImpl) then) =
+      __$$FetchNearbyUserEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FetchAllUsersEventImplCopyWithImpl<$Res>
-    extends _$FetchUserEventCopyWithImpl<$Res, _$FetchAllUsersEventImpl>
-    implements _$$FetchAllUsersEventImplCopyWith<$Res> {
-  __$$FetchAllUsersEventImplCopyWithImpl(_$FetchAllUsersEventImpl _value,
-      $Res Function(_$FetchAllUsersEventImpl) _then)
+class __$$FetchNearbyUserEventImplCopyWithImpl<$Res>
+    extends _$FetchUserEventCopyWithImpl<$Res, _$FetchNearbyUserEventImpl>
+    implements _$$FetchNearbyUserEventImplCopyWith<$Res> {
+  __$$FetchNearbyUserEventImplCopyWithImpl(_$FetchNearbyUserEventImpl _value,
+      $Res Function(_$FetchNearbyUserEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$FetchAllUsersEventImpl
+class _$FetchNearbyUserEventImpl
     with DiagnosticableTreeMixin
-    implements _FetchAllUsersEvent {
-  const _$FetchAllUsersEventImpl();
+    implements _FetchNearbyUserEvent {
+  const _$FetchNearbyUserEventImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FetchUserEvent.fetchAllUsers()';
+    return 'FetchUserEvent.fetchNearbyUsers()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'FetchUserEvent.fetchAllUsers'));
+    properties
+        .add(DiagnosticsProperty('type', 'FetchUserEvent.fetchNearbyUsers'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FetchAllUsersEventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$FetchNearbyUserEventImpl);
   }
 
   @override
@@ -114,27 +122,30 @@ class _$FetchAllUsersEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchAllUsers,
+    required TResult Function() fetchNearbyUsers,
+    required TResult Function(String id, String location) sendUserLocation,
   }) {
-    return fetchAllUsers();
+    return fetchNearbyUsers();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchAllUsers,
+    TResult? Function()? fetchNearbyUsers,
+    TResult? Function(String id, String location)? sendUserLocation,
   }) {
-    return fetchAllUsers?.call();
+    return fetchNearbyUsers?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchAllUsers,
+    TResult Function()? fetchNearbyUsers,
+    TResult Function(String id, String location)? sendUserLocation,
     required TResult orElse(),
   }) {
-    if (fetchAllUsers != null) {
-      return fetchAllUsers();
+    if (fetchNearbyUsers != null) {
+      return fetchNearbyUsers();
     }
     return orElse();
   }
@@ -142,85 +153,252 @@ class _$FetchAllUsersEventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchAllUsersEvent value) fetchAllUsers,
+    required TResult Function(_FetchNearbyUserEvent value) fetchNearbyUsers,
+    required TResult Function(SendUserLocationEvent value) sendUserLocation,
   }) {
-    return fetchAllUsers(this);
+    return fetchNearbyUsers(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchAllUsersEvent value)? fetchAllUsers,
+    TResult? Function(_FetchNearbyUserEvent value)? fetchNearbyUsers,
+    TResult? Function(SendUserLocationEvent value)? sendUserLocation,
   }) {
-    return fetchAllUsers?.call(this);
+    return fetchNearbyUsers?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchAllUsersEvent value)? fetchAllUsers,
+    TResult Function(_FetchNearbyUserEvent value)? fetchNearbyUsers,
+    TResult Function(SendUserLocationEvent value)? sendUserLocation,
     required TResult orElse(),
   }) {
-    if (fetchAllUsers != null) {
-      return fetchAllUsers(this);
+    if (fetchNearbyUsers != null) {
+      return fetchNearbyUsers(this);
     }
     return orElse();
   }
 }
 
-abstract class _FetchAllUsersEvent implements FetchUserEvent {
-  const factory _FetchAllUsersEvent() = _$FetchAllUsersEventImpl;
+abstract class _FetchNearbyUserEvent implements FetchUserEvent {
+  const factory _FetchNearbyUserEvent() = _$FetchNearbyUserEventImpl;
+}
+
+/// @nodoc
+abstract class _$$SendUserLocationEventImplCopyWith<$Res> {
+  factory _$$SendUserLocationEventImplCopyWith(
+          _$SendUserLocationEventImpl value,
+          $Res Function(_$SendUserLocationEventImpl) then) =
+      __$$SendUserLocationEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, String location});
+}
+
+/// @nodoc
+class __$$SendUserLocationEventImplCopyWithImpl<$Res>
+    extends _$FetchUserEventCopyWithImpl<$Res, _$SendUserLocationEventImpl>
+    implements _$$SendUserLocationEventImplCopyWith<$Res> {
+  __$$SendUserLocationEventImplCopyWithImpl(_$SendUserLocationEventImpl _value,
+      $Res Function(_$SendUserLocationEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? location = null,
+  }) {
+    return _then(_$SendUserLocationEventImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SendUserLocationEventImpl
+    with DiagnosticableTreeMixin
+    implements SendUserLocationEvent {
+  const _$SendUserLocationEventImpl({required this.id, required this.location});
+
+  @override
+  final String id;
+  @override
+  final String location;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'FetchUserEvent.sendUserLocation(id: $id, location: $location)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FetchUserEvent.sendUserLocation'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('location', location));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendUserLocationEventImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.location, location) ||
+                other.location == location));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, location);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendUserLocationEventImplCopyWith<_$SendUserLocationEventImpl>
+      get copyWith => __$$SendUserLocationEventImplCopyWithImpl<
+          _$SendUserLocationEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchNearbyUsers,
+    required TResult Function(String id, String location) sendUserLocation,
+  }) {
+    return sendUserLocation(id, location);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchNearbyUsers,
+    TResult? Function(String id, String location)? sendUserLocation,
+  }) {
+    return sendUserLocation?.call(id, location);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchNearbyUsers,
+    TResult Function(String id, String location)? sendUserLocation,
+    required TResult orElse(),
+  }) {
+    if (sendUserLocation != null) {
+      return sendUserLocation(id, location);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchNearbyUserEvent value) fetchNearbyUsers,
+    required TResult Function(SendUserLocationEvent value) sendUserLocation,
+  }) {
+    return sendUserLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchNearbyUserEvent value)? fetchNearbyUsers,
+    TResult? Function(SendUserLocationEvent value)? sendUserLocation,
+  }) {
+    return sendUserLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchNearbyUserEvent value)? fetchNearbyUsers,
+    TResult Function(SendUserLocationEvent value)? sendUserLocation,
+    required TResult orElse(),
+  }) {
+    if (sendUserLocation != null) {
+      return sendUserLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SendUserLocationEvent implements FetchUserEvent {
+  const factory SendUserLocationEvent(
+      {required final String id,
+      required final String location}) = _$SendUserLocationEventImpl;
+
+  String get id;
+  String get location;
+  @JsonKey(ignore: true)
+  _$$SendUserLocationEventImplCopyWith<_$SendUserLocationEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$FetchUserState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users) success,
-    required TResult Function(NetworkExceptions error) error,
+    required TResult Function() fetchUsersloading,
+    required TResult Function(List<User> users) fetchUsers,
+    required TResult Function(NetworkExceptions error) fetchUsersError,
+    required TResult Function() sendLocation,
+    required TResult Function() sendLocationError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users)? success,
-    TResult? Function(NetworkExceptions error)? error,
+    TResult? Function()? fetchUsersloading,
+    TResult? Function(List<User> users)? fetchUsers,
+    TResult? Function(NetworkExceptions error)? fetchUsersError,
+    TResult? Function()? sendLocation,
+    TResult? Function()? sendLocationError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users)? success,
-    TResult Function(NetworkExceptions error)? error,
+    TResult Function()? fetchUsersloading,
+    TResult Function(List<User> users)? fetchUsers,
+    TResult Function(NetworkExceptions error)? fetchUsersError,
+    TResult Function()? sendLocation,
+    TResult Function()? sendLocationError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UserInitialState value) initial,
-    required TResult Function(FetchAllUserLoading value) loading,
-    required TResult Function(FetchAllUserSuccess value) success,
-    required TResult Function(FetchAllUserError value) error,
+    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(_FetchAllUserError value) fetchUsersError,
+    required TResult Function(_SendUserLocationSuccess value) sendLocation,
+    required TResult Function(_SendUserLocationError value) sendLocationError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UserInitialState value)? initial,
-    TResult? Function(FetchAllUserLoading value)? loading,
-    TResult? Function(FetchAllUserSuccess value)? success,
-    TResult? Function(FetchAllUserError value)? error,
+    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(_FetchAllUserError value)? fetchUsersError,
+    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(_SendUserLocationError value)? sendLocationError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UserInitialState value)? initial,
-    TResult Function(FetchAllUserLoading value)? loading,
-    TResult Function(FetchAllUserSuccess value)? success,
-    TResult Function(FetchAllUserError value)? error,
+    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(_FetchAllUserError value)? fetchUsersError,
+    TResult Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult Function(_SendUserLocationError value)? sendLocationError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -245,128 +423,6 @@ class _$FetchUserStateCopyWithImpl<$Res, $Val extends FetchUserState>
 }
 
 /// @nodoc
-abstract class _$$UserInitialStateImplCopyWith<$Res> {
-  factory _$$UserInitialStateImplCopyWith(_$UserInitialStateImpl value,
-          $Res Function(_$UserInitialStateImpl) then) =
-      __$$UserInitialStateImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$UserInitialStateImplCopyWithImpl<$Res>
-    extends _$FetchUserStateCopyWithImpl<$Res, _$UserInitialStateImpl>
-    implements _$$UserInitialStateImplCopyWith<$Res> {
-  __$$UserInitialStateImplCopyWithImpl(_$UserInitialStateImpl _value,
-      $Res Function(_$UserInitialStateImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$UserInitialStateImpl
-    with DiagnosticableTreeMixin
-    implements UserInitialState {
-  const _$UserInitialStateImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FetchUserState.initial()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'FetchUserState.initial'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserInitialStateImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users) success,
-    required TResult Function(NetworkExceptions error) error,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users)? success,
-    TResult? Function(NetworkExceptions error)? error,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users)? success,
-    TResult Function(NetworkExceptions error)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UserInitialState value) initial,
-    required TResult Function(FetchAllUserLoading value) loading,
-    required TResult Function(FetchAllUserSuccess value) success,
-    required TResult Function(FetchAllUserError value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UserInitialState value)? initial,
-    TResult? Function(FetchAllUserLoading value)? loading,
-    TResult? Function(FetchAllUserSuccess value)? success,
-    TResult? Function(FetchAllUserError value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UserInitialState value)? initial,
-    TResult Function(FetchAllUserLoading value)? loading,
-    TResult Function(FetchAllUserSuccess value)? success,
-    TResult Function(FetchAllUserError value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UserInitialState implements FetchUserState {
-  const factory UserInitialState() = _$UserInitialStateImpl;
-}
-
-/// @nodoc
 abstract class _$$FetchAllUserLoadingImplCopyWith<$Res> {
   factory _$$FetchAllUserLoadingImplCopyWith(_$FetchAllUserLoadingImpl value,
           $Res Function(_$FetchAllUserLoadingImpl) then) =
@@ -386,18 +442,19 @@ class __$$FetchAllUserLoadingImplCopyWithImpl<$Res>
 
 class _$FetchAllUserLoadingImpl
     with DiagnosticableTreeMixin
-    implements FetchAllUserLoading {
+    implements _FetchAllUserLoading {
   const _$FetchAllUserLoadingImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FetchUserState.loading()';
+    return 'FetchUserState.fetchUsersloading()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'FetchUserState.loading'));
+    properties
+        .add(DiagnosticsProperty('type', 'FetchUserState.fetchUsersloading'));
   }
 
   @override
@@ -413,36 +470,39 @@ class _$FetchAllUserLoadingImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users) success,
-    required TResult Function(NetworkExceptions error) error,
+    required TResult Function() fetchUsersloading,
+    required TResult Function(List<User> users) fetchUsers,
+    required TResult Function(NetworkExceptions error) fetchUsersError,
+    required TResult Function() sendLocation,
+    required TResult Function() sendLocationError,
   }) {
-    return loading();
+    return fetchUsersloading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users)? success,
-    TResult? Function(NetworkExceptions error)? error,
+    TResult? Function()? fetchUsersloading,
+    TResult? Function(List<User> users)? fetchUsers,
+    TResult? Function(NetworkExceptions error)? fetchUsersError,
+    TResult? Function()? sendLocation,
+    TResult? Function()? sendLocationError,
   }) {
-    return loading?.call();
+    return fetchUsersloading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users)? success,
-    TResult Function(NetworkExceptions error)? error,
+    TResult Function()? fetchUsersloading,
+    TResult Function(List<User> users)? fetchUsers,
+    TResult Function(NetworkExceptions error)? fetchUsersError,
+    TResult Function()? sendLocation,
+    TResult Function()? sendLocationError,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (fetchUsersloading != null) {
+      return fetchUsersloading();
     }
     return orElse();
   }
@@ -450,43 +510,46 @@ class _$FetchAllUserLoadingImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UserInitialState value) initial,
-    required TResult Function(FetchAllUserLoading value) loading,
-    required TResult Function(FetchAllUserSuccess value) success,
-    required TResult Function(FetchAllUserError value) error,
+    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(_FetchAllUserError value) fetchUsersError,
+    required TResult Function(_SendUserLocationSuccess value) sendLocation,
+    required TResult Function(_SendUserLocationError value) sendLocationError,
   }) {
-    return loading(this);
+    return fetchUsersloading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UserInitialState value)? initial,
-    TResult? Function(FetchAllUserLoading value)? loading,
-    TResult? Function(FetchAllUserSuccess value)? success,
-    TResult? Function(FetchAllUserError value)? error,
+    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(_FetchAllUserError value)? fetchUsersError,
+    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(_SendUserLocationError value)? sendLocationError,
   }) {
-    return loading?.call(this);
+    return fetchUsersloading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UserInitialState value)? initial,
-    TResult Function(FetchAllUserLoading value)? loading,
-    TResult Function(FetchAllUserSuccess value)? success,
-    TResult Function(FetchAllUserError value)? error,
+    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(_FetchAllUserError value)? fetchUsersError,
+    TResult Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult Function(_SendUserLocationError value)? sendLocationError,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (fetchUsersloading != null) {
+      return fetchUsersloading(this);
     }
     return orElse();
   }
 }
 
-abstract class FetchAllUserLoading implements FetchUserState {
-  const factory FetchAllUserLoading() = _$FetchAllUserLoadingImpl;
+abstract class _FetchAllUserLoading implements FetchUserState {
+  const factory _FetchAllUserLoading() = _$FetchAllUserLoadingImpl;
 }
 
 /// @nodoc
@@ -524,7 +587,7 @@ class __$$FetchAllUserSuccessImplCopyWithImpl<$Res>
 
 class _$FetchAllUserSuccessImpl
     with DiagnosticableTreeMixin
-    implements FetchAllUserSuccess {
+    implements _FetchAllUserSuccess {
   const _$FetchAllUserSuccessImpl({required final List<User> users})
       : _users = users;
 
@@ -538,14 +601,14 @@ class _$FetchAllUserSuccessImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FetchUserState.success(users: $users)';
+    return 'FetchUserState.fetchUsers(users: $users)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'FetchUserState.success'))
+      ..add(DiagnosticsProperty('type', 'FetchUserState.fetchUsers'))
       ..add(DiagnosticsProperty('users', users));
   }
 
@@ -571,36 +634,39 @@ class _$FetchAllUserSuccessImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users) success,
-    required TResult Function(NetworkExceptions error) error,
+    required TResult Function() fetchUsersloading,
+    required TResult Function(List<User> users) fetchUsers,
+    required TResult Function(NetworkExceptions error) fetchUsersError,
+    required TResult Function() sendLocation,
+    required TResult Function() sendLocationError,
   }) {
-    return success(users);
+    return fetchUsers(users);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users)? success,
-    TResult? Function(NetworkExceptions error)? error,
+    TResult? Function()? fetchUsersloading,
+    TResult? Function(List<User> users)? fetchUsers,
+    TResult? Function(NetworkExceptions error)? fetchUsersError,
+    TResult? Function()? sendLocation,
+    TResult? Function()? sendLocationError,
   }) {
-    return success?.call(users);
+    return fetchUsers?.call(users);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users)? success,
-    TResult Function(NetworkExceptions error)? error,
+    TResult Function()? fetchUsersloading,
+    TResult Function(List<User> users)? fetchUsers,
+    TResult Function(NetworkExceptions error)? fetchUsersError,
+    TResult Function()? sendLocation,
+    TResult Function()? sendLocationError,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(users);
+    if (fetchUsers != null) {
+      return fetchUsers(users);
     }
     return orElse();
   }
@@ -608,43 +674,46 @@ class _$FetchAllUserSuccessImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UserInitialState value) initial,
-    required TResult Function(FetchAllUserLoading value) loading,
-    required TResult Function(FetchAllUserSuccess value) success,
-    required TResult Function(FetchAllUserError value) error,
+    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(_FetchAllUserError value) fetchUsersError,
+    required TResult Function(_SendUserLocationSuccess value) sendLocation,
+    required TResult Function(_SendUserLocationError value) sendLocationError,
   }) {
-    return success(this);
+    return fetchUsers(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UserInitialState value)? initial,
-    TResult? Function(FetchAllUserLoading value)? loading,
-    TResult? Function(FetchAllUserSuccess value)? success,
-    TResult? Function(FetchAllUserError value)? error,
+    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(_FetchAllUserError value)? fetchUsersError,
+    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(_SendUserLocationError value)? sendLocationError,
   }) {
-    return success?.call(this);
+    return fetchUsers?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UserInitialState value)? initial,
-    TResult Function(FetchAllUserLoading value)? loading,
-    TResult Function(FetchAllUserSuccess value)? success,
-    TResult Function(FetchAllUserError value)? error,
+    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(_FetchAllUserError value)? fetchUsersError,
+    TResult Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult Function(_SendUserLocationError value)? sendLocationError,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(this);
+    if (fetchUsers != null) {
+      return fetchUsers(this);
     }
     return orElse();
   }
 }
 
-abstract class FetchAllUserSuccess implements FetchUserState {
-  const factory FetchAllUserSuccess({required final List<User> users}) =
+abstract class _FetchAllUserSuccess implements FetchUserState {
+  const factory _FetchAllUserSuccess({required final List<User> users}) =
       _$FetchAllUserSuccessImpl;
 
   List<User> get users;
@@ -698,7 +767,7 @@ class __$$FetchAllUserErrorImplCopyWithImpl<$Res>
 
 class _$FetchAllUserErrorImpl
     with DiagnosticableTreeMixin
-    implements FetchAllUserError {
+    implements _FetchAllUserError {
   const _$FetchAllUserErrorImpl({required this.error});
 
   @override
@@ -706,14 +775,14 @@ class _$FetchAllUserErrorImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FetchUserState.error(error: $error)';
+    return 'FetchUserState.fetchUsersError(error: $error)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'FetchUserState.error'))
+      ..add(DiagnosticsProperty('type', 'FetchUserState.fetchUsersError'))
       ..add(DiagnosticsProperty('error', error));
   }
 
@@ -738,36 +807,39 @@ class _$FetchAllUserErrorImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users) success,
-    required TResult Function(NetworkExceptions error) error,
+    required TResult Function() fetchUsersloading,
+    required TResult Function(List<User> users) fetchUsers,
+    required TResult Function(NetworkExceptions error) fetchUsersError,
+    required TResult Function() sendLocation,
+    required TResult Function() sendLocationError,
   }) {
-    return error(this.error);
+    return fetchUsersError(error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users)? success,
-    TResult? Function(NetworkExceptions error)? error,
+    TResult? Function()? fetchUsersloading,
+    TResult? Function(List<User> users)? fetchUsers,
+    TResult? Function(NetworkExceptions error)? fetchUsersError,
+    TResult? Function()? sendLocation,
+    TResult? Function()? sendLocationError,
   }) {
-    return error?.call(this.error);
+    return fetchUsersError?.call(error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users)? success,
-    TResult Function(NetworkExceptions error)? error,
+    TResult Function()? fetchUsersloading,
+    TResult Function(List<User> users)? fetchUsers,
+    TResult Function(NetworkExceptions error)? fetchUsersError,
+    TResult Function()? sendLocation,
+    TResult Function()? sendLocationError,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this.error);
+    if (fetchUsersError != null) {
+      return fetchUsersError(error);
     }
     return orElse();
   }
@@ -775,47 +847,312 @@ class _$FetchAllUserErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UserInitialState value) initial,
-    required TResult Function(FetchAllUserLoading value) loading,
-    required TResult Function(FetchAllUserSuccess value) success,
-    required TResult Function(FetchAllUserError value) error,
+    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(_FetchAllUserError value) fetchUsersError,
+    required TResult Function(_SendUserLocationSuccess value) sendLocation,
+    required TResult Function(_SendUserLocationError value) sendLocationError,
   }) {
-    return error(this);
+    return fetchUsersError(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UserInitialState value)? initial,
-    TResult? Function(FetchAllUserLoading value)? loading,
-    TResult? Function(FetchAllUserSuccess value)? success,
-    TResult? Function(FetchAllUserError value)? error,
+    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(_FetchAllUserError value)? fetchUsersError,
+    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(_SendUserLocationError value)? sendLocationError,
   }) {
-    return error?.call(this);
+    return fetchUsersError?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UserInitialState value)? initial,
-    TResult Function(FetchAllUserLoading value)? loading,
-    TResult Function(FetchAllUserSuccess value)? success,
-    TResult Function(FetchAllUserError value)? error,
+    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(_FetchAllUserError value)? fetchUsersError,
+    TResult Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult Function(_SendUserLocationError value)? sendLocationError,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this);
+    if (fetchUsersError != null) {
+      return fetchUsersError(this);
     }
     return orElse();
   }
 }
 
-abstract class FetchAllUserError implements FetchUserState {
-  const factory FetchAllUserError({required final NetworkExceptions error}) =
+abstract class _FetchAllUserError implements FetchUserState {
+  const factory _FetchAllUserError({required final NetworkExceptions error}) =
       _$FetchAllUserErrorImpl;
 
   NetworkExceptions get error;
   @JsonKey(ignore: true)
   _$$FetchAllUserErrorImplCopyWith<_$FetchAllUserErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SendUserLocationSuccessImplCopyWith<$Res> {
+  factory _$$SendUserLocationSuccessImplCopyWith(
+          _$SendUserLocationSuccessImpl value,
+          $Res Function(_$SendUserLocationSuccessImpl) then) =
+      __$$SendUserLocationSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SendUserLocationSuccessImplCopyWithImpl<$Res>
+    extends _$FetchUserStateCopyWithImpl<$Res, _$SendUserLocationSuccessImpl>
+    implements _$$SendUserLocationSuccessImplCopyWith<$Res> {
+  __$$SendUserLocationSuccessImplCopyWithImpl(
+      _$SendUserLocationSuccessImpl _value,
+      $Res Function(_$SendUserLocationSuccessImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SendUserLocationSuccessImpl
+    with DiagnosticableTreeMixin
+    implements _SendUserLocationSuccess {
+  const _$SendUserLocationSuccessImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'FetchUserState.sendLocation()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'FetchUserState.sendLocation'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendUserLocationSuccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchUsersloading,
+    required TResult Function(List<User> users) fetchUsers,
+    required TResult Function(NetworkExceptions error) fetchUsersError,
+    required TResult Function() sendLocation,
+    required TResult Function() sendLocationError,
+  }) {
+    return sendLocation();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchUsersloading,
+    TResult? Function(List<User> users)? fetchUsers,
+    TResult? Function(NetworkExceptions error)? fetchUsersError,
+    TResult? Function()? sendLocation,
+    TResult? Function()? sendLocationError,
+  }) {
+    return sendLocation?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchUsersloading,
+    TResult Function(List<User> users)? fetchUsers,
+    TResult Function(NetworkExceptions error)? fetchUsersError,
+    TResult Function()? sendLocation,
+    TResult Function()? sendLocationError,
+    required TResult orElse(),
+  }) {
+    if (sendLocation != null) {
+      return sendLocation();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(_FetchAllUserError value) fetchUsersError,
+    required TResult Function(_SendUserLocationSuccess value) sendLocation,
+    required TResult Function(_SendUserLocationError value) sendLocationError,
+  }) {
+    return sendLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(_FetchAllUserError value)? fetchUsersError,
+    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(_SendUserLocationError value)? sendLocationError,
+  }) {
+    return sendLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(_FetchAllUserError value)? fetchUsersError,
+    TResult Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult Function(_SendUserLocationError value)? sendLocationError,
+    required TResult orElse(),
+  }) {
+    if (sendLocation != null) {
+      return sendLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendUserLocationSuccess implements FetchUserState {
+  const factory _SendUserLocationSuccess() = _$SendUserLocationSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$SendUserLocationErrorImplCopyWith<$Res> {
+  factory _$$SendUserLocationErrorImplCopyWith(
+          _$SendUserLocationErrorImpl value,
+          $Res Function(_$SendUserLocationErrorImpl) then) =
+      __$$SendUserLocationErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SendUserLocationErrorImplCopyWithImpl<$Res>
+    extends _$FetchUserStateCopyWithImpl<$Res, _$SendUserLocationErrorImpl>
+    implements _$$SendUserLocationErrorImplCopyWith<$Res> {
+  __$$SendUserLocationErrorImplCopyWithImpl(_$SendUserLocationErrorImpl _value,
+      $Res Function(_$SendUserLocationErrorImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SendUserLocationErrorImpl
+    with DiagnosticableTreeMixin
+    implements _SendUserLocationError {
+  const _$SendUserLocationErrorImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'FetchUserState.sendLocationError()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'FetchUserState.sendLocationError'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendUserLocationErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchUsersloading,
+    required TResult Function(List<User> users) fetchUsers,
+    required TResult Function(NetworkExceptions error) fetchUsersError,
+    required TResult Function() sendLocation,
+    required TResult Function() sendLocationError,
+  }) {
+    return sendLocationError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchUsersloading,
+    TResult? Function(List<User> users)? fetchUsers,
+    TResult? Function(NetworkExceptions error)? fetchUsersError,
+    TResult? Function()? sendLocation,
+    TResult? Function()? sendLocationError,
+  }) {
+    return sendLocationError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchUsersloading,
+    TResult Function(List<User> users)? fetchUsers,
+    TResult Function(NetworkExceptions error)? fetchUsersError,
+    TResult Function()? sendLocation,
+    TResult Function()? sendLocationError,
+    required TResult orElse(),
+  }) {
+    if (sendLocationError != null) {
+      return sendLocationError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(_FetchAllUserError value) fetchUsersError,
+    required TResult Function(_SendUserLocationSuccess value) sendLocation,
+    required TResult Function(_SendUserLocationError value) sendLocationError,
+  }) {
+    return sendLocationError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(_FetchAllUserError value)? fetchUsersError,
+    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(_SendUserLocationError value)? sendLocationError,
+  }) {
+    return sendLocationError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(_FetchAllUserError value)? fetchUsersError,
+    TResult Function(_SendUserLocationSuccess value)? sendLocation,
+    TResult Function(_SendUserLocationError value)? sendLocationError,
+    required TResult orElse(),
+  }) {
+    if (sendLocationError != null) {
+      return sendLocationError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendUserLocationError implements FetchUserState {
+  const factory _SendUserLocationError() = _$SendUserLocationErrorImpl;
 }

@@ -12,36 +12,55 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenController extends State<HomeScreen> {
   late TextEditingController searchController;
+  late LocationBloc locationBloc = serviceLocator<LocationBloc>();
+  final refreshController = RefreshController(initialRefresh: true);
 
   String firstName = '';
   String lastName = '';
   String email = '';
   String profilePic = '';
+  String id = '';
 
   @override
   void initState() {
     super.initState();
+    searchController = TextEditingController();
     SharedPreferences.getInstance().then((pref) {
       setState(() {
         firstName = pref.getString('firstName') ?? '';
         lastName = pref.getString('lastName') ?? '';
         email = pref.getString('email') ?? '';
         profilePic = pref.getString('ProfilePicture') ?? '';
+        id = pref.getString('') ?? '';
       });
     });
-    searchController = TextEditingController();
+    Timer.periodic(nearbyUsers, (timer) {
+      locationBloc.getCurrentPosition();
+      sendLocation();
+      Log.debug(locationBloc.state.lastKnownLocation);
+    });
   }
 
   @override
   void dispose() {
     searchController.dispose();
+    refreshController.dispose();
     super.dispose();
   }
 
-  Future<void> onRefresh() async {
-    return Future.delayed(const Duration(seconds: 2), () {
-      // context.read<FetchUserBloc>().add(FetchAllUserEvent());
-    });
+  sendLocation() {
+    context.read<FetchUserBloc>().add(
+          FetchUserEvent.sendUserLocation(
+            id: id,
+            location: locationBloc.state.lastKnownLocation.toString(),
+          ),
+        );
+  }
+
+  sendLocationError() {}
+
+  onRefresh() {
+    context.read<FetchUserBloc>().add(const FetchUserEvent.fetchNearbyUsers());
   }
 
   @override

@@ -17,10 +17,12 @@ class LoginController extends State<LoginScreen> {
   bool isCheck = false;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  late LocationBloc locationBloc = serviceLocator<LocationBloc>();
 
   @override
   void initState() {
     super.initState();
+    locationBloc.getCurrentPosition();
     emailController = TextEditingController();
     passwordController = TextEditingController();
     passwordFocusNode = FocusNode();

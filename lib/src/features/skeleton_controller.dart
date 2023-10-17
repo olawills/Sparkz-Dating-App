@@ -2,8 +2,6 @@ import 'package:dating_app/app/common/common.dart';
 import 'package:dating_app/app/core/core.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'home/presentation/bloc/users/users_bloc.dart';
-
 part 'skeleton_view.dart';
 
 class SkeletonScreen extends StatefulWidget {
@@ -21,7 +19,9 @@ class SkeletonController extends State<SkeletonScreen> {
   void initState() {
     super.initState();
     if (mounted) {
-      context.read<FetchUserBloc>().add(const FetchUserEvent.fetchAllUsers());
+      context
+          .read<FetchUserBloc>()
+          .add(const FetchUserEvent.fetchNearbyUsers());
     }
   }
 

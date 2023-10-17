@@ -326,9 +326,10 @@ class __$$GpsInitialStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GpsInitialStateImpl implements GpsInitialState {
-  const _$GpsInitialStateImpl(
-      {required this.isGpsEnabled, required this.isGpsPermissionGranted});
+class _$GpsInitialStateImpl extends GpsInitialState {
+  _$GpsInitialStateImpl(
+      {required this.isGpsEnabled, required this.isGpsPermissionGranted})
+      : super._();
 
   @override
   final bool isGpsEnabled;
@@ -363,10 +364,11 @@ class _$GpsInitialStateImpl implements GpsInitialState {
           this, _$identity);
 }
 
-abstract class GpsInitialState implements GpsState {
-  const factory GpsInitialState(
+abstract class GpsInitialState extends GpsState {
+  factory GpsInitialState(
       {required final bool isGpsEnabled,
       required final bool isGpsPermissionGranted}) = _$GpsInitialStateImpl;
+  GpsInitialState._() : super._();
 
   @override
   bool get isGpsEnabled;

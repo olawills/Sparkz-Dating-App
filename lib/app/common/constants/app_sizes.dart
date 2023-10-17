@@ -6,7 +6,7 @@ class SizeOf {
   static double carouselWidth = 264.sp;
   static double carouselHeight = 254.sp;
   static double carouselBodyHeight = 54.sp;
-  static double carouselBodyWidth = 262.sp;
+  static double carouselBodyWidth = 270.sp;
   static double similarTasteWidth = 258.sp;
   static double similarTasteHeight = 225.sp;
 

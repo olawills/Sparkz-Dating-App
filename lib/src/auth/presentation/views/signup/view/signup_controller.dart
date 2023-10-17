@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 part of '../barrels.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -16,10 +18,13 @@ class SignupController extends State<SignUpScreen> {
       lastNameController;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  late LocationBloc locationBloc = serviceLocator<LocationBloc>();
+  final GpsBloc gpsBloc = serviceLocator<GpsBloc>();
 
   @override
   void initState() {
     super.initState();
+    locationBloc.getCurrentPosition();
     emailController = TextEditingController();
     passwordController = TextEditingController();
     firstNameController = TextEditingController();
@@ -35,23 +40,30 @@ class SignupController extends State<SignUpScreen> {
     super.dispose();
   }
 
-  register() {
-    final gpsBloc = serviceLocator<GpsBloc>();
-    if (gpsBloc.state.isGpsEnabled) {
-      if (formKey.currentState!.validate()) {
-        FocusScope.of(context).unfocus();
-        context.read<AuthBloc>().add(
-              SignupEvent(
-                firstName: firstNameController.text,
-                lastName: lastNameController.text,
-                email: emailController.text,
-                password: passwordController.text,
-              ),
-            );
-      }
-    } else {
+  register() async {
+    // if (gpsBloc.state.isGpsPermissionGranted == false) {
+    //   ToastMessages().showToastErrorMessage(AppString.allowGps);
+    //   gpsBloc.askLocationPermission();
+    // } else
+    final reverseLocation = await locationBloc.reverseGeolocation();
+
+    if (locationBloc.state.lastKnownLocation == null) {
       gpsBloc.askLocationPermission();
     }
+    if (formKey.currentState!.validate()) {
+      FocusScope.of(context).unfocus();
+      context.read<AuthBloc>().add(
+            SignupEvent(
+              firstName: firstNameController.text.trim(),
+              lastName: lastNameController.text.trim(),
+              email: emailController.text.trim(),
+              password: passwordController.text.trim(),
+              location: reverseLocation,
+            ),
+          );
+    }
+    var lots = reverseLocation;
+    Log.debug(lots);
   }
 
   loginPage() {
@@ -60,15 +72,18 @@ class SignupController extends State<SignUpScreen> {
 
   signupSuccess(User data) async {
     await LocalDataStorage.instance.setuserInfo(data);
-
-    Future.delayed(const Duration(milliseconds: 1500),
-        () => ToastMessages().showToastSuccessMessage(data.email)).whenComplete(
+    Future.delayed(
+            const Duration(milliseconds: 1500),
+            () =>
+                ToastMessages().showToastSuccessMessage(AppString.signupSucess))
+        .whenComplete(
       () => context.goNamed(OtpScreen.name),
     );
   }
 
   signupError(NetworkExceptions error) {
-    ToastMessages().showToastServerError(error);
+    Future.delayed(const Duration(milliseconds: 2000),
+        () => ToastMessages().showToastServerError(error));
   }
 
   backPage() {}

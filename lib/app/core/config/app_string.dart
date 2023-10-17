@@ -29,4 +29,6 @@ class AppString {
   static String lastMsg = 'is a perfect match for you';
   static String verifySuccess = 'Verified Successfully';
   static String passwordReset = 'Otp has been sent to your email ';
+  static String signupSucess = 'User Signup Successfully';
+  static String allowGps = 'Please allow Gps permission';
 }

@@ -13,6 +13,12 @@ extension OnPaddingColumn on Column {
   }
 }
 
+extension OnPaddingContainer on Container {
+  Widget padding(EdgeInsets edgeInsets) {
+    return Padding(padding: edgeInsets.h, child: this);
+  }
+}
+
 extension OnPaddingWidget on Widget {
   Widget padding(EdgeInsets edgeInsets) {
     return Padding(padding: edgeInsets.w, child: this);

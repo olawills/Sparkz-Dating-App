@@ -1,17 +1,31 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
-import '../../../../../app/core/network/dio_interceptors.dart';
-import '../../../../../app/core/services/api_url.dart';
+import '../../../../../app/core/core.dart';
+import '../../../../../app/core/network/dio_helper.dart';
 
-class UserRemoteDataSource {
-  UserRemoteDataSource({Dio? dio})
-      : _dio = dio ?? Dio()
-          ..interceptors.add(DioInterceptor())
-          ..options.baseUrl = ApiConfig.baseUrl
-          ..options.connectTimeout = const Duration(milliseconds: 20000)
-          ..options.receiveTimeout = const Duration(milliseconds: 20000)
-          ..options.sendTimeout = const Duration(milliseconds: 20000);
-  final Dio _dio;
+abstract class UserRemoteDataSource {
+  Future<Response> getAllUsers();
+  Future<Response> sendUserLocation(SendUserLocationEvent event);
+}
 
-  Future<Response> getAllUsers() async => _dio.get('/user/getAllUsers');
+class UserRemoteDataSourceImpl extends UserRemoteDataSource {
+  @override
+  Future<Response> getAllUsers() async {
+    return await DioHelper.getData(path: '/user/getNearbyUsers');
+  }
+
+  @override
+  Future<Response> sendUserLocation(SendUserLocationEvent event) async {
+    final sendLocation = {
+      '_id': event.id,
+      'location': event.location,
+    };
+    final data = jsonEncode(sendLocation);
+    return await DioHelper.postData(path: '/user/sendLocation', data: data);
+  }
+
+  
+
 }

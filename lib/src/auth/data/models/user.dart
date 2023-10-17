@@ -5,7 +5,7 @@ part 'user.g.dart';
 @JsonSerializable()
 class User {
   const User({
-    // this.id,
+    required this.id,
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -13,8 +13,10 @@ class User {
     required this.profilePicture,
     required this.token,
     required this.verified,
+    required this.location,
   });
-  // final String? id;
+  @JsonKey(name: '_id')
+  final String id;
   final String firstName;
   final String lastName;
   final String email;
@@ -22,6 +24,7 @@ class User {
   final String profilePicture;
   final String token;
   final bool verified;
+  final String location;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 

@@ -1,6 +1,5 @@
 import 'package:dating_app/app/core/core.dart';
 import 'package:dating_app/src/auth/data/models/user.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../../../app/common/common.dart';
@@ -16,36 +15,42 @@ class UsersDisplayCard extends StatelessWidget {
         Container(
           height: SizeOf.carouselHeight,
           width: SizeOf.carouselWidth,
+          margin: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(12),
-                topRight: Radius.circular(8),
-                bottomRight: Radius.circular(14)),
+            // color: Colors.blue,
+            borderRadius: BorderRadius.circular(18),
             image: DecorationImage(
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
                 image: CachedNetworkImageProvider(user.profilePicture)),
           ),
         ),
+        0.5.sbh,
         SizedBox(
           height: SizeOf.carouselBodyHeight,
           width: SizeOf.carouselBodyWidth,
-          child: Card(
-            color: AppColors.whiteColor,
-            elevation: 2,
-            margin: const EdgeInsets.all(8),
+          child: Container(
+            decoration: const BoxDecoration(
+              color: Colors.white24,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(5),
+                topRight: Radius.circular(5),
+                bottomLeft: Radius.circular(12),
+                bottomRight: Radius.circular(12),
+              ),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
                     ReusableText(
-                      text: "${user.firstName}${user.lastName}",
+                      text: "${user.firstName} ${user.lastName},",
                       style: context.textTheme.bodyMedium!
-                          .copyWith(fontWeight: FontWeight.bold),
+                          .copyWith(fontWeight: FontWeight.w700, fontSize: 18),
                     ),
                     10.sbh,
                     ReusableText(
-                      text: '23',
+                      text: ' 23',
                       style: context.textTheme.bodyMedium!
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
@@ -55,13 +60,15 @@ class UsersDisplayCard extends StatelessWidget {
                   children: [
                     const Icon(Icons.location_on),
                     ReusableText(
-                      text: 'woji GRA Phase 2 (0.4m)',
+                      text: user.location,
                       style:
-                          appMStyle(16, AppColors.blackColor, FontWeight.bold),
+                          context.textTheme.bodyMedium!.copyWith(fontSize: 15),
                     ),
                   ],
                 ),
               ],
+            ).padding(
+              const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
             ),
           ),
         ),
@@ -81,61 +88,46 @@ class LoadingUserCard extends StatelessWidget {
       child: Column(
         children: [
           Container(
+            height: SizeOf.carouselHeight,
+            width: SizeOf.carouselWidth,
+            margin: const EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(18),
+            ),
+          ),
+          2.sbh,
+          SizedBox(
             height: SizeOf.carouselBodyHeight,
             width: SizeOf.carouselBodyWidth,
-            decoration: const BoxDecoration(
-              color: Colors.yellow,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(8),
-                  bottomRight: Radius.circular(14)),
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: const BoxDecoration(
+                color: Colors.green,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(5),
+                  topRight: Radius.circular(5),
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Container(color: Colors.black),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Container(color: Colors.yellow),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
-          Card(
-            color: AppColors.whiteColor,
-            elevation: 4,
-            margin: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    ReusableText(
-                      text: "",
-                      // style: appMStyle(18, AppColors.blackColor, FontWeight.w700),
-                      style: context.textTheme.bodyLarge!.copyWith(
-                          color: AppColors.blackColor,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w700),
-                    ),
-                    20.sbw,
-                    ReusableText(
-                      text: '',
-                      style: context.textTheme.bodyMedium!
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Icon(Icons.location_on, color: AppColors.darkRed),
-                    ReusableText(
-                      text: '',
-                      style: context.textTheme.bodyMedium!
-                          .copyWith(fontWeight: FontWeight.w400),
-                    ),
-                    10.sbw,
-                    ReusableText(
-                      text: '',
-                      style: context.textTheme.bodyMedium!
-                          .copyWith(fontWeight: FontWeight.w400),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        
         ],
       ),
     );
