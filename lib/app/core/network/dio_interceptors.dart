@@ -1,31 +1,42 @@
-import 'package:dating_app/app/core/logger/app_logger.dart';
-import 'package:dio/dio.dart';
+import 'dart:io';
 
-class DioInterceptor extends Interceptor {
+import 'package:dating_app/app/core/network/request_retrier.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+
+class RetryOnConnectionChangeInterceptor extends Interceptor {
+  final DioConnectivityRequestRetrier requestRetrier;
+  RetryOnConnectionChangeInterceptor({required this.requestRetrier});
+
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    Log.info('==================START====================');
-    Log.info(
+    debugPrint(
         'Request => ${options.baseUrl} ${options.path}${options.queryParameters}');
-    Log.info('Request: ${options.method} ${options.uri}');
-    Log.info('Data: ${options.data}');
-    return super.onRequest(options, handler);
+    debugPrint('Data: ${options.data}');
+    return handler.next(options);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    Log.debug(
-        'Response => StatusCode: ${response.statusCode} ${response.statusMessage}');
-    Log.verbose('Response => Body ${response.data}');
-    Log.verbose('Headers => ${response.headers}');
-    return super.onResponse(response, handler);
+    debugPrint('Response => ${response.data}');
+    return handler.next(response);
   }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    final options = err.requestOptions;
-    Log.error(options.method); //Debug log
-    Log.error('${err.message}', 'Error: ${err.error}');
-    return super.onError(err, handler);
+    if (_shouldRetry(err)) {
+      try {
+        requestRetrier.scheduleRequestRetry(err.requestOptions);
+      } catch (e) {
+        e;
+      }
+    }
+    err;
+  }
+
+  bool _shouldRetry(DioException err) {
+    return err.type == DioExceptionType.unknown &&
+        err.error != null &&
+        err.error is SocketException;
   }
 }

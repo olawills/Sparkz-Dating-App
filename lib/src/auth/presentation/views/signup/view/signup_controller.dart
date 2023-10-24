@@ -58,12 +58,12 @@ class SignupController extends State<SignUpScreen> {
               lastName: lastNameController.text.trim(),
               email: emailController.text.trim(),
               password: passwordController.text.trim(),
-              location: reverseLocation,
+              location: locationBloc.state.lastKnownLocation.toString(),
             ),
           );
     }
     var lots = reverseLocation;
-    Log.debug(lots);
+    debugPrint(lots);
   }
 
   loginPage() {
@@ -72,10 +72,8 @@ class SignupController extends State<SignUpScreen> {
 
   signupSuccess(User data) async {
     await LocalDataStorage.instance.setuserInfo(data);
-    Future.delayed(
-            const Duration(milliseconds: 1500),
-            () =>
-                ToastMessages().showToastSuccessMessage(AppString.signupSucess))
+    Future.delayed(const Duration(milliseconds: 1500),
+            () => ToastMessages.showToastSuccessMessage(AppString.signupSucess))
         .whenComplete(
       () => context.goNamed(OtpScreen.name),
     );
@@ -83,7 +81,7 @@ class SignupController extends State<SignUpScreen> {
 
   signupError(NetworkExceptions error) {
     Future.delayed(const Duration(milliseconds: 2000),
-        () => ToastMessages().showToastServerError(error));
+        () => ToastMessages.showToastServerError(error));
   }
 
   backPage() {}

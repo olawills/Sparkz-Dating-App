@@ -28,10 +28,10 @@ class AuthRepository {
   ResultFuture<User> signup(SignupEvent event) async {
     try {
       final response = await _authRemoteDataSourceImpl.createUser(event);
-      Log.debug(response.data['user']);
+      debugPrint(response.data['user']);
       return Right(User.fromJson(response.data['user']));
     } catch (error) {
-      Log.debug(error);
+      debugPrint(error.toString());
       return Left(NetworkExceptions.getDioException(error));
     }
   }
@@ -40,8 +40,9 @@ class AuthRepository {
     try {
       final response = await _authRemoteDataSourceImpl.verifyOtp(event);
       debugPrint(response.data);
-      return Right(response.data['message']);
+      return Right(response.data);
     } catch (error) {
+      debugPrint(error.toString());
       return Left(NetworkExceptions.getDioException(error));
     }
   }
@@ -51,7 +52,7 @@ class AuthRepository {
       final response = await _authRemoteDataSourceImpl.resendOtp(event);
       return Right(response.data['message']);
     } catch (error) {
-      Log.error('Resend Otp error', error);
+      debugPrint(error.toString());
       return Left(NetworkExceptions.getDioException(error));
     }
   }
@@ -61,7 +62,7 @@ class AuthRepository {
       final response = await _authRemoteDataSourceImpl.forgotPassword(event);
       return Right(response.data);
     } catch (error) {
-      Log.error('Forgot Password Error', error);
+      debugPrint(error.toString());
       return Left(NetworkExceptions.getDioException(error));
     }
   }
@@ -71,7 +72,6 @@ class AuthRepository {
       final response = await _authRemoteDataSourceImpl.resetPassword(event);
       return Right(response.data);
     } catch (error) {
-      Log.error('Reset Password Error', error);
       return Left(NetworkExceptions.getDioException(error));
     }
   }

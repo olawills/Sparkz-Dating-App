@@ -36,7 +36,6 @@ dependencies:
   intl: ^0.18.0
   json_annotation: ^4.8.0
   logger: ^1.4.0
-  logging: ^1.2.0
   permission_handler: ^11.0.1
   pinput: ^2.2.31
   pull_to_refresh: ^2.0.0

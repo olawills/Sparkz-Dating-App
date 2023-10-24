@@ -20,41 +20,37 @@ import '../network/dio_helper.dart';
 
 GetIt serviceLocator = GetIt.instance;
 
-class ServiceLocator {
-  ServiceLocator._();
+Future<void> setUpServiceLocator() async {
+  // Blocs
+  serviceLocator.registerFactory<AuthBloc>(() => AuthBloc());
+  serviceLocator.registerFactory<OnboardingBloc>(() => OnboardingBloc());
+  serviceLocator.registerFactory<FetchUserBloc>(() => FetchUserBloc());
+  serviceLocator.registerFactory<InterestBloc>(() => InterestBloc());
+  serviceLocator.registerFactory<GpsBloc>(() => GpsBloc());
+  serviceLocator.registerFactory<LocationBloc>(() => LocationBloc());
 
-  static void init() {
-    // Blocs
-    serviceLocator.registerFactory<AuthBloc>(() => AuthBloc());
-    serviceLocator.registerFactory<OnboardingBloc>(() => OnboardingBloc());
-    serviceLocator.registerFactory<FetchUserBloc>(() => FetchUserBloc());
-    serviceLocator.registerFactory<InterestBloc>(() => InterestBloc());
-    serviceLocator.registerFactory<GpsBloc>(() => GpsBloc());
-    serviceLocator.registerFactory<LocationBloc>(() => LocationBloc());
+  // Cubit
+  serviceLocator
+      .registerFactory<BottomNavigationCubit>(() => BottomNavigationCubit());
+  serviceLocator.registerFactory<InternetConnectionCubit>(
+      () => InternetConnectionCubit(connectivity: serviceLocator()));
 
-    // Cubit
-    serviceLocator
-        .registerFactory<BottomNavigationCubit>(() => BottomNavigationCubit());
-    serviceLocator.registerFactory<InternetConnectionCubit>(
-        () => InternetConnectionCubit(connectivity: serviceLocator()));
+  // Data Source
+  serviceLocator
+      .registerFactory<AuthRemoteDataSource>(() => AuthRemoteDataSourceImpl());
+  serviceLocator
+      .registerFactory<UserRemoteDataSource>(() => UserRemoteDataSourceImpl());
+  serviceLocator.registerFactory<AuthInfoRemoteDataSource>(
+      () => AuthInfoRemoteDataSourceImpl());
 
-    // Data Source
-    serviceLocator.registerFactory<AuthRemoteDataSource>(
-        () => AuthRemoteDataSourceImpl());
-    serviceLocator.registerFactory<UserRemoteDataSource>(
-        () => UserRemoteDataSourceImpl());
-    serviceLocator.registerFactory<AuthInfoRemoteDataSource>(
-        () => AuthInfoRemoteDataSourceImpl());
+  // Repositories
+  serviceLocator.registerFactory<AuthRepository>(() => AuthRepository());
+  serviceLocator
+      .registerFactory<AuthInfoRepository>(() => AuthInfoRepository());
+  serviceLocator.registerFactory<UserRepository>(() => UserRepository());
 
-    // Repositories
-    serviceLocator.registerFactory<AuthRepository>(() => AuthRepository());
-    serviceLocator
-        .registerFactory<AuthInfoRepository>(() => AuthInfoRepository());
-    serviceLocator.registerFactory<UserRepository>(() => UserRepository());
-
-    // Dio
-    serviceLocator.registerLazySingleton<DioHelper>(() => DioHelper());
-    serviceLocator.registerLazySingleton<Dio>(() => Dio());
-    serviceLocator.registerLazySingleton<Connectivity>(() => Connectivity());
-  }
+  // Dio
+  serviceLocator.registerLazySingleton<DioHelper>(() => DioHelper());
+  serviceLocator.registerLazySingleton<Dio>(() => Dio());
+  serviceLocator.registerLazySingleton<Connectivity>(() => Connectivity());
 }

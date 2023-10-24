@@ -52,7 +52,7 @@ class InterestController extends State<InterestScreen> {
   }
 
   saveInfoError(NetworkExceptions error) {
-    ToastMessages().showToastServerError(error);
+    ToastMessages.showToastServerError(error);
   }
 
   backPage() {

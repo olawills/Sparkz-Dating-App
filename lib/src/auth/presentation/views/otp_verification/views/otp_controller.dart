@@ -44,15 +44,16 @@ class OtpController extends State<OtpScreen> {
 
   verifySuccess() {
     Future.delayed(
-        const Duration(milliseconds: 1500),
-        () => ToastMessages()
-            .showToastSuccessMessage(AppString.verifySuccess)).whenComplete(
+            const Duration(milliseconds: 1500),
+            () =>
+                ToastMessages.showToastSuccessMessage(AppString.verifySuccess))
+        .whenComplete(
       () => context.goNamed(CompleteVerificationOTPScreen.name),
     );
   }
 
   verifyOtpError(NetworkExceptions error) {
-    ToastMessages().showToastServerError(error);
+    ToastMessages.showToastServerError(error);
   }
 
   backPage() {

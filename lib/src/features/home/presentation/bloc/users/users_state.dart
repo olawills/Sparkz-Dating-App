@@ -2,11 +2,11 @@ part of 'users_bloc.dart';
 
 @freezed
 class FetchUserState with _$FetchUserState {
-  const factory FetchUserState.fetchUsersloading() = _FetchAllUserLoading;
+  const factory FetchUserState.fetchUsersloading() = FetchAllUserLoading;
   const factory FetchUserState.fetchUsers({required List<User> users}) =
-      _FetchAllUserSuccess;
+      FetchAllUserSuccess;
   const factory FetchUserState.fetchUsersError(
-      {required NetworkExceptions error}) = _FetchAllUserError;
-  const factory FetchUserState.sendLocation() = _SendUserLocationSuccess;
-  const factory FetchUserState.sendLocationError() = _SendUserLocationError;
+      {required NetworkExceptions error}) = FetchAllUserError;
+  const factory FetchUserState.sendLocation() = SendUserLocationSuccess;
+  const factory FetchUserState.sendLocationError() = SendUserLocationError;
 }

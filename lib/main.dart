@@ -3,7 +3,6 @@ import 'package:dating_app/app/core/core.dart';
 import 'package:dating_app/bloc_observers.dart';
 import 'package:dating_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:logging/logging.dart';
 
 import 'app/core/domain/all_blocs.dart';
 import 'app/core/domain/sparkz_config.dart';
@@ -19,13 +18,11 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // await FirebaseMessaging.instance.getInitialMessage();
   // FirebaseMessaging.onBackgroundMessage(_fiebaseMessagingBackgroundHandler);
-  _setupLogging();
   await EasyLocalization.ensureInitialized();
 
-  // Logger.level = Level.error;
   Bloc.observer = AppBlocObserver();
   DioHelper.init();
-  ServiceLocator.init();
+  await setUpServiceLocator();
   runApp(
     initializeLocation(
       child: MultiBlocProvider(
@@ -34,11 +31,4 @@ Future<void> main() async {
       ),
     ),
   );
-}
-
-_setupLogging() {
-  Logger.root.level = Level.WARNING;
-  Logger.root.onRecord.listen((record) {
-    debugPrint('${record.level.name}: ${record.time}: ${record.message}');
-  });
 }

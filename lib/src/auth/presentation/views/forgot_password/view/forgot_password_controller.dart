@@ -34,7 +34,7 @@ class ForgotPasswordController extends State<ForgotPasswordScreen> {
   forgotPasswordSuccess() {
     Future.delayed(
         const Duration(milliseconds: 2000),
-        () => ToastMessages()
+        () => ToastMessages
             .showToastSuccessMessage(AppString.passwordReset)).whenComplete(
       () => context.pushNamed(ResetPasswordScreen.name,
           extra: emailController.text),
@@ -42,7 +42,7 @@ class ForgotPasswordController extends State<ForgotPasswordScreen> {
   }
 
   resetError(NetworkExceptions error) {
-    ToastMessages().showToastServerError(error);
+    ToastMessages.showToastServerError(error);
   }
 
   @override

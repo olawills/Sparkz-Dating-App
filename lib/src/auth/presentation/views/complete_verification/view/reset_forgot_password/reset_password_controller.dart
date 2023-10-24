@@ -40,7 +40,7 @@ class ResetPasswordController extends State<ResetPasswordScreen> {
   }
 
   resetError(NetworkExceptions error) {
-    ToastMessages().showToastServerError(error);
+    ToastMessages.showToastServerError(error);
   }
 
   @override

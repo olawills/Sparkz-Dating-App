@@ -54,15 +54,14 @@ class LoginController extends State<LoginScreen> {
   loginSuccess(LoginResponse data) async {
     await LocalDataStorage.instance.setLoginResponse(data);
     Future.delayed(const Duration(milliseconds: 2000),
-            () => ToastMessages().showToastSuccessMessage(data.message))
-        .whenComplete(
+        () => ToastMessages.showToastSuccessMessage(data.message)).whenComplete(
       () => context.goNamed(HomeScreen.name),
     );
   }
 
   loginError(NetworkExceptions error) {
     Future.delayed(const Duration(milliseconds: 2000),
-        () => ToastMessages().showToastServerError(error));
+        () => ToastMessages.showToastServerError(error));
   }
 
   forgotPassword() {

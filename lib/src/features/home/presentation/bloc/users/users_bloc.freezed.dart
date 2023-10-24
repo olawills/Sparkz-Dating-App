@@ -376,29 +376,29 @@ mixin _$FetchUserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
-    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
-    required TResult Function(_FetchAllUserError value) fetchUsersError,
-    required TResult Function(_SendUserLocationSuccess value) sendLocation,
-    required TResult Function(_SendUserLocationError value) sendLocationError,
+    required TResult Function(FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(FetchAllUserError value) fetchUsersError,
+    required TResult Function(SendUserLocationSuccess value) sendLocation,
+    required TResult Function(SendUserLocationError value) sendLocationError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult? Function(_FetchAllUserError value)? fetchUsersError,
-    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult? Function(_SendUserLocationError value)? sendLocationError,
+    TResult? Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(FetchAllUserError value)? fetchUsersError,
+    TResult? Function(SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(SendUserLocationError value)? sendLocationError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult Function(_FetchAllUserError value)? fetchUsersError,
-    TResult Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult Function(_SendUserLocationError value)? sendLocationError,
+    TResult Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(FetchAllUserError value)? fetchUsersError,
+    TResult Function(SendUserLocationSuccess value)? sendLocation,
+    TResult Function(SendUserLocationError value)? sendLocationError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -442,7 +442,7 @@ class __$$FetchAllUserLoadingImplCopyWithImpl<$Res>
 
 class _$FetchAllUserLoadingImpl
     with DiagnosticableTreeMixin
-    implements _FetchAllUserLoading {
+    implements FetchAllUserLoading {
   const _$FetchAllUserLoadingImpl();
 
   @override
@@ -510,11 +510,11 @@ class _$FetchAllUserLoadingImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
-    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
-    required TResult Function(_FetchAllUserError value) fetchUsersError,
-    required TResult Function(_SendUserLocationSuccess value) sendLocation,
-    required TResult Function(_SendUserLocationError value) sendLocationError,
+    required TResult Function(FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(FetchAllUserError value) fetchUsersError,
+    required TResult Function(SendUserLocationSuccess value) sendLocation,
+    required TResult Function(SendUserLocationError value) sendLocationError,
   }) {
     return fetchUsersloading(this);
   }
@@ -522,11 +522,11 @@ class _$FetchAllUserLoadingImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult? Function(_FetchAllUserError value)? fetchUsersError,
-    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult? Function(_SendUserLocationError value)? sendLocationError,
+    TResult? Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(FetchAllUserError value)? fetchUsersError,
+    TResult? Function(SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(SendUserLocationError value)? sendLocationError,
   }) {
     return fetchUsersloading?.call(this);
   }
@@ -534,11 +534,11 @@ class _$FetchAllUserLoadingImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult Function(_FetchAllUserError value)? fetchUsersError,
-    TResult Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult Function(_SendUserLocationError value)? sendLocationError,
+    TResult Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(FetchAllUserError value)? fetchUsersError,
+    TResult Function(SendUserLocationSuccess value)? sendLocation,
+    TResult Function(SendUserLocationError value)? sendLocationError,
     required TResult orElse(),
   }) {
     if (fetchUsersloading != null) {
@@ -548,8 +548,8 @@ class _$FetchAllUserLoadingImpl
   }
 }
 
-abstract class _FetchAllUserLoading implements FetchUserState {
-  const factory _FetchAllUserLoading() = _$FetchAllUserLoadingImpl;
+abstract class FetchAllUserLoading implements FetchUserState {
+  const factory FetchAllUserLoading() = _$FetchAllUserLoadingImpl;
 }
 
 /// @nodoc
@@ -587,7 +587,7 @@ class __$$FetchAllUserSuccessImplCopyWithImpl<$Res>
 
 class _$FetchAllUserSuccessImpl
     with DiagnosticableTreeMixin
-    implements _FetchAllUserSuccess {
+    implements FetchAllUserSuccess {
   const _$FetchAllUserSuccessImpl({required final List<User> users})
       : _users = users;
 
@@ -674,11 +674,11 @@ class _$FetchAllUserSuccessImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
-    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
-    required TResult Function(_FetchAllUserError value) fetchUsersError,
-    required TResult Function(_SendUserLocationSuccess value) sendLocation,
-    required TResult Function(_SendUserLocationError value) sendLocationError,
+    required TResult Function(FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(FetchAllUserError value) fetchUsersError,
+    required TResult Function(SendUserLocationSuccess value) sendLocation,
+    required TResult Function(SendUserLocationError value) sendLocationError,
   }) {
     return fetchUsers(this);
   }
@@ -686,11 +686,11 @@ class _$FetchAllUserSuccessImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult? Function(_FetchAllUserError value)? fetchUsersError,
-    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult? Function(_SendUserLocationError value)? sendLocationError,
+    TResult? Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(FetchAllUserError value)? fetchUsersError,
+    TResult? Function(SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(SendUserLocationError value)? sendLocationError,
   }) {
     return fetchUsers?.call(this);
   }
@@ -698,11 +698,11 @@ class _$FetchAllUserSuccessImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult Function(_FetchAllUserError value)? fetchUsersError,
-    TResult Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult Function(_SendUserLocationError value)? sendLocationError,
+    TResult Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(FetchAllUserError value)? fetchUsersError,
+    TResult Function(SendUserLocationSuccess value)? sendLocation,
+    TResult Function(SendUserLocationError value)? sendLocationError,
     required TResult orElse(),
   }) {
     if (fetchUsers != null) {
@@ -712,8 +712,8 @@ class _$FetchAllUserSuccessImpl
   }
 }
 
-abstract class _FetchAllUserSuccess implements FetchUserState {
-  const factory _FetchAllUserSuccess({required final List<User> users}) =
+abstract class FetchAllUserSuccess implements FetchUserState {
+  const factory FetchAllUserSuccess({required final List<User> users}) =
       _$FetchAllUserSuccessImpl;
 
   List<User> get users;
@@ -767,7 +767,7 @@ class __$$FetchAllUserErrorImplCopyWithImpl<$Res>
 
 class _$FetchAllUserErrorImpl
     with DiagnosticableTreeMixin
-    implements _FetchAllUserError {
+    implements FetchAllUserError {
   const _$FetchAllUserErrorImpl({required this.error});
 
   @override
@@ -847,11 +847,11 @@ class _$FetchAllUserErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
-    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
-    required TResult Function(_FetchAllUserError value) fetchUsersError,
-    required TResult Function(_SendUserLocationSuccess value) sendLocation,
-    required TResult Function(_SendUserLocationError value) sendLocationError,
+    required TResult Function(FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(FetchAllUserError value) fetchUsersError,
+    required TResult Function(SendUserLocationSuccess value) sendLocation,
+    required TResult Function(SendUserLocationError value) sendLocationError,
   }) {
     return fetchUsersError(this);
   }
@@ -859,11 +859,11 @@ class _$FetchAllUserErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult? Function(_FetchAllUserError value)? fetchUsersError,
-    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult? Function(_SendUserLocationError value)? sendLocationError,
+    TResult? Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(FetchAllUserError value)? fetchUsersError,
+    TResult? Function(SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(SendUserLocationError value)? sendLocationError,
   }) {
     return fetchUsersError?.call(this);
   }
@@ -871,11 +871,11 @@ class _$FetchAllUserErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult Function(_FetchAllUserError value)? fetchUsersError,
-    TResult Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult Function(_SendUserLocationError value)? sendLocationError,
+    TResult Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(FetchAllUserError value)? fetchUsersError,
+    TResult Function(SendUserLocationSuccess value)? sendLocation,
+    TResult Function(SendUserLocationError value)? sendLocationError,
     required TResult orElse(),
   }) {
     if (fetchUsersError != null) {
@@ -885,8 +885,8 @@ class _$FetchAllUserErrorImpl
   }
 }
 
-abstract class _FetchAllUserError implements FetchUserState {
-  const factory _FetchAllUserError({required final NetworkExceptions error}) =
+abstract class FetchAllUserError implements FetchUserState {
+  const factory FetchAllUserError({required final NetworkExceptions error}) =
       _$FetchAllUserErrorImpl;
 
   NetworkExceptions get error;
@@ -917,7 +917,7 @@ class __$$SendUserLocationSuccessImplCopyWithImpl<$Res>
 
 class _$SendUserLocationSuccessImpl
     with DiagnosticableTreeMixin
-    implements _SendUserLocationSuccess {
+    implements SendUserLocationSuccess {
   const _$SendUserLocationSuccessImpl();
 
   @override
@@ -984,11 +984,11 @@ class _$SendUserLocationSuccessImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
-    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
-    required TResult Function(_FetchAllUserError value) fetchUsersError,
-    required TResult Function(_SendUserLocationSuccess value) sendLocation,
-    required TResult Function(_SendUserLocationError value) sendLocationError,
+    required TResult Function(FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(FetchAllUserError value) fetchUsersError,
+    required TResult Function(SendUserLocationSuccess value) sendLocation,
+    required TResult Function(SendUserLocationError value) sendLocationError,
   }) {
     return sendLocation(this);
   }
@@ -996,11 +996,11 @@ class _$SendUserLocationSuccessImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult? Function(_FetchAllUserError value)? fetchUsersError,
-    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult? Function(_SendUserLocationError value)? sendLocationError,
+    TResult? Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(FetchAllUserError value)? fetchUsersError,
+    TResult? Function(SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(SendUserLocationError value)? sendLocationError,
   }) {
     return sendLocation?.call(this);
   }
@@ -1008,11 +1008,11 @@ class _$SendUserLocationSuccessImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult Function(_FetchAllUserError value)? fetchUsersError,
-    TResult Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult Function(_SendUserLocationError value)? sendLocationError,
+    TResult Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(FetchAllUserError value)? fetchUsersError,
+    TResult Function(SendUserLocationSuccess value)? sendLocation,
+    TResult Function(SendUserLocationError value)? sendLocationError,
     required TResult orElse(),
   }) {
     if (sendLocation != null) {
@@ -1022,8 +1022,8 @@ class _$SendUserLocationSuccessImpl
   }
 }
 
-abstract class _SendUserLocationSuccess implements FetchUserState {
-  const factory _SendUserLocationSuccess() = _$SendUserLocationSuccessImpl;
+abstract class SendUserLocationSuccess implements FetchUserState {
+  const factory SendUserLocationSuccess() = _$SendUserLocationSuccessImpl;
 }
 
 /// @nodoc
@@ -1047,7 +1047,7 @@ class __$$SendUserLocationErrorImplCopyWithImpl<$Res>
 
 class _$SendUserLocationErrorImpl
     with DiagnosticableTreeMixin
-    implements _SendUserLocationError {
+    implements SendUserLocationError {
   const _$SendUserLocationErrorImpl();
 
   @override
@@ -1115,11 +1115,11 @@ class _$SendUserLocationErrorImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchAllUserLoading value) fetchUsersloading,
-    required TResult Function(_FetchAllUserSuccess value) fetchUsers,
-    required TResult Function(_FetchAllUserError value) fetchUsersError,
-    required TResult Function(_SendUserLocationSuccess value) sendLocation,
-    required TResult Function(_SendUserLocationError value) sendLocationError,
+    required TResult Function(FetchAllUserLoading value) fetchUsersloading,
+    required TResult Function(FetchAllUserSuccess value) fetchUsers,
+    required TResult Function(FetchAllUserError value) fetchUsersError,
+    required TResult Function(SendUserLocationSuccess value) sendLocation,
+    required TResult Function(SendUserLocationError value) sendLocationError,
   }) {
     return sendLocationError(this);
   }
@@ -1127,11 +1127,11 @@ class _$SendUserLocationErrorImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult? Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult? Function(_FetchAllUserError value)? fetchUsersError,
-    TResult? Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult? Function(_SendUserLocationError value)? sendLocationError,
+    TResult? Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult? Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult? Function(FetchAllUserError value)? fetchUsersError,
+    TResult? Function(SendUserLocationSuccess value)? sendLocation,
+    TResult? Function(SendUserLocationError value)? sendLocationError,
   }) {
     return sendLocationError?.call(this);
   }
@@ -1139,11 +1139,11 @@ class _$SendUserLocationErrorImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchAllUserLoading value)? fetchUsersloading,
-    TResult Function(_FetchAllUserSuccess value)? fetchUsers,
-    TResult Function(_FetchAllUserError value)? fetchUsersError,
-    TResult Function(_SendUserLocationSuccess value)? sendLocation,
-    TResult Function(_SendUserLocationError value)? sendLocationError,
+    TResult Function(FetchAllUserLoading value)? fetchUsersloading,
+    TResult Function(FetchAllUserSuccess value)? fetchUsers,
+    TResult Function(FetchAllUserError value)? fetchUsersError,
+    TResult Function(SendUserLocationSuccess value)? sendLocation,
+    TResult Function(SendUserLocationError value)? sendLocationError,
     required TResult orElse(),
   }) {
     if (sendLocationError != null) {
@@ -1153,6 +1153,6 @@ class _$SendUserLocationErrorImpl
   }
 }
 
-abstract class _SendUserLocationError implements FetchUserState {
-  const factory _SendUserLocationError() = _$SendUserLocationErrorImpl;
+abstract class SendUserLocationError implements FetchUserState {
+  const factory SendUserLocationError() = _$SendUserLocationErrorImpl;
 }

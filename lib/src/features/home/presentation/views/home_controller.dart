@@ -34,11 +34,11 @@ class HomeScreenController extends State<HomeScreen> {
         id = pref.getString('') ?? '';
       });
     });
-    Timer.periodic(nearbyUsers, (timer) {
-      locationBloc.getCurrentPosition();
-      sendLocation();
-      Log.debug(locationBloc.state.lastKnownLocation);
-    });
+    // Timer.periodic(nearbyUsers, (timer) {
+    //   locationBloc.getCurrentPosition();
+    //   sendLocation();
+    //   debugPrint(locationBloc.state.lastKnownLocation?.latitude.toString());
+    // });
   }
 
   @override
@@ -57,7 +57,12 @@ class HomeScreenController extends State<HomeScreen> {
         );
   }
 
-  sendLocationError() {}
+  sendLocationError() {
+    Future.delayed(
+      const Duration(milliseconds: 2000),
+      () => ToastMessages.showToastErrorMessage('Turn on Your Location'),
+    );
+  }
 
   onRefresh() {
     context.read<FetchUserBloc>().add(const FetchUserEvent.fetchNearbyUsers());

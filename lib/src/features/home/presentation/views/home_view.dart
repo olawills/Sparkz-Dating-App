@@ -10,11 +10,7 @@ class _HomeView extends StatelessView<HomeScreen, HomeScreenController> {
       builder: (context, state) {
         return Scaffold(
           body: SafeArea(
-            child: SmartRefresher(
-              controller: controller.refreshController,
-              onRefresh: () => controller.onRefresh,
-              child: _buildHomeWidget(controller, context),
-            ),
+            child: _buildHomeWidget(controller, context),
           ),
         );
       },
@@ -45,7 +41,7 @@ Widget _buildHomeWidget(HomeScreenController controller, BuildContext context) {
                   .copyWith(fontWeight: FontWeight.bold),
             ),
             UserDisplayPicture(
-              imageUrl: Assets.noAccountImage,
+              imageUrl: controller.profilePic,
               onTap: () {},
             )
           ],
@@ -69,10 +65,7 @@ Widget _buildHomeWidget(HomeScreenController controller, BuildContext context) {
                     borderRadius: kmediumBorderRadius),
               ),
             ),
-            InkWell(
-              onTap: () {},
-              child: SvgPicture.asset(Assets.svgHelper('Filter')),
-            ),
+            SvgPicture.asset(Assets.svgHelper('Filter')),
           ],
         ),
         Row(
@@ -117,65 +110,64 @@ Widget _buildHomeWidget(HomeScreenController controller, BuildContext context) {
 Widget _buildUsersCard(HomeScreenController controller) {
   return BlocBuilder<FetchUserBloc, FetchUserState>(
     builder: (context, state) {
-      return state.when(
-        fetchUsersloading: _buildProgressWidget,
-        fetchUsers: (users) {
-          controller.refreshController.refreshCompleted();
-          return _buildSuccessWidget(context, users);
-        },
-        fetchUsersError: (error) {
-          controller.refreshController.refreshFailed();
-          return _buildErrorWidget();
-        },
-        sendLocation: controller.sendLocation(),
-        sendLocationError: controller.sendLocationError(),
-      );
-
-      // if (state is FetchAllUserLoading) {
-      //   return CarouselSlider.builder(
-      //     itemCount: 6,
-      //     options: CarouselOptions(
-      //       autoPlay: false,
-      //       enlargeCenterPage: true,
-      //       viewportFraction: 0.9,
-      //       aspectRatio: 2.0,
-      //       initialPage: 0,
-      //       scrollDirection: Axis.horizontal,
-      //     ),
-      //     itemBuilder: (context, int index, int pageViewIndex) {
-      //       return const LoadingUserCard();
+      // return SmartRefresher(
+      //   controller: controller.refreshController,
+      //   onRefresh: () => controller.onRefresh,
+      //   child: state.when(
+      //     fetchUsersloading: _buildProgressWidget,
+      //     fetchUsers: (users) {
+      //       // controller.refreshController.refreshCompleted();
+      //       return _buildProgressWidget();
       //     },
-      //   );
-      // }
+      //     fetchUsersError: (error) {
+      //       // controller.refreshController.refreshFailed();
+      //       return _buildErrorWidget();
+      //     },
+      //     sendLocation: controller.sendLocation(),
+      //     sendLocationError: controller.sendLocationError(),
+      //   ),
+      // );
 
-      // if (state is FetchAllUserSuccess) {
-      //   final users = state.users[0];
-      //   return GestureDetector(
-      //     onTap: () {},
-      //     child: UsersDisplayCard(user: users),
-      //   );
-      //   //  CarouselSlider.builder(
-      //   //   itemCount: state.users.length,
-      //   //   options: CarouselOptions(
-      //   //     autoPlay: false,
-      //   //     enlargeCenterPage: false,
-      //   //     viewportFraction: 0.9,
-      //   //     aspectRatio: 2.0,
-      //   //     initialPage: 0,
-      //   //     scrollDirection: Axis.horizontal,
-      //   //   ),
-      //   //   itemBuilder: (context, int index, int pageViewIndex) {
-      //   //     final users = state.users[index];
-      //   //     return GestureDetector(
-      //   //       onTap: () {},
-      //   //       child: UsersDisplayCard(user: users),
-      //   //     );
-      //   //   },
-      //   // );
-      // }
-      // if (state is FetchAllUserError) {
-      //   return const Center(child: Text('Something went wrong'));
-      // }
+      if (state is FetchAllUserLoading) {
+        // return CarouselSlider.builder(
+        //   itemCount: 6,
+        //   options: CarouselOptions(
+        //     autoPlay: false,
+        //     enlargeCenterPage: true,
+        //     viewportFraction: 0.9,
+        //     aspectRatio: 2.0,
+        //     initialPage: 0,
+        //     scrollDirection: Axis.horizontal,
+        //   ),
+        //   itemBuilder: (context, int index, int pageViewIndex) {
+        //     return const LoadingUserCard();
+        //   },
+        // );
+        return const LoadingUserCard();
+      }
+
+      if (state is FetchAllUserSuccess) {
+        CarouselSlider.builder(
+          itemCount: state.users.length,
+          options: CarouselOptions(
+            autoPlay: false,
+            enlargeCenterPage: false,
+            viewportFraction: 0.9,
+            aspectRatio: 2.0,
+            initialPage: 0,
+            scrollDirection: Axis.horizontal,
+          ),
+          itemBuilder: (context, int index, int pageViewIndex) {
+            final users = state.users[index];
+            return GestureDetector(
+              onTap: () {},
+              child: UsersDisplayCard(user: users),
+            );
+          },
+        );
+      }
+
+      return const Center(child: Text('Something went wrong'));
     },
   );
 }

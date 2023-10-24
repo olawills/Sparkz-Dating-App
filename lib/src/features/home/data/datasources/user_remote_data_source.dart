@@ -23,9 +23,6 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
       'location': event.location,
     };
     final data = jsonEncode(sendLocation);
-    return await DioHelper.postData(path: '/user/sendLocation', data: data);
+    return await DioHelper.updateData(path: '/user/sendLocation', data: data);
   }
-
-  
-
 }

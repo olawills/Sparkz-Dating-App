@@ -10,7 +10,7 @@ class ToastMessages {
 
   ToastMessages._internal();
 
-  showToastServerError(NetworkExceptions error) {
+  static showToastServerError(NetworkExceptions error) {
     Fluttertoast.showToast(
         msg: NetworkExceptions.getErrorMessage(error),
         fontSize: 16,
@@ -19,7 +19,7 @@ class ToastMessages {
         gravity: ToastGravity.BOTTOM);
   }
 
-  showToastSuccessMessage(String message) {
+  static showToastSuccessMessage(String message) {
     return Fluttertoast.showToast(
       msg: message,
       gravity: ToastGravity.BOTTOM,
@@ -27,7 +27,7 @@ class ToastMessages {
     );
   }
 
-  showToastErrorMessage(String message) {
+  static showToastErrorMessage(String message) {
     return Fluttertoast.showToast(
       msg: message,
       gravity: ToastGravity.BOTTOM,

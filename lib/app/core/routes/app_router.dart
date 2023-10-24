@@ -1,7 +1,5 @@
 import 'package:dating_app/app/core/core.dart';
 
-import '../logger/app_logger.dart';
-
 class AppRouter {
   static final RouterConfig<Object> routerConfig = RouterConfig(
     routerDelegate: router.routerDelegate,
@@ -159,8 +157,8 @@ final GoRouter _router = GoRouter(
       ),
     ],
     redirect: (BuildContext context, GoRouterState state) async {
-      Log.debug(state.matchedLocation);
-      Log.debug(await LocalDataStorage.instance.getFirstTime());
+      debugPrint(state.matchedLocation);
+      debugPrint('${await LocalDataStorage.instance.getFirstTime()}');
       if (state.matchedLocation == LoginScreen.path) {
         if (await LocalDataStorage.instance.getFirstTime()) {
           return OnBoardingScreen.path;

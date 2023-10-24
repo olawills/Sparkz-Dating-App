@@ -4,7 +4,6 @@ import 'package:dating_app/src/auth/data/models/user.dart';
 
 import '../../../../../app/core/core.dart';
 import '../../../../../app/core/error/exception.dart';
-import '../../../../../app/core/logger/app_logger.dart';
 import '../../../../../app/core/network/dio_exception.dart';
 import '../datasources/user_remote_data_source.dart';
 
@@ -35,9 +34,9 @@ class UserRepository {
   ResultFuture<String> sendLocation(SendUserLocationEvent event) async {
     try {
       final response = await _userRemoteDataSource.sendUserLocation(event);
-      return Right(response.data);
+      return Right(response.data['message']);
     } on ServerException catch (error) {
-      Log.debug(error);
+      debugPrint(error.toString());
       return Left(NetworkExceptions.getDioException(error));
     }
   }
