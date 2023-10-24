@@ -4,11 +4,11 @@
 
  - Project Directory
 ```shell
- app
- generated
- l10n
- localization
- src
+ - app
+ - generated
+ - l10n
+ - localization
+ - src
  ```
 
  ### Screenshots
@@ -24,25 +24,7 @@
  <h5>The view folder contains all the app views such as Login View, Sign up View, Forgot Password View etc.</h5>
  
  <h5>The view folder are are seperated in two ways, which are, the Features folder, containing the app views after authentication e.g Home View, Chat View etc</h5>
- <h5>The other views are the views for the various means of authentication and each routing is handled by the GoRouter package, from the code a simple navigation as been customized to _navigationService.pushScreen(context, LoginScreen.route)</h5>
-
- ##### Build App
- You can build the app using the commands below
-
- for Android
-
- ```
- ## development: flutter build apk -t lib/main.dart --flavor dev
-
- ## production: flutter build apk -t lib/main.dart --flavor prod
-```
-
-for IOS
-
-```
-Coming Soon
-```
- 
+ <h5>The other views are the views for the various means of authentication and each routing is handled by the GoRouter package, from the code a simple navigation as been customized to _navigationService.pushScreen(context, LoginScreen.route)</h5> 
 
 
 #### Olawills Dating App with Flutter, Node JS, Express Js and Bloc for State management
