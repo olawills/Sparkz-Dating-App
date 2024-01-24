@@ -6,7 +6,6 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'app/core/domain/all_blocs.dart';
 import 'app/core/domain/sparkz_config.dart';
-import 'app/core/network/dio_helper.dart';
 import 'localization/localization.dart';
 
 // Future<void> _fiebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -21,7 +20,6 @@ Future<void> main() async {
   await EasyLocalization.ensureInitialized();
 
   Bloc.observer = AppBlocObserver();
-  DioHelper.init();
   await setUpServiceLocator();
   runApp(
     initializeLocation(

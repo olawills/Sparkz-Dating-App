@@ -18,6 +18,6 @@ class AppTokens {
   static String interest = 'interest';
   static String profilePicture = 'ProfilePicture';
   static String finishedOtp = '';
-  static String token = 'access_token';
+  static String token = 'x-auth-token';
   static String pushNotificationToken = "FCM";
 }

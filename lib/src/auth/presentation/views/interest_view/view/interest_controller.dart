@@ -42,9 +42,7 @@ class InterestController extends State<InterestScreen> {
             about: about,
             interests: selectTedList,
           ));
-      Log.debug(selectTedList);
     }
-    Log.debug(selectTedList);
   }
 
   saveInfoSuccess() async {
@@ -68,8 +66,6 @@ class InterestController extends State<InterestScreen> {
         about = pref.getString('about') ?? '';
         email = pref.getString('email') ?? '';
       });
-      Log.debug(email);
-      Log.debug(gender);
     });
   }
 

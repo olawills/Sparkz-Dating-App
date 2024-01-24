@@ -25,7 +25,7 @@ class UserDisplayPicture extends StatelessWidget {
         backgroundColor: AppColors.darkRed,
         child: CircleAvatar(
           radius: isLargeDp ? 76.r : 18.r,
-          backgroundImage: NetworkImage(imageUrl),
+          backgroundImage: AssetImage(imageUrl),
         ),
       ),
     );

@@ -46,8 +46,12 @@ class LoginController extends State<LoginScreen> {
       TextInput.finishAutofillContext();
     }
     if (formKey.currentState!.validate()) {
-      context.read<AuthBloc>().add(LoginEvent(
-          email: emailController.text, password: passwordController.text));
+      context.read<AuthBloc>().add(
+            LoginEvent(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim(),
+            ),
+          );
     }
   }
 

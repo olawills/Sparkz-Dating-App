@@ -24,13 +24,13 @@ class InfoController extends State<InfoScreen> {
 
       if (gender == 'Male') {
         isSelectedMale = true;
-        Log.debug(isSelectedMale);
+        debugPrint(isSelectedMale.toString());
       } else if (gender == 'Female') {
         isSelectedFemale = true;
-        Log.debug(isSelectedFemale);
+        debugPrint(isSelectedFemale.toString());
       } else if (gender == 'Transgender') {
         isSelectedTransgender = true;
-        Log.debug(isSelectedTransgender);
+        debugPrint(isSelectedTransgender.toString());
       }
     });
   }

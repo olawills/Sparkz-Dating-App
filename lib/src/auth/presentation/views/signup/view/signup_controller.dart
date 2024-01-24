@@ -41,12 +41,6 @@ class SignupController extends State<SignUpScreen> {
   }
 
   register() async {
-    // if (gpsBloc.state.isGpsPermissionGranted == false) {
-    //   ToastMessages().showToastErrorMessage(AppString.allowGps);
-    //   gpsBloc.askLocationPermission();
-    // } else
-    final reverseLocation = await locationBloc.reverseGeolocation();
-
     if (locationBloc.state.lastKnownLocation == null) {
       gpsBloc.askLocationPermission();
     }
@@ -62,8 +56,6 @@ class SignupController extends State<SignUpScreen> {
             ),
           );
     }
-    var lots = reverseLocation;
-    debugPrint(lots);
   }
 
   loginPage() {

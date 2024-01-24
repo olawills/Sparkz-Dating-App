@@ -1,3 +1,4 @@
+import 'package:dating_app/app/core/config/asset_manager.dart';
 import 'package:dating_app/src/auth/data/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -41,7 +42,7 @@ class LocalDataStorage {
     await pref.setString(_lastName, data.lastName);
     await pref.setString(_email, data.email);
     await pref.setString(_token, data.token);
-    await pref.setString(_profilePicture, data.profilePicture);
+    await pref.setString(_profilePicture, Assets.noAccountImage);
     await pref.setBool(_loggedIn, true);
   }
 
@@ -52,7 +53,7 @@ class LocalDataStorage {
     await pref.setString(_lastName, data.user.lastName);
     await pref.setString(_email, data.user.email);
     await pref.setString(_token, data.token);
-    await pref.setString(_profilePicture, data.user.profilePicture);
+    await pref.setString(_profilePicture, Assets.noAccountImage);
     await pref.setBool(_loggedIn, true);
   }
 

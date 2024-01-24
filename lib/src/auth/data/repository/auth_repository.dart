@@ -1,11 +1,13 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dating_app/app/common/common.dart';
 import 'package:dating_app/app/core/core.dart';
-import 'package:dating_app/app/core/logger/app_logger.dart';
 import 'package:dating_app/src/auth/data/datasource/auth_remote_data_source.dart';
 import 'package:dating_app/src/auth/data/models/login_response.dart';
 import 'package:dating_app/src/auth/data/models/user.dart';
 import 'package:dating_app/src/auth/presentation/bloc/auth_bloc/auth_bloc.dart';
+import 'package:dio/dio.dart';
 
 import '../../../../app/core/network/dio_exception.dart';
 
@@ -15,23 +17,39 @@ class AuthRepository {
             authRemoteDataSource ?? AuthRemoteDataSourceImpl();
   final AuthRemoteDataSource _authRemoteDataSourceImpl;
 
-  ResultFuture<LoginResponse> login(LoginEvent event) async {
+  ResultFuture<User> signup(SignupEvent event) async {
     try {
-      final response = await _authRemoteDataSourceImpl.loginUser(event);
-      return Right(LoginResponse.fromJson(response.data));
+      final response = await _authRemoteDataSourceImpl.createUser(event);
+      // var token = jsonEncode(response.data['user']['token']);
+      // await LocalDataStorage.instance.setToken(token);
+      log('SIGNUP REPO SUCCESSFULL');
+      return Right(User.fromJson(response.data['user']));
     } catch (error) {
-      Log.debug(error);
+      log(error.toString());
       return Left(NetworkExceptions.getDioException(error));
     }
   }
 
-  ResultFuture<User> signup(SignupEvent event) async {
+  ResultFuture<LoginResponse> login(LoginEvent event) async {
     try {
-      final response = await _authRemoteDataSourceImpl.createUser(event);
-      debugPrint(response.data['user']);
-      return Right(User.fromJson(response.data['user']));
+      final response = await _authRemoteDataSourceImpl.loginUser(event);
+      // final data = jsonEncode(response.data['token']);
+      // await LocalDataStorage.instance.setToken(data);
+      return Right(LoginResponse.fromJson(response.data));
     } catch (error) {
-      debugPrint(error.toString());
+      log(error.toString());
+      return Left(NetworkExceptions.getDioException(error));
+    }
+  }
+
+  ResultFuture<Response> checkToken() async {
+    try {
+      final response = await _authRemoteDataSourceImpl.checkToken();
+      await LocalDataStorage.instance.setuserInfo(response.data);
+      log(response.toString());
+      return Right(response);
+    } catch (error) {
+      log(error.toString());
       return Left(NetworkExceptions.getDioException(error));
     }
   }
@@ -39,10 +57,10 @@ class AuthRepository {
   ResultFuture<String> verifyOtp(VerifyOtpEvent event) async {
     try {
       final response = await _authRemoteDataSourceImpl.verifyOtp(event);
-      debugPrint(response.data);
-      return Right(response.data);
+      log(response.data.toString());
+      return Right(response.data['message']);
     } catch (error) {
-      debugPrint(error.toString());
+      log(error.toString());
       return Left(NetworkExceptions.getDioException(error));
     }
   }

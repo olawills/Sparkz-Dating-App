@@ -25,6 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthenticationState> {
   _login(LoginEvent event, emit) async {
     emit(LoginLoading());
     final response = await _authRepoImpl.login(event);
+    // await _authRepoImpl.checkToken();
     response.fold(
       (l) => emit(LoginError(error: l)),
       (r) => emit(LoginSuccess(response: r)),

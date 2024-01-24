@@ -16,7 +16,7 @@ import '../../../src/features/home/data/repository/user_repository.dart';
 import '../../../src/features/home/presentation/bloc/gps/gps_bloc.dart';
 import '../../../src/features/home/presentation/bloc/location/location_bloc.dart';
 import '../../../src/features/home/presentation/bloc/users/users_bloc.dart';
-import '../network/dio_helper.dart';
+import '../network/dio_client.dart';
 
 GetIt serviceLocator = GetIt.instance;
 
@@ -50,7 +50,7 @@ Future<void> setUpServiceLocator() async {
   serviceLocator.registerFactory<UserRepository>(() => UserRepository());
 
   // Dio
-  serviceLocator.registerLazySingleton<DioHelper>(() => DioHelper());
+  serviceLocator.registerLazySingleton<NetworkService>(() => NetworkService());
   serviceLocator.registerLazySingleton<Dio>(() => Dio());
   serviceLocator.registerLazySingleton<Connectivity>(() => Connectivity());
 }
